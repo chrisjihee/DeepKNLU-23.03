@@ -16,7 +16,7 @@ pip install --upgrade deepspeed
 pip install --upgrade lightning
 pip install --upgrade evaluate datasets tokenizers transformers
 pip install --upgrade ipython ipynbname nb_extension_tagstyler jupyter
-pip install --upgrade matplotlib sqlalchemy
+pip install --upgrade matplotlib
 pip list --format=freeze >requirements.txt
 git clone git@github.com:chrisjihee/chrisbase.git
 git clone git@github.com:chrisjihee/chrisdict.git

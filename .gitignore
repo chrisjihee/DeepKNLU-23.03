@@ -5,6 +5,7 @@ setup-git.sh
 /chrisbase
 /chrislab
 /ratsnlp
+/data/**/cached_*
 
 # pytorch
 .idea/
@@ -13,6 +14,7 @@ setup-git.sh
 /output-*
 .DS_Store
 .~lock.*
+*.lock
 *.ckpt
 *.out
 *.out*
@@ -27,6 +29,7 @@ setup-git.sh
 /predicted-*
 /note*/**/*.json
 /note*/**/*.out
+lightning_logs
 vocab.txt
 model.ckpt*
 events.out.*
