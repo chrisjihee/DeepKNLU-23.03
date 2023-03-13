@@ -2,23 +2,30 @@
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 source ~/.profile
 source ~/.bashrc
+conda update -n base -c defaults conda
 
 # 1. reset
-conda update -n base -c defaults conda
 conda create -n DeepKorean-23.03 python=3.10 -y
 conda activate DeepKorean-23.03
 
 # 2. install
 conda install cuda-nvcc=11.7 cudatoolkit=11.7 -c nvidia -y
 #pip install -r requirements.txt
-pip install --upgrade torch torchvision torchaudio
+pip install --upgrade torch
 pip install --upgrade deepspeed
 pip install --upgrade lightning
-pip install --upgrade datasets evaluate transformers
-pip install --upgrade chrisbase chrisdict chrislab sqlalchemy
-pip install --upgrade matplotlib ipython ipynbname nb_extension_tagstyler jupyter
+pip install --upgrade evaluate datasets tokenizers transformers
+pip install --upgrade ipython ipynbname nb_extension_tagstyler jupyter
+pip install --upgrade matplotlib sqlalchemy
 pip list --format=freeze >requirements.txt
-pip install --upgrade ratsnlp
+git clone git@github.com:chrisjihee/chrisbase.git
+git clone git@github.com:chrisjihee/chrisdict.git
+git clone git@github.com:chrisjihee/chrislab.git
+git clone git@github.com:ratsgo/ratsnlp.git
+pip install --editable chrisdict
+pip install --editable chrisbase
+pip install --editable chrislab
+pip install --editable ratsnlp
 
 # 3. config
 rm -rf .jupyter ~/.cache/huggingface
