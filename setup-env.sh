@@ -15,7 +15,7 @@ pip install --upgrade torch torchvision torchaudio
 pip install --upgrade deepspeed
 pip install --upgrade lightning
 pip install --upgrade datasets evaluate transformers
-pip install --upgrade chrisbase chrisdict chrislab
+pip install --upgrade chrisbase chrisdict chrislab sqlalchemy
 pip install --upgrade matplotlib ipython ipynbname nb_extension_tagstyler jupyter
 pip list --format=freeze >requirements.txt
 pip install --upgrade ratsnlp
