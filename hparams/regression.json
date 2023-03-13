@@ -1,0 +1,11 @@
+{
+  "base_conf": [
+    "base.json"
+  ],
+  "num_classes": 1,
+  "loss_metric": "MSELoss",
+  "score_metric": {
+    "major": "glue",
+    "minor": "stsb"
+  }
+}
