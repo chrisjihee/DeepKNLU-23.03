@@ -7,6 +7,7 @@
  - [실습] 나만의 문서 분류 모델 만들기
    https://ratsgo.github.io/nlpbook/docs/doc_cls/detail/
  - [적용] KLUE YNAT 태스크 적용하기
+ - [변형] 데이터 일부분만 학습하기
 
 # 5장 문장 쌍 분류하기 (Sentence Pair Classification)
  - [실습] 문장 쌍 분류 모델 학습하기
