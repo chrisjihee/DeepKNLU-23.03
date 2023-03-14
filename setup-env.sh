@@ -21,7 +21,7 @@ pip list --format=freeze >requirements.txt
 git clone git@github.com:chrisjihee/chrisbase.git
 git clone git@github.com:chrisjihee/chrisdict.git
 git clone git@github.com:chrisjihee/chrislab.git
-git clone git@github.com:ratsgo/ratsnlp.git
+git clone git@github.com:chrisjihee/ratsnlp.git
 pip install --editable chrisdict
 pip install --editable chrisbase
 pip install --editable chrislab
