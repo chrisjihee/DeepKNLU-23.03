@@ -2,14 +2,14 @@ import os
 import sys
 from pathlib import Path
 
-from chrisbase.io import get_current_path
+from chrisbase.io import get_working_file
 from chrisbase.util import to_dataframe
 from chrisdict import AttrDict
 
 env = AttrDict()
 env["python_path"] = Path(sys.executable)
-env["project_path"] = [x for x in get_current_path().parents if x.name.startswith("DeepKorean")][0]
-env["current_path"] = get_current_path().relative_to(env.project_path)
+env["project_path"] = [x for x in get_working_file().parents if x.name.startswith("DeepKorean")][0]
+env["current_path"] = get_working_file().relative_to(env.project_path)
 os.chdir(env.project_path)
 
 
