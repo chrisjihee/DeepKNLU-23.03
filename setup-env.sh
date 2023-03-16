@@ -14,6 +14,7 @@ conda install cuda-nvcc=11.7 cudatoolkit=11.7 -c nvidia -y
 pip install --upgrade torch
 pip install --upgrade deepspeed
 pip install --upgrade lightning
+pip install --upgrade lightning[extra]
 pip install --upgrade evaluate datasets tokenizers #transformers
 pip install --upgrade ipython ipynbname nb_extension_tagstyler jupyter
 pip install --upgrade matplotlib
