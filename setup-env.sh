@@ -15,7 +15,7 @@ pip install --upgrade torch
 pip install --upgrade deepspeed
 pip install --upgrade lightning[extra]
 pip install --upgrade evaluate datasets tokenizers #transformers
-pip install --upgrade matplotlib ipython ipynbname nb_extension_tagstyler jupyterlab==3.0.0 tornado==6.1
+pip install --upgrade matplotlib ipython ipynbname widgetsnbextension nb_extension_tagstyler jupyterlab==3.0.0 tornado==6.1
 pip install --upgrade chardet cchardet
 pip list --format=freeze >requirements.txt
 rm -rf transformers chrisdict chrisbase chrislab ratsnlp
