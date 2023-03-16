@@ -5,6 +5,7 @@ setup-git.sh
 /chrisbase
 /chrislab
 /ratsnlp
+/transformers
 /data/**/cached_*
 
 # pytorch

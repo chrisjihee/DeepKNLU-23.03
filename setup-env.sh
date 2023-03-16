@@ -14,11 +14,11 @@ conda install cuda-nvcc=11.7 cudatoolkit=11.7 -c nvidia -y
 pip install --upgrade torch
 pip install --upgrade deepspeed
 pip install --upgrade lightning
-pip install --upgrade evaluate datasets tokenizers transformers
+pip install --upgrade evaluate datasets tokenizers #transformers
 pip install --upgrade ipython ipynbname nb_extension_tagstyler jupyter
 pip install --upgrade matplotlib
 pip list --format=freeze >requirements.txt
-git clone git@github.com:huggingface/transformers.git -b v4.26.1 transformers
+git clone git@github.com:huggingface/transformers.git -b v4.27.1 transformers
 git clone git@github.com:chrisjihee/chrisbase.git
 git clone git@github.com:chrisjihee/chrisdict.git
 git clone git@github.com:chrisjihee/chrislab.git
@@ -32,7 +32,7 @@ pip install --editable ratsnlp
 # 3. config
 rm -rf .jupyter ~/.cache/huggingface
 jupyter nbextension enable --py widgetsnbextension
-jupyter notebook --generate-config
+jupyter notebook --generate-config -y
 ln -s ~/.jupyter config/jupyter
 cp config/jupyter_notebook_config.py ~/.jupyter/
 
