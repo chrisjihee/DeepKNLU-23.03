@@ -15,8 +15,7 @@ pip install --upgrade torch
 pip install --upgrade deepspeed
 pip install --upgrade lightning[extra]
 pip install --upgrade evaluate datasets tokenizers #transformers
-pip install --upgrade ipython ipynbname nb_extension_tagstyler jupyter
-pip install --upgrade matplotlib
+pip install --upgrade matplotlib ipython ipynbname nb_extension_tagstyler jupyterlab==3.0.0 tornado==6.1
 pip list --format=freeze >requirements.txt
 git clone git@github.com:huggingface/transformers.git -b v4.27.1 transformers
 git clone git@github.com:chrisjihee/chrisbase.git
