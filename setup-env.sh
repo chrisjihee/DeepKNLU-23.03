@@ -34,8 +34,8 @@ jupyter nbextension enable --py widgetsnbextension
 jupyter nbextension enable --py --sys-prefix widgetsnbextension
 jupyter notebook --generate-config -y
 rm -f config/jupyter
-ln -s ~/.jupyter config/jupyter
-cp config/jupyter_notebook_config.py ~/.jupyter/
+#ln -s ~/.jupyter config/jupyter
+#cp config/jupyter_notebook_config.py ~/.jupyter/
 
 # 3. clone
 mkdir -p data
