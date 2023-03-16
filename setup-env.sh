@@ -32,6 +32,7 @@ pip install --editable ratsnlp
 # 3. config
 rm -rf .jupyter ~/.cache/huggingface
 jupyter nbextension enable --py widgetsnbextension
+jupyter nbextension enable --py --sys-prefix widgetsnbextension
 jupyter notebook --generate-config -y
 ln -s ~/.jupyter config/jupyter
 cp config/jupyter_notebook_config.py ~/.jupyter/
