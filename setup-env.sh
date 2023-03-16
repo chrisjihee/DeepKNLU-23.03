@@ -18,6 +18,7 @@ pip install --upgrade evaluate datasets tokenizers #transformers
 pip install --upgrade matplotlib ipython ipynbname nb_extension_tagstyler jupyterlab==3.0.0 tornado==6.1
 pip install --upgrade chardet cchardet
 pip list --format=freeze >requirements.txt
+rm -rf transformers chrisdict chrisbase chrislab ratsnlp
 git clone git@github.com:huggingface/transformers.git -b v4.27.1 transformers
 git clone git@github.com:chrisjihee/chrisbase.git
 git clone git@github.com:chrisjihee/chrisdict.git
