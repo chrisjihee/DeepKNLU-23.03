@@ -1,45 +1,31 @@
-# 0. ready
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-source ~/.profile
-source ~/.bashrc
-conda update -n base -c defaults conda
-
 # 1. reset
+conda update -n base -c defaults conda -y
 conda create -n DeepKorean-23.03 python=3.10 -y
 conda activate DeepKorean-23.03
 
-# 2. install
+# 2. uneditable library
 conda install cuda-nvcc=11.7 cudatoolkit=11.7 -c nvidia -y
-#pip install -r requirements.txt
-pip install --upgrade torch
-pip install --upgrade deepspeed
-pip install --upgrade lightning[extra]
-pip install --upgrade evaluate datasets tokenizers #transformers
-pip install --upgrade matplotlib ipython ipynbname widgetsnbextension nb_extension_tagstyler jupyterlab==3.0.0 tornado==6.1
-pip install --upgrade chardet cchardet
+pip install --upgrade torch deepspeed evaluate datasets tokenizers
+pip install --upgrade notebook ipython ipynbname jupyterlab==3.0.0 tornado==6.1 matplotlib
 pip list --format=freeze >requirements.txt
-rm -rf transformers chrisdict chrisbase chrislab ratsnlp
-git clone git@github.com:huggingface/transformers.git -b v4.27.1 transformers
+pip install -r requirements.txt
+
+# 3. editable library
+rm -rf transformers lightning ratsnlp chrisdict chrisbase chrislab
+git clone git@github.com:huggingface/transformers.git -b v4.27.1
+git clone git@github.com:Lightning-AI/lightning.git -b 2.0.0
 git clone git@github.com:chrisjihee/chrisbase.git
 git clone git@github.com:chrisjihee/chrisdict.git
 git clone git@github.com:chrisjihee/chrislab.git
 git clone git@github.com:chrisjihee/ratsnlp.git
 pip install --editable transformers
+pip install --editable lightning[extra]
 pip install --editable chrisdict
 pip install --editable chrisbase
 pip install --editable chrislab
 pip install --editable ratsnlp
 
-# 3. config
-rm -rf .jupyter ~/.cache/huggingface
-jupyter nbextension enable --py widgetsnbextension
-jupyter nbextension enable --py --sys-prefix widgetsnbextension
-jupyter notebook --generate-config -y
-rm -f config/jupyter
-#ln -s ~/.jupyter config/jupyter
-#cp config/jupyter_notebook_config.py ~/.jupyter/
-
-# 3. clone
+# 4. resource
 mkdir -p data
 git clone guest@129.254.164.137:git/PretrainedLM pretrained
 git clone guest@129.254.164.137:git/data-korquad data/korquad

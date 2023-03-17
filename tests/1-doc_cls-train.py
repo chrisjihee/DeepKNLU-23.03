@@ -13,7 +13,7 @@ with GpuProjectEnv(project_name="DeepKorean", working_gpus="0") as env:
         learning_rate=5e-5,
         max_seq_length=128,
         batch_size=200,
-        save_top_k=2,
+        save_top_k=3,
         epochs=3,
         seed=7,
     )
