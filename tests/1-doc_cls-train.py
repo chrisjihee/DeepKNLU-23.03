@@ -32,6 +32,8 @@ args = ClassificationTrainArguments(
 )
 print(to_dataframe(args))
 out_hr(c='-')
+print(args.to_json(ensure_ascii=False, indent=2, default=str))
+exit(1)
 
 with JobTimer(f"{env.project_name}(finetuning {args.pretrained_model_name} using {args.downstream_corpus_name} data and {env.number_of_gpus} devices)",
               mt=1, mb=1, rt=1, rb=1, rc='=', verbose=True, flush_sec=0.3):
