@@ -10,6 +10,7 @@ env.config_file.write_text(ClassificationTrainArguments(
     downstream_corpus_root_dir="data",
     downstream_corpus_name="nsmc",
     downstream_model_dir="checkpoints/nsmc",
+    downstream_model_filename="{epoch}-{val_loss:.3f}-{val_acc:.3f}",
     monitor="max val_acc",
     learning_rate=5e-5,
     max_seq_length=128,
