@@ -25,8 +25,8 @@ args = ClassificationTrainArguments(
     monitor="max val_acc",
     learning_rate=5e-5,
     max_seq_length=128,
-    batch_size=128,
-    save_top_k=3,
+    batch_size=200,
+    save_top_k=2,
     epochs=3,
     seed=7,
 )
