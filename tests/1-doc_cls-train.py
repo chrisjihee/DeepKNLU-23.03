@@ -1,80 +1,57 @@
-import os
-import sys
-from pathlib import Path
+import torch
+from Korpora import Korpora
+from torch.utils.data import DataLoader, RandomSampler
+from torch.utils.data import SequentialSampler
 
-from chrisbase.io import get_working_file
+from chrisbase.io import JobTimer, out_hr
 from chrisbase.util import to_dataframe
-from chrisdict import AttrDict
+from chrislab.common.util import GpuProjectEnv
+from ratsnlp import nlpbook
+from ratsnlp.nlpbook.classification import ClassificationTask
+from ratsnlp.nlpbook.classification import ClassificationTrainArguments
+from ratsnlp.nlpbook.classification import NsmcCorpus, ClassificationDataset
+from transformers import BertConfig, BertForSequenceClassification
+from transformers import BertTokenizer
 
-env = AttrDict()
-env["python_path"] = Path(sys.executable)
-env["project_path"] = [x for x in get_working_file().parents if x.name.startswith("DeepKorean")][0]
-env["current_path"] = get_working_file().relative_to(env.project_path)
-os.chdir(env.project_path)
+env = GpuProjectEnv(project_name="DeepKorean", working_gpus="0")
+print(to_dataframe(env))
+out_hr(c='-')
 
+args = ClassificationTrainArguments(
+    pretrained_model_name="pretrained/KcBERT-Base",
+    downstream_corpus_root_dir="data",
+    downstream_corpus_name="nsmc",
+    downstream_model_dir="checkpoints/nsmc",
+    monitor="max val_acc",
+    learning_rate=5e-5,
+    max_seq_length=128,
+    batch_size=128,
+    save_top_k=3,
+    epochs=3,
+    seed=7,
+)
+print(to_dataframe(args))
+out_hr(c='-')
 
-def main():
-    print(to_dataframe(env, columns=["key", "value"]))
-
-    ################################################################################
-    # 코드 4-4: 모델 환경 설정
-    ################################################################################
-    from ratsnlp.nlpbook.classification import ClassificationTrainArguments
-
-    args = ClassificationTrainArguments(
-        pretrained_model_name="pretrained/KcBERT-Base",
-        downstream_corpus_name="nsmc",
-        downstream_corpus_root_dir="data",
-        downstream_model_dir="checkpoints/nsmc",
-        batch_size=32,
-        learning_rate=5e-5,
-        max_seq_length=128,
-        epochs=3,
-        tpu_cores=0,
-        seed=7,
-        # overwrite_cache=True,
-    )
-    print(f"args={args}")
-
-    ################################################################################
-    # 코드 4-5: 랜덤 시드 고정
-    ################################################################################
-    from ratsnlp import nlpbook
-
+with JobTimer(f"{env.project_name}(finetuning {args.pretrained_model_name} using {args.downstream_corpus_name} data and {env.number_of_gpus} devices)",
+              mt=1, mb=1, rt=1, rb=1, rc='=', verbose=True, flush_sec=0.3):
     nlpbook.set_seed(args)
-
-    ################################################################################
-    # 코드 4-6: 로거 설정
-    ################################################################################
-    nlpbook.set_logger(args)
-
-    ################################################################################
-    # 코드 4-7: 말뭉치 내려받기
-    ################################################################################
-    from Korpora import Korpora
+    nlpbook.set_logger()
+    out_hr(c='-')
 
     Korpora.fetch(
         corpus_name=args.downstream_corpus_name,
         root_dir=args.downstream_corpus_root_dir,
-        # force_download=True
     )
-
-    ################################################################################
-    # 코드 4-8: 토크나이저 준비
-    ################################################################################
-    from transformers import BertTokenizer
+    out_hr(c='-')
 
     tokenizer = BertTokenizer.from_pretrained(
         args.pretrained_model_name,
         do_lower_case=False,
     )
     print(f"tokenizer={tokenizer}")
-    print(f'tokenizer.tokenize("안녕하세요. 반갑습니다.")={tokenizer.tokenize("안녕하세요. 반갑습니다.")}')
-
-    ################################################################################
-    # 코드 4-9: 학습 데이터셋 구축
-    ################################################################################
-    from ratsnlp.nlpbook.classification import NsmcCorpus, ClassificationDataset
+    print(f"tokenized example={tokenizer.tokenize('안녕하세요. 반갑습니다.')}")
+    out_hr(c='-')
 
     corpus = NsmcCorpus()
     train_dataset = ClassificationDataset(
@@ -83,12 +60,6 @@ def main():
         tokenizer=tokenizer,
         mode="train",
     )
-
-    ################################################################################
-    # 코드 4-10: 학습 데이터 로더 구축
-    ################################################################################
-    from torch.utils.data import DataLoader, RandomSampler
-
     train_dataloader = DataLoader(
         train_dataset,
         batch_size=args.batch_size,
@@ -97,11 +68,7 @@ def main():
         drop_last=False,
         num_workers=args.cpu_workers,
     )
-
-    ################################################################################
-    # 코드 4-11: 평가용 데이터 로더 구축
-    ################################################################################
-    from torch.utils.data import SequentialSampler
+    out_hr(c='-')
 
     val_dataset = ClassificationDataset(
         args=args,
@@ -109,7 +76,6 @@ def main():
         tokenizer=tokenizer,
         mode="test",
     )
-
     val_dataloader = DataLoader(
         val_dataset,
         batch_size=args.batch_size,
@@ -118,11 +84,7 @@ def main():
         drop_last=False,
         num_workers=args.cpu_workers,
     )
-
-    ################################################################################
-    # 코드 4-12: 모델 초기화
-    ################################################################################
-    from transformers import BertConfig, BertForSequenceClassification
+    out_hr(c='-')
 
     pretrained_model_config = BertConfig.from_pretrained(
         args.pretrained_model_name,
@@ -132,28 +94,11 @@ def main():
         args.pretrained_model_name,
         config=pretrained_model_config,
     )
+    out_hr(c='-')
 
-    ################################################################################
-    # 코드 4-13: TASK 정의
-    ################################################################################
-    from ratsnlp.nlpbook.classification import ClassificationTask
-
-    task = ClassificationTask(model, args)
-
-    ################################################################################
-    # 코드 4-14: 트레이너 정의
-    ################################################################################
-    trainer = nlpbook.get_trainer(args)
-
-    ################################################################################
-    # 코드 4-15: 학습 개시
-    ################################################################################
-    trainer.fit(
-        task,
+    torch.set_float32_matmul_precision('high')
+    nlpbook.get_trainer(args).fit(
+        ClassificationTask(model, args),
         train_dataloaders=train_dataloader,
         val_dataloaders=val_dataloader,
     )
-
-
-if __name__ == '__main__':
-    main()
