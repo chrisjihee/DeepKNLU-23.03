@@ -1,0 +1,20 @@
+{
+  "pretrained_model_name": "pretrained/KcBERT-Base",
+  "downstream_task_name": "document-classification",
+  "downstream_corpus_name": "nsmc",
+  "downstream_corpus_root_dir": "data",
+  "downstream_model_dir": "checkpoints/nsmc",
+  "max_seq_length": 128,
+  "save_top_k": 2,
+  "monitor": "max val_acc",
+  "seed": 7,
+  "overwrite_cache": false,
+  "force_download": false,
+  "test_mode": false,
+  "learning_rate": 5e-05,
+  "epochs": 3,
+  "batch_size": 200,
+  "cpu_workers": 32,
+  "fp16": false,
+  "tpu_cores": 0
+}
