@@ -4,6 +4,7 @@
   "downstream_corpus_name": "nsmc",
   "downstream_corpus_root_dir": "data",
   "downstream_model_dir": "checkpoints/nsmc",
+  "downstream_model_filename": "{epoch}-{val_loss:.3f}-{val_acc:.3f}",
   "max_seq_length": 128,
   "save_top_k": 2,
   "monitor": "max val_acc",
@@ -15,6 +16,5 @@
   "epochs": 3,
   "batch_size": 200,
   "cpu_workers": 32,
-  "fp16": false,
-  "tpu_cores": 0
+  "fp16": false
 }
