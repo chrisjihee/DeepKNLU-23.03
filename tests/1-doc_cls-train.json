@@ -1,5 +1,5 @@
 {
-  "pretrained_model_name": "pretrained/KcBERT-Base",
+  "pretrained_model_name": "model/pretrained/KcBERT-Base",
   "downstream_task_name": "document-classification",
   "downstream_corpus_name": "nsmc",
   "downstream_corpus_root_dir": "data",

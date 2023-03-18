@@ -4,11 +4,11 @@ from ratsnlp.nlpbook.classification import ClassificationTrainArguments
 
 with GpuProjectEnv(project_name="DeepKorean", working_gpus="0") as env:
     args = ClassificationTrainArguments(
-        pretrained_model_name="pretrained/KcBERT-Base",
-        downstream_corpus_root_dir="data",
-        downstream_corpus_name="nsmc",
-        downstream_model_dir="checkpoints/nsmc",
-        downstream_model_filename="{epoch}-{val_loss:.3f}-{val_acc:.3f}",
+        pretrained_model_path="model/pretrained/KcBERT-Base",
+        downstream_model_path="model/downstream/nsmc",
+        downstream_model_file="{epoch}-{val_loss:.3f}-{val_acc:.3f}",
+        downstream_data_home="data",
+        downstream_data_name="nsmc",
         monitor="max val_acc",
         learning_rate=5e-5,
         max_seq_length=128,

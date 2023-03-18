@@ -23,6 +23,8 @@ setup-git.sh
 /config/jupyter
 /cached
 /encoded
+/model
+/model-*
 /pretrained
 /pretrained-*
 /finetuned
