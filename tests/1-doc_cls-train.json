@@ -15,6 +15,6 @@
   "learning_rate": 5e-05,
   "epochs": 3,
   "batch_size": 200,
-  "cpu_workers": 32,
+  "cpu_workers": 64,
   "fp16": false
 }

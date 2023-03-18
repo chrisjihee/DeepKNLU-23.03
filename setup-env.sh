@@ -29,6 +29,6 @@ pip install --editable chrislab
 pip install --editable ratsnlp
 
 # 4. resource
-mkdir -p data
+mkdir -p data model
 git clone guest@129.254.164.137:git/data-korquad data/korquad
-git clone guest@129.254.164.137:git/pretrained-com pretrained
+git clone guest@129.254.164.137:git/pretrained-com model/pretrained
