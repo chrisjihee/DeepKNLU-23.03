@@ -1,7 +1,7 @@
 # 1. reset
-PROJECT_NAME = DeepKorean-23.03
-PYTHON_VER   = 3.10
-CUDA_VER     = 11.7
+export PROJECT_NAME="DeepKorean-23.03"
+export PYTHON_VER="3.10"
+export CUDA_VER="11.7"
 conda update -n base -c defaults conda -y
 conda create -n $PROJECT_NAME python=$PYTHON_VER -y
 conda activate $PROJECT_NAME
