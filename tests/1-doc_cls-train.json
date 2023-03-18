@@ -6,7 +6,7 @@
   "downstream_model_dir": "checkpoints/nsmc",
   "downstream_model_filename": "{epoch}-{val_loss:.3f}-{val_acc:.3f}",
   "max_seq_length": 128,
-  "save_top_k": 2,
+  "save_top_k": 3,
   "monitor": "max val_acc",
   "seed": 7,
   "overwrite_cache": false,
