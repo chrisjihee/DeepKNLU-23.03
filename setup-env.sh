@@ -15,12 +15,12 @@ pip install -r requirements.txt
 
 # 3. editable library
 rm -rf transformers lightning chrisdict chrisbase chrislab ratsnlp
-git clone git@github.com:chrisjihee/transformers.git
-git clone git@github.com:chrisjihee/lightning.git
-git clone git@github.com:chrisjihee/chrisdict.git
-git clone git@github.com:chrisjihee/chrisbase.git
-git clone git@github.com:chrisjihee/chrislab.git
-git clone git@github.com:chrisjihee/ratsnlp.git
+git clone https://github.com/chrisjihee/transformers.git
+git clone https://github.com/chrisjihee/lightning.git
+git clone https://github.com/chrisjihee/chrisdict.git
+git clone https://github.com/chrisjihee/chrisbase.git
+git clone https://github.com/chrisjihee/chrislab.git
+git clone https://github.com/chrisjihee/ratsnlp.git
 pip install --editable transformers
 pip install --editable lightning[extra]
 pip install --editable chrisdict
