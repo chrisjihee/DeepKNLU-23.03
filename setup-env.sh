@@ -28,7 +28,14 @@ pip install --editable chrisbase
 pip install --editable chrislab
 pip install --editable ratsnlp
 
-# 4. resource
-mkdir -p data model
+# 4. pretrained model
+mkdir -p model/pretrained
+git clone https://huggingface.co/beomi/kcbert-base                        model/pretrained/KcBERT-Base
+git clone https://huggingface.co/beomi/KcELECTRA-base-v2022               model/pretrained/KcELECTRA-Base
+git clone https://huggingface.co/skt/kobert-base-v1                       model/pretrained/KoBERT-Base
+git clone https://huggingface.co/monologg/koelectra-base-v3-discriminator model/pretrained/KoELECTRA-Base
+git clone https://github.com/KPFBERT/kpfbert                              model/pretrained/KPF-BERT-Base
+
+# 5. data
+mkdir -p data
 git clone guest@129.254.164.137:git/data-korquad data/korquad
-git clone guest@129.254.164.137:git/pretrained-com model/pretrained
