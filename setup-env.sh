@@ -1,12 +1,15 @@
 # 1. reset
+PROJECT_NAME = DeepKorean-23.03
+PYTHON_VER   = 3.10
+CUDA_VER     = 11.7
 conda update -n base -c defaults conda -y
-conda create -n DeepKorean-23.03 python=3.10 -y
-conda activate DeepKorean-23.03
+conda create -n $PROJECT_NAME python=$PYTHON_VER -y
+conda activate $PROJECT_NAME
+conda install cuda-nvcc=$CUDA_VER cudatoolkit=$CUDA_VER -c nvidia -y
 
 # 2. uneditable library
-conda install cuda-nvcc=11.7 cudatoolkit=11.7 -c nvidia -y
 pip install --upgrade torch deepspeed evaluate datasets tokenizers
-pip install --upgrade notebook ipython ipynbname jupyterlab==3.0.0 tornado==6.1 matplotlib
+pip install --upgrade matplotlib notebook ipython ipynbname jupyterlab tornado==6.1
 pip list --format=freeze >requirements.txt
 pip install -r requirements.txt
 
