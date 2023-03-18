@@ -11,11 +11,11 @@ pip list --format=freeze >requirements.txt
 pip install -r requirements.txt
 
 # 3. editable library
-rm -rf transformers lightning ratsnlp chrisdict chrisbase chrislab
-git clone git@github.com:huggingface/transformers.git -b v4.27.1
-git clone git@github.com:Lightning-AI/lightning.git -b 2.0.0
-git clone git@github.com:chrisjihee/chrisbase.git
+rm -rf transformers lightning chrisdict chrisbase chrislab ratsnlp
+git clone git@github.com:chrisjihee/transformers.git
+git clone git@github.com:chrisjihee/lightning.git
 git clone git@github.com:chrisjihee/chrisdict.git
+git clone git@github.com:chrisjihee/chrisbase.git
 git clone git@github.com:chrisjihee/chrislab.git
 git clone git@github.com:chrisjihee/ratsnlp.git
 pip install --editable transformers
