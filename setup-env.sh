@@ -37,6 +37,10 @@ git clone https://huggingface.co/beomi/KcELECTRA-base-v2022               model/
 git clone https://huggingface.co/skt/kobert-base-v1                       model/pretrained/KoBERT-Base
 git clone https://huggingface.co/monologg/koelectra-base-v3-discriminator model/pretrained/KoELECTRA-Base
 git clone https://github.com/KPFBERT/kpfbert                              model/pretrained/KPF-BERT-Base
+git clone https://huggingface.co/klue/bert-base                           model/pretrained/KLUE-BERT-Base
+git clone https://huggingface.co/klue/roberta-base                        model/pretrained/KLUE-RoBERTa-Base
+git clone https://huggingface.co/bert-base-multilingual-uncased           model/pretrained/Google-BERT-Base
+git clone https://huggingface.co/monologg/kobigbird-bert-base             model/pretrained/KoBigBird-Base
 
 # 5. data
 mkdir -p data
