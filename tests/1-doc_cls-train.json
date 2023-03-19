@@ -1,6 +1,6 @@
 {
   "pretrained_model_path": "model/pretrained/KcBERT-Base",
-  "downstream_model_path": "model/downstream/nsmc",
+  "downstream_model_path": "model/finetuned/nsmc",
   "downstream_model_file": "{epoch}-{val_loss:.3f}-{val_acc:.3f}",
   "downstream_data_home": "data",
   "downstream_data_name": "nsmc",
@@ -14,7 +14,7 @@
   "test_mode": false,
   "learning_rate": 5e-05,
   "epochs": 3,
-  "batch_size": 360,
+  "batch_size": 40,
   "cpu_workers": 12,
   "fp16": false
 }

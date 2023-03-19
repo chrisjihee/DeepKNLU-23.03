@@ -2,7 +2,10 @@ from chrislab.common.util import GpuProjectEnv
 from chrislab.ratsnlp import cli
 from ratsnlp.nlpbook.classification import ClassificationTrainArguments
 
-with GpuProjectEnv(project_name="DeepKorean", working_gpus="4") as env:
+import torch
+assert torch.cuda.is_available(), "No GPU device or driver, or improperly installed torch"
+
+with GpuProjectEnv(project_name="DeepKorean", working_gpus="0") as env:
     args = ClassificationTrainArguments(
         pretrained_model_path="model/pretrained/KcBERT-Base",
         downstream_model_path="model/finetuned/nsmc",
@@ -13,7 +16,7 @@ with GpuProjectEnv(project_name="DeepKorean", working_gpus="4") as env:
         learning_rate=5e-5,
         max_seq_length=128,
         cpu_workers=12,
-        batch_size=360,
+        batch_size=40,
         save_top_k=3,
         epochs=3,
         seed=7,

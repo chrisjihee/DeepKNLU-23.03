@@ -8,8 +8,10 @@ conda activate $PROJECT_NAME
 conda install cuda-nvcc=$CUDA_VER cudatoolkit=$CUDA_VER -c nvidia -y
 
 # 2. uneditable library
-pip install --upgrade torch deepspeed evaluate datasets tokenizers
-pip install --upgrade matplotlib notebook ipython ipynbname jupyterlab tornado==6.1
+pip install --upgrade torch --index-url https://download.pytorch.org/whl/cu117
+pip install --upgrade deepspeed  # Linux
+pip install --upgrade evaluate datasets tokenizers matplotlib
+pip install --upgrade notebook ipython ipynbname jupyterlab tornado==6.1
 pip list --format=freeze >requirements.txt
 pip install -r requirements.txt
 
