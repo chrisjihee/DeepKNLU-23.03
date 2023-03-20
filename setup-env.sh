@@ -17,7 +17,7 @@ then
   pip install --upgrade torch --index-url https://download.pytorch.org/whl/cu117
   pip install --upgrade deepspeed  # works on Linux
   pip install --upgrade evaluate datasets tokenizers matplotlib
-  pip install --upgrade notebook ipython ipynbname jupyterlab tornado==6.1
+  pip install --upgrade notebook ipython ipynbname ipywidgets jupyterlab tornado==6.1
   pip list --format=freeze >requirements.txt
 else
   pip install -r requirements.txt
