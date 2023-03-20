@@ -1,3 +1,4 @@
+#!/bin/bash
 # 1. reset
 export PROJECT_NAME="DeepKorean-23.03"
 export PYTHON_VER="3.10"
@@ -31,21 +32,22 @@ pip install --editable chrislab
 pip install --editable ratsnlp
 
 # 4. pretrained model
-#mkdir -p model/pretrained
-#sudo apt install git-lfs
-#git lfs install
-#git clone https://huggingface.co/beomi/kcbert-base                        model/pretrained/KcBERT-Base
-#git clone https://huggingface.co/beomi/KcELECTRA-base-v2022               model/pretrained/KcELECTRA-Base
-#git clone https://huggingface.co/skt/kobert-base-v1                       model/pretrained/KoBERT-Base
-#git clone https://huggingface.co/monologg/koelectra-base-v3-discriminator model/pretrained/KoELECTRA-Base
-#git clone https://github.com/KPFBERT/kpfbert                              model/pretrained/KPF-BERT-Base
-#git clone https://huggingface.co/klue/bert-base                           model/pretrained/KLUE-BERT-Base
-#git clone https://huggingface.co/klue/roberta-base                        model/pretrained/KLUE-RoBERTa-Base
-#git clone https://huggingface.co/bert-base-multilingual-uncased           model/pretrained/Google-BERT-Base
-#git clone https://huggingface.co/monologg/kobigbird-bert-base             model/pretrained/KoBigBird-Base
-mkdir -p model
-git clone guest@129.254.164.137:git/pretrained-com model/pretrained
-
-# 5. data
-mkdir -p data
-git clone guest@129.254.164.137:git/data-korquad data/korquad
+export IN_ETRI=true
+if [ $IN_ETRI = true ]
+then
+  mkdir -p model
+  git clone guest@129.254.164.137:git/pretrained-com model/pretrained
+else
+  mkdir -p model/pretrained
+  sudo apt install git-lfs
+  git lfs install
+  git clone https://huggingface.co/beomi/kcbert-base                        model/pretrained/KcBERT-Base
+  git clone https://huggingface.co/beomi/KcELECTRA-base-v2022               model/pretrained/KcELECTRA-Base
+  git clone https://huggingface.co/skt/kobert-base-v1                       model/pretrained/KoBERT-Base
+  git clone https://huggingface.co/monologg/koelectra-base-v3-discriminator model/pretrained/KoELECTRA-Base
+  git clone https://github.com/KPFBERT/kpfbert                              model/pretrained/KPF-BERT-Base
+  git clone https://huggingface.co/klue/bert-base                           model/pretrained/KLUE-BERT-Base
+  git clone https://huggingface.co/klue/roberta-base                        model/pretrained/KLUE-RoBERTa-Base
+  git clone https://huggingface.co/bert-base-multilingual-uncased           model/pretrained/Google-BERT-Base
+  git clone https://huggingface.co/monologg/kobigbird-bert-base             model/pretrained/KoBigBird-Base
+fi
