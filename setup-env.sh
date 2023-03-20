@@ -24,19 +24,21 @@ else
 fi
 
 # 3. editable library
-rm -rf transformers lightning chrisdict chrisbase chrislab ratsnlp
+rm -rf transformers lightning chrisdict chrisbase chrislab ratsnlp flask-ngrok /tmp/ngrok
 git clone https://github.com/chrisjihee/transformers.git
 git clone https://github.com/chrisjihee/lightning.git
 git clone https://github.com/chrisjihee/chrisdict.git
 git clone https://github.com/chrisjihee/chrisbase.git
 git clone https://github.com/chrisjihee/chrislab.git
 git clone https://github.com/chrisjihee/ratsnlp.git
+git clone https://github.com/gstaff/flask-ngrok.git
 pip install --editable transformers
 pip install --editable lightning[extra]
 pip install --editable chrisdict
 pip install --editable chrisbase
 pip install --editable chrislab
 pip install --editable ratsnlp
+pip install --editable flask-ngrok
 
 # 4. pretrained model
 export DOWNLOAD_ONLINE_MODEL=true

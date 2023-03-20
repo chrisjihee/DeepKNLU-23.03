@@ -1,12 +1,14 @@
 # project
 setup-git.sh
 /data/korquad
+/transformers
+/lightning
 /chrisdict
 /chrisbase
 /chrislab
 /ratsnlp
-/transformers
-/lightning
+/flask-ngrok
+/ngrok
 /data/**/cached_*
 
 # pytorch
