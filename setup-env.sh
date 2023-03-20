@@ -1,4 +1,6 @@
 #!/bin/bash
+# Tested on Ubuntu 20.04
+
 # 1. reset
 export PROJECT_NAME="DeepKorean-23.03"
 export PYTHON_VER="3.10"
@@ -41,7 +43,7 @@ export DOWNLOAD_ONLINE_MODEL=true
 if [ $DOWNLOAD_ONLINE_MODEL = true ]
 then
   mkdir -p model/pretrained
-  sudo apt install git-lfs
+  sudo apt install git-lfs  # for sudo user only
   git lfs install
   git clone https://huggingface.co/beomi/kcbert-base                        model/pretrained/KcBERT-Base
   git clone https://huggingface.co/beomi/KcELECTRA-base-v2022               model/pretrained/KcELECTRA-Base
