@@ -1,0 +1,377 @@
+/home/chrisjihee/mambaforge/envs/DeepKorean-23.03/bin/python /home/chrisjihee/proj/DeepKorean-23.03/tests/1-doc_cls-train.py 
+|   # | GpuProjectEnv   | value                                                        |
+|----:|:----------------|:-------------------------------------------------------------|
+|   1 | hostname        | ptlm3                                                        |
+|   2 | hostaddr        | 129.254.121.74                                               |
+|   3 | python_path     | /home/chrisjihee/mambaforge/envs/DeepKorean-23.03/bin/python |
+|   4 | project_name    | DeepKorean                                                   |
+|   5 | project_path    | /home/chrisjihee/proj/DeepKorean-23.03                       |
+|   6 | working_path    | /home/chrisjihee/proj/DeepKorean-23.03                       |
+|   7 | running_file    | tests/1-doc_cls-train.py                                     |
+|   8 | working_gpus    | 0,1                                                          |
+|   9 | number_of_gpus  | 2                                                            |
+|  10 | config_file     | tests/1-doc_cls-train.json                                   |
+|  11 | postfix         |                                                              |
+-----------------------------------------------------------------------------------------------------------------------------------------
+|   # | ClassificationTrainArguments   | value                                |
+|----:|:-------------------------------|:-------------------------------------|
+|   1 | pretrained_model_path          | model/pretrained/KcBERT-Base         |
+|   2 | downstream_model_path          | model/finetuned/nsmc                 |
+|   3 | downstream_model_file          | {epoch}-{val_loss:.3f}-{val_acc:.3f} |
+|   4 | downstream_data_home           | data                                 |
+|   5 | downstream_data_name           | nsmc                                 |
+|   6 | downstream_task_name           | document-classification              |
+|   7 | max_seq_length                 | 128                                  |
+|   8 | save_top_k                     | 3                                    |
+|   9 | monitor                        | max val_acc                          |
+|  10 | seed                           | 7                                    |
+|  11 | overwrite_cache                | False                                |
+|  12 | force_download                 | False                                |
+|  13 | test_mode                      | False                                |
+|  14 | learning_rate                  | 5e-05                                |
+|  15 | epochs                         | 3                                    |
+|  16 | batch_size                     | 360                                  |
+|  17 | cpu_workers                    | 24                                   |
+|  18 | fp16                           | False                                |
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+=========================================================================================================================================
+[03.20 20:38:14] [INIT] chrialab.ratsnlp train(config=tests/1-doc_cls-train.json, prefix=, postfix=)
+=========================================================================================================================================
+set seed: 7
+-----------------------------------------------------------------------------------------------------------------------------------------
+[Korpora] Corpus `nsmc` is already installed at /home/chrisjihee/proj/DeepKorean-23.03/data/nsmc/ratings_train.txt
+[Korpora] Corpus `nsmc` is already installed at /home/chrisjihee/proj/DeepKorean-23.03/data/nsmc/ratings_test.txt
+-----------------------------------------------------------------------------------------------------------------------------------------
+tokenizer=BertTokenizer(name_or_path='model/pretrained/KcBERT-Base', vocab_size=30000, model_max_length=300, is_fast=False, padding_side='right', truncation_side='right', special_tokens={'unk_token': '[UNK]', 'sep_token': '[SEP]', 'pad_token': '[PAD]', 'cls_token': '[CLS]', 'mask_token': '[MASK]'})
+tokenized=['안녕', '##하세요', '.', '반', '##갑', '##습니다', '.']
+-----------------------------------------------------------------------------------------------------------------------------------------
+INFO:ratsnlp:Loading features from cached file data/nsmc/cached_train_BertTokenizer_128_nsmc_document-classification [took 30.175 s]
+-----------------------------------------------------------------------------------------------------------------------------------------
+INFO:ratsnlp:Loading features from cached file data/nsmc/cached_test_BertTokenizer_128_nsmc_document-classification [took 10.405 s]
+-----------------------------------------------------------------------------------------------------------------------------------------
+Some weights of the model checkpoint at model/pretrained/KcBERT-Base were not used when initializing BertForSequenceClassification: ['cls.predictions.transform.dense.weight', 'cls.predictions.decoder.bias', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.bias', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.bias']
+- This IS expected if you are initializing BertForSequenceClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertForSequenceClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of BertForSequenceClassification were not initialized from the model checkpoint at model/pretrained/KcBERT-Base and are newly initialized: ['classifier.bias', 'classifier.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+-----------------------------------------------------------------------------------------------------------------------------------------
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+Initializing distributed: GLOBAL_RANK: 0, MEMBER: 1/2
+|   # | GpuProjectEnv   | value                                                        |
+|----:|:----------------|:-------------------------------------------------------------|
+|   1 | hostname        | ptlm3                                                        |
+|   2 | hostaddr        | 129.254.121.74                                               |
+|   3 | python_path     | /home/chrisjihee/mambaforge/envs/DeepKorean-23.03/bin/python |
+|   4 | project_name    | DeepKorean                                                   |
+|   5 | project_path    | /home/chrisjihee/proj/DeepKorean-23.03                       |
+|   6 | working_path    | /home/chrisjihee/proj/DeepKorean-23.03                       |
+|   7 | running_file    | tests/1-doc_cls-train.py                                     |
+|   8 | working_gpus    | 0,1                                                          |
+|   9 | number_of_gpus  | 2                                                            |
+|  10 | config_file     | tests/1-doc_cls-train.json                                   |
+|  11 | postfix         |                                                              |
+-----------------------------------------------------------------------------------------------------------------------------------------
+|   # | ClassificationTrainArguments   | value                                |
+|----:|:-------------------------------|:-------------------------------------|
+|   1 | pretrained_model_path          | model/pretrained/KcBERT-Base         |
+|   2 | downstream_model_path          | model/finetuned/nsmc                 |
+|   3 | downstream_model_file          | {epoch}-{val_loss:.3f}-{val_acc:.3f} |
+|   4 | downstream_data_home           | data                                 |
+|   5 | downstream_data_name           | nsmc                                 |
+|   6 | downstream_task_name           | document-classification              |
+|   7 | max_seq_length                 | 128                                  |
+|   8 | save_top_k                     | 3                                    |
+|   9 | monitor                        | max val_acc                          |
+|  10 | seed                           | 7                                    |
+|  11 | overwrite_cache                | False                                |
+|  12 | force_download                 | False                                |
+|  13 | test_mode                      | False                                |
+|  14 | learning_rate                  | 5e-05                                |
+|  15 | epochs                         | 3                                    |
+|  16 | batch_size                     | 360                                  |
+|  17 | cpu_workers                    | 24                                   |
+|  18 | fp16                           | False                                |
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+=========================================================================================================================================
+[03.20 20:39:00] [INIT] chrialab.ratsnlp train(config=tests/1-doc_cls-train.json, prefix=, postfix=)
+=========================================================================================================================================
+set seed: 7
+-----------------------------------------------------------------------------------------------------------------------------------------
+[Korpora] Corpus `nsmc` is already installed at /home/chrisjihee/proj/DeepKorean-23.03/data/nsmc/ratings_train.txt
+[Korpora] Corpus `nsmc` is already installed at /home/chrisjihee/proj/DeepKorean-23.03/data/nsmc/ratings_test.txt
+-----------------------------------------------------------------------------------------------------------------------------------------
+tokenizer=BertTokenizer(name_or_path='model/pretrained/KcBERT-Base', vocab_size=30000, model_max_length=300, is_fast=False, padding_side='right', truncation_side='right', special_tokens={'unk_token': '[UNK]', 'sep_token': '[SEP]', 'pad_token': '[PAD]', 'cls_token': '[CLS]', 'mask_token': '[MASK]'})
+tokenized=['안녕', '##하세요', '.', '반', '##갑', '##습니다', '.']
+-----------------------------------------------------------------------------------------------------------------------------------------
+INFO:ratsnlp:Loading features from cached file data/nsmc/cached_train_BertTokenizer_128_nsmc_document-classification [took 29.804 s]
+-----------------------------------------------------------------------------------------------------------------------------------------
+INFO:ratsnlp:Loading features from cached file data/nsmc/cached_test_BertTokenizer_128_nsmc_document-classification [took 10.329 s]
+-----------------------------------------------------------------------------------------------------------------------------------------
+Some weights of the model checkpoint at model/pretrained/KcBERT-Base were not used when initializing BertForSequenceClassification: ['cls.predictions.transform.dense.weight', 'cls.seq_relationship.weight', 'cls.predictions.decoder.weight', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.decoder.bias', 'cls.predictions.transform.dense.bias', 'cls.predictions.bias', 'cls.predictions.transform.LayerNorm.bias', 'cls.seq_relationship.bias']
+- This IS expected if you are initializing BertForSequenceClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertForSequenceClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of BertForSequenceClassification were not initialized from the model checkpoint at model/pretrained/KcBERT-Base and are newly initialized: ['classifier.bias', 'classifier.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+-----------------------------------------------------------------------------------------------------------------------------------------
+Initializing distributed: GLOBAL_RANK: 1, MEMBER: 2/2
+----------------------------------------------------------------------------------------------------
+distributed_backend=nccl
+All distributed processes registered. Starting with 2 processes
+----------------------------------------------------------------------------------------------------
+
+Missing logger folder: /home/chrisjihee/proj/DeepKorean-23.03/model/finetuned/nsmc/lightning_logs
+Missing logger folder: /home/chrisjihee/proj/DeepKorean-23.03/model/finetuned/nsmc/lightning_logs
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1]
+LOCAL_RANK: 1 - CUDA_VISIBLE_DEVICES: [0,1]
+
+  | Name  | Type                          | Params
+--------------------------------------------------------
+0 | model | BertForSequenceClassification | 108 M 
+--------------------------------------------------------
+108 M     Trainable params
+0         Non-trainable params
+108 M     Total params
+435.680   Total estimated model params size (MB)
+Epoch 0: 100%|██████████| 209/209 [02:53<00:00,  1.21it/s, v_num=0, acc=0.892]
+Validation: 0it [00:00, ?it/s]
+Validation:   0%|          | 0/70 [00:00<?, ?it/s]
+Validation DataLoader 0:   0%|          | 0/70 [00:00<?, ?it/s]
+Validation DataLoader 0:   1%|▏         | 1/70 [00:00<00:02, 26.86it/s]
+Validation DataLoader 0:   3%|▎         | 2/70 [00:00<00:09,  7.04it/s]
+Validation DataLoader 0:   4%|▍         | 3/70 [00:00<00:12,  5.56it/s]
+Validation DataLoader 0:   6%|▌         | 4/70 [00:00<00:13,  5.02it/s]
+Validation DataLoader 0:   7%|▋         | 5/70 [00:01<00:13,  4.74it/s]
+Validation DataLoader 0:   9%|▊         | 6/70 [00:01<00:13,  4.58it/s]
+Validation DataLoader 0:  10%|█         | 7/70 [00:01<00:14,  4.47it/s]
+Validation DataLoader 0:  11%|█▏        | 8/70 [00:01<00:14,  4.39it/s]
+Validation DataLoader 0:  13%|█▎        | 9/70 [00:02<00:14,  4.32it/s]
+Validation DataLoader 0:  14%|█▍        | 10/70 [00:02<00:14,  4.28it/s]
+Validation DataLoader 0:  16%|█▌        | 11/70 [00:02<00:13,  4.24it/s]
+Validation DataLoader 0:  17%|█▋        | 12/70 [00:02<00:13,  4.21it/s]
+Validation DataLoader 0:  19%|█▊        | 13/70 [00:03<00:13,  4.18it/s]
+Validation DataLoader 0:  20%|██        | 14/70 [00:03<00:13,  4.16it/s]
+Validation DataLoader 0:  21%|██▏       | 15/70 [00:03<00:13,  4.14it/s]
+Validation DataLoader 0:  23%|██▎       | 16/70 [00:03<00:13,  4.12it/s]
+Validation DataLoader 0:  24%|██▍       | 17/70 [00:04<00:12,  4.11it/s]
+Validation DataLoader 0:  26%|██▌       | 18/70 [00:04<00:12,  4.09it/s]
+Validation DataLoader 0:  27%|██▋       | 19/70 [00:04<00:12,  4.08it/s]
+Validation DataLoader 0:  29%|██▊       | 20/70 [00:04<00:12,  4.07it/s]
+Validation DataLoader 0:  30%|███       | 21/70 [00:05<00:12,  4.06it/s]
+Validation DataLoader 0:  31%|███▏      | 22/70 [00:05<00:11,  4.06it/s]
+Validation DataLoader 0:  33%|███▎      | 23/70 [00:05<00:11,  4.05it/s]
+Validation DataLoader 0:  34%|███▍      | 24/70 [00:05<00:11,  4.04it/s]
+Validation DataLoader 0:  36%|███▌      | 25/70 [00:06<00:11,  4.04it/s]
+Validation DataLoader 0:  37%|███▋      | 26/70 [00:06<00:10,  4.03it/s]
+Validation DataLoader 0:  39%|███▊      | 27/70 [00:06<00:10,  4.02it/s]
+Validation DataLoader 0:  40%|████      | 28/70 [00:06<00:10,  4.02it/s]
+Validation DataLoader 0:  41%|████▏     | 29/70 [00:07<00:10,  4.01it/s]
+Validation DataLoader 0:  43%|████▎     | 30/70 [00:07<00:09,  4.01it/s]
+Validation DataLoader 0:  44%|████▍     | 31/70 [00:07<00:09,  4.01it/s]
+Validation DataLoader 0:  46%|████▌     | 32/70 [00:07<00:09,  4.00it/s]
+Validation DataLoader 0:  47%|████▋     | 33/70 [00:08<00:09,  4.00it/s]
+Validation DataLoader 0:  49%|████▊     | 34/70 [00:08<00:09,  4.00it/s]
+Validation DataLoader 0:  50%|█████     | 35/70 [00:08<00:08,  3.99it/s]
+Validation DataLoader 0:  51%|█████▏    | 36/70 [00:09<00:08,  3.99it/s]
+Validation DataLoader 0:  53%|█████▎    | 37/70 [00:09<00:08,  3.99it/s]
+Validation DataLoader 0:  54%|█████▍    | 38/70 [00:09<00:08,  3.98it/s]
+Validation DataLoader 0:  56%|█████▌    | 39/70 [00:09<00:07,  3.98it/s]
+Validation DataLoader 0:  57%|█████▋    | 40/70 [00:10<00:07,  3.98it/s]
+Validation DataLoader 0:  59%|█████▊    | 41/70 [00:10<00:07,  3.98it/s]
+Validation DataLoader 0:  60%|██████    | 42/70 [00:10<00:07,  3.98it/s]
+Validation DataLoader 0:  61%|██████▏   | 43/70 [00:10<00:06,  3.97it/s]
+Validation DataLoader 0:  63%|██████▎   | 44/70 [00:11<00:06,  3.97it/s]
+Validation DataLoader 0:  64%|██████▍   | 45/70 [00:11<00:06,  3.97it/s]
+Validation DataLoader 0:  66%|██████▌   | 46/70 [00:11<00:06,  3.97it/s]
+Validation DataLoader 0:  67%|██████▋   | 47/70 [00:11<00:05,  3.97it/s]
+Validation DataLoader 0:  69%|██████▊   | 48/70 [00:12<00:05,  3.96it/s]
+Validation DataLoader 0:  70%|███████   | 49/70 [00:12<00:05,  3.96it/s]
+Validation DataLoader 0:  71%|███████▏  | 50/70 [00:12<00:05,  3.96it/s]
+Validation DataLoader 0:  73%|███████▎  | 51/70 [00:12<00:04,  3.96it/s]
+Validation DataLoader 0:  74%|███████▍  | 52/70 [00:13<00:04,  3.96it/s]
+Validation DataLoader 0:  76%|███████▌  | 53/70 [00:13<00:04,  3.96it/s]
+Validation DataLoader 0:  77%|███████▋  | 54/70 [00:13<00:04,  3.96it/s]
+Validation DataLoader 0:  79%|███████▊  | 55/70 [00:13<00:03,  3.95it/s]
+Validation DataLoader 0:  80%|████████  | 56/70 [00:14<00:03,  3.95it/s]
+Validation DataLoader 0:  81%|████████▏ | 57/70 [00:14<00:03,  3.95it/s]
+Validation DataLoader 0:  83%|████████▎ | 58/70 [00:14<00:03,  3.95it/s]
+Validation DataLoader 0:  84%|████████▍ | 59/70 [00:14<00:02,  3.95it/s]
+Validation DataLoader 0:  86%|████████▌ | 60/70 [00:15<00:02,  3.95it/s]
+Validation DataLoader 0:  87%|████████▋ | 61/70 [00:15<00:02,  3.95it/s]
+Validation DataLoader 0:  89%|████████▊ | 62/70 [00:15<00:02,  3.95it/s]
+Validation DataLoader 0:  90%|█████████ | 63/70 [00:15<00:01,  3.95it/s]
+Validation DataLoader 0:  91%|█████████▏| 64/70 [00:16<00:01,  3.95it/s]
+Validation DataLoader 0:  93%|█████████▎| 65/70 [00:16<00:01,  3.94it/s]
+Validation DataLoader 0:  94%|█████████▍| 66/70 [00:16<00:01,  3.94it/s]
+Validation DataLoader 0:  96%|█████████▌| 67/70 [00:16<00:00,  3.94it/s]
+Validation DataLoader 0:  97%|█████████▋| 68/70 [00:17<00:00,  3.94it/s]
+Validation DataLoader 0:  99%|█████████▊| 69/70 [00:17<00:00,  3.94it/s]
+Validation DataLoader 0: 100%|██████████| 70/70 [00:17<00:00,  3.94it/s]/home/chrisjihee/proj/DeepKorean-23.03/lightning/src/lightning/pytorch/trainer/connectors/logger_connector/result.py:432: PossibleUserWarning: It is recommended to use `self.log('val_loss', ..., sync_dist=True)` when logging on epoch level in distributed setting to accumulate the metric across devices.
+  warning_cache.warn(
+/home/chrisjihee/proj/DeepKorean-23.03/lightning/src/lightning/pytorch/trainer/connectors/logger_connector/result.py:432: PossibleUserWarning: It is recommended to use `self.log('val_acc', ..., sync_dist=True)` when logging on epoch level in distributed setting to accumulate the metric across devices.
+  warning_cache.warn(
+Epoch 0: 100%|██████████| 209/209 [03:12<00:00,  1.09it/s, v_num=0, acc=0.892, val_loss=0.255, val_acc=0.896]
+Epoch 1: 100%|██████████| 209/209 [02:54<00:00,  1.20it/s, v_num=0, acc=0.892, val_loss=0.255, val_acc=0.896]
+Validation: 0it [00:00, ?it/s]
+Validation:   0%|          | 0/70 [00:00<?, ?it/s]
+Validation DataLoader 0:   0%|          | 0/70 [00:00<?, ?it/s]
+Validation DataLoader 0:   1%|▏         | 1/70 [00:00<00:02, 32.91it/s]
+Validation DataLoader 0:   3%|▎         | 2/70 [00:00<00:09,  7.06it/s]
+Validation DataLoader 0:   4%|▍         | 3/70 [00:00<00:12,  5.56it/s]
+Validation DataLoader 0:   6%|▌         | 4/70 [00:00<00:13,  5.03it/s]
+Validation DataLoader 0:   7%|▋         | 5/70 [00:01<00:13,  4.74it/s]
+Validation DataLoader 0:   9%|▊         | 6/70 [00:01<00:13,  4.58it/s]
+Validation DataLoader 0:  10%|█         | 7/70 [00:01<00:14,  4.46it/s]
+Validation DataLoader 0:  11%|█▏        | 8/70 [00:01<00:14,  4.39it/s]
+Validation DataLoader 0:  13%|█▎        | 9/70 [00:02<00:14,  4.32it/s]
+Validation DataLoader 0:  14%|█▍        | 10/70 [00:02<00:14,  4.28it/s]
+Validation DataLoader 0:  16%|█▌        | 11/70 [00:02<00:13,  4.24it/s]
+Validation DataLoader 0:  17%|█▋        | 12/70 [00:02<00:13,  4.21it/s]
+Validation DataLoader 0:  19%|█▊        | 13/70 [00:03<00:13,  4.18it/s]
+Validation DataLoader 0:  20%|██        | 14/70 [00:03<00:13,  4.16it/s]
+Validation DataLoader 0:  21%|██▏       | 15/70 [00:03<00:13,  4.14it/s]
+Validation DataLoader 0:  23%|██▎       | 16/70 [00:03<00:13,  4.12it/s]
+Validation DataLoader 0:  24%|██▍       | 17/70 [00:04<00:12,  4.11it/s]
+Validation DataLoader 0:  26%|██▌       | 18/70 [00:04<00:12,  4.09it/s]
+Validation DataLoader 0:  27%|██▋       | 19/70 [00:04<00:12,  4.08it/s]
+Validation DataLoader 0:  29%|██▊       | 20/70 [00:04<00:12,  4.07it/s]
+Validation DataLoader 0:  30%|███       | 21/70 [00:05<00:12,  4.06it/s]
+Validation DataLoader 0:  31%|███▏      | 22/70 [00:05<00:11,  4.05it/s]
+Validation DataLoader 0:  33%|███▎      | 23/70 [00:05<00:11,  4.05it/s]
+Validation DataLoader 0:  34%|███▍      | 24/70 [00:05<00:11,  4.04it/s]
+Validation DataLoader 0:  36%|███▌      | 25/70 [00:06<00:11,  4.03it/s]
+Validation DataLoader 0:  37%|███▋      | 26/70 [00:06<00:10,  4.03it/s]
+Validation DataLoader 0:  39%|███▊      | 27/70 [00:06<00:10,  4.02it/s]
+Validation DataLoader 0:  40%|████      | 28/70 [00:06<00:10,  4.02it/s]
+Validation DataLoader 0:  41%|████▏     | 29/70 [00:07<00:10,  4.01it/s]
+Validation DataLoader 0:  43%|████▎     | 30/70 [00:07<00:09,  4.01it/s]
+Validation DataLoader 0:  44%|████▍     | 31/70 [00:07<00:09,  4.00it/s]
+Validation DataLoader 0:  46%|████▌     | 32/70 [00:07<00:09,  4.00it/s]
+Validation DataLoader 0:  47%|████▋     | 33/70 [00:08<00:09,  4.00it/s]
+Validation DataLoader 0:  49%|████▊     | 34/70 [00:08<00:09,  3.99it/s]
+Validation DataLoader 0:  50%|█████     | 35/70 [00:08<00:08,  3.99it/s]
+Validation DataLoader 0:  51%|█████▏    | 36/70 [00:09<00:08,  3.99it/s]
+Validation DataLoader 0:  53%|█████▎    | 37/70 [00:09<00:08,  3.99it/s]
+Validation DataLoader 0:  54%|█████▍    | 38/70 [00:09<00:08,  3.98it/s]
+Validation DataLoader 0:  56%|█████▌    | 39/70 [00:09<00:07,  3.98it/s]
+Validation DataLoader 0:  57%|█████▋    | 40/70 [00:10<00:07,  3.98it/s]
+Validation DataLoader 0:  59%|█████▊    | 41/70 [00:10<00:07,  3.98it/s]
+Validation DataLoader 0:  60%|██████    | 42/70 [00:10<00:07,  3.97it/s]
+Validation DataLoader 0:  61%|██████▏   | 43/70 [00:10<00:06,  3.97it/s]
+Validation DataLoader 0:  63%|██████▎   | 44/70 [00:11<00:06,  3.97it/s]
+Validation DataLoader 0:  64%|██████▍   | 45/70 [00:11<00:06,  3.97it/s]
+Validation DataLoader 0:  66%|██████▌   | 46/70 [00:11<00:06,  3.97it/s]
+Validation DataLoader 0:  67%|██████▋   | 47/70 [00:11<00:05,  3.96it/s]
+Validation DataLoader 0:  69%|██████▊   | 48/70 [00:12<00:05,  3.96it/s]
+Validation DataLoader 0:  70%|███████   | 49/70 [00:12<00:05,  3.96it/s]
+Validation DataLoader 0:  71%|███████▏  | 50/70 [00:12<00:05,  3.96it/s]
+Validation DataLoader 0:  73%|███████▎  | 51/70 [00:12<00:04,  3.96it/s]
+Validation DataLoader 0:  74%|███████▍  | 52/70 [00:13<00:04,  3.96it/s]
+Validation DataLoader 0:  76%|███████▌  | 53/70 [00:13<00:04,  3.96it/s]
+Validation DataLoader 0:  77%|███████▋  | 54/70 [00:13<00:04,  3.95it/s]
+Validation DataLoader 0:  79%|███████▊  | 55/70 [00:13<00:03,  3.95it/s]
+Validation DataLoader 0:  80%|████████  | 56/70 [00:14<00:03,  3.95it/s]
+Validation DataLoader 0:  81%|████████▏ | 57/70 [00:14<00:03,  3.95it/s]
+Validation DataLoader 0:  83%|████████▎ | 58/70 [00:14<00:03,  3.95it/s]
+Validation DataLoader 0:  84%|████████▍ | 59/70 [00:14<00:02,  3.95it/s]
+Validation DataLoader 0:  86%|████████▌ | 60/70 [00:15<00:02,  3.95it/s]
+Validation DataLoader 0:  87%|████████▋ | 61/70 [00:15<00:02,  3.95it/s]
+Validation DataLoader 0:  89%|████████▊ | 62/70 [00:15<00:02,  3.95it/s]
+Validation DataLoader 0:  90%|█████████ | 63/70 [00:15<00:01,  3.94it/s]
+Validation DataLoader 0:  91%|█████████▏| 64/70 [00:16<00:01,  3.94it/s]
+Validation DataLoader 0:  93%|█████████▎| 65/70 [00:16<00:01,  3.94it/s]
+Validation DataLoader 0:  94%|█████████▍| 66/70 [00:16<00:01,  3.94it/s]
+Validation DataLoader 0:  96%|█████████▌| 67/70 [00:17<00:00,  3.94it/s]
+Validation DataLoader 0:  97%|█████████▋| 68/70 [00:17<00:00,  3.94it/s]
+Validation DataLoader 0:  99%|█████████▊| 69/70 [00:17<00:00,  3.94it/s]
+Epoch 1: 100%|██████████| 209/209 [03:13<00:00,  1.08it/s, v_num=0, acc=0.892, val_loss=0.258, val_acc=0.901]
+Epoch 2: 100%|██████████| 209/209 [02:54<00:00,  1.20it/s, v_num=0, acc=0.967, val_loss=0.258, val_acc=0.901]
+Validation: 0it [00:00, ?it/s]
+Validation:   0%|          | 0/70 [00:00<?, ?it/s]
+Validation DataLoader 0:   0%|          | 0/70 [00:00<?, ?it/s]
+Validation DataLoader 0:   1%|▏         | 1/70 [00:00<00:02, 33.03it/s]
+Validation DataLoader 0:   3%|▎         | 2/70 [00:00<00:09,  7.03it/s]
+Validation DataLoader 0:   4%|▍         | 3/70 [00:00<00:12,  5.56it/s]
+Validation DataLoader 0:   6%|▌         | 4/70 [00:00<00:13,  5.02it/s]
+Validation DataLoader 0:   7%|▋         | 5/70 [00:01<00:13,  4.74it/s]
+Validation DataLoader 0:   9%|▊         | 6/70 [00:01<00:13,  4.58it/s]
+Validation DataLoader 0:  10%|█         | 7/70 [00:01<00:14,  4.46it/s]
+Validation DataLoader 0:  11%|█▏        | 8/70 [00:01<00:14,  4.38it/s]
+Validation DataLoader 0:  13%|█▎        | 9/70 [00:02<00:14,  4.32it/s]
+Validation DataLoader 0:  14%|█▍        | 10/70 [00:02<00:14,  4.27it/s]
+Validation DataLoader 0:  16%|█▌        | 11/70 [00:02<00:13,  4.23it/s]
+Validation DataLoader 0:  17%|█▋        | 12/70 [00:02<00:13,  4.20it/s]
+Validation DataLoader 0:  19%|█▊        | 13/70 [00:03<00:13,  4.18it/s]
+Validation DataLoader 0:  20%|██        | 14/70 [00:03<00:13,  4.16it/s]
+Validation DataLoader 0:  21%|██▏       | 15/70 [00:03<00:13,  4.14it/s]
+Validation DataLoader 0:  23%|██▎       | 16/70 [00:03<00:13,  4.12it/s]
+Validation DataLoader 0:  24%|██▍       | 17/70 [00:04<00:12,  4.11it/s]
+Validation DataLoader 0:  26%|██▌       | 18/70 [00:04<00:12,  4.09it/s]
+Validation DataLoader 0:  27%|██▋       | 19/70 [00:04<00:12,  4.08it/s]
+Validation DataLoader 0:  29%|██▊       | 20/70 [00:04<00:12,  4.07it/s]
+Validation DataLoader 0:  30%|███       | 21/70 [00:05<00:12,  4.06it/s]
+Validation DataLoader 0:  31%|███▏      | 22/70 [00:05<00:11,  4.05it/s]
+Validation DataLoader 0:  33%|███▎      | 23/70 [00:05<00:11,  4.05it/s]
+Validation DataLoader 0:  34%|███▍      | 24/70 [00:05<00:11,  4.04it/s]
+Validation DataLoader 0:  36%|███▌      | 25/70 [00:06<00:11,  4.03it/s]
+Validation DataLoader 0:  37%|███▋      | 26/70 [00:06<00:10,  4.03it/s]
+Validation DataLoader 0:  39%|███▊      | 27/70 [00:06<00:10,  4.02it/s]
+Validation DataLoader 0:  40%|████      | 28/70 [00:06<00:10,  4.02it/s]
+Validation DataLoader 0:  41%|████▏     | 29/70 [00:07<00:10,  4.01it/s]
+Validation DataLoader 0:  43%|████▎     | 30/70 [00:07<00:09,  4.01it/s]
+Validation DataLoader 0:  44%|████▍     | 31/70 [00:07<00:09,  4.01it/s]
+Validation DataLoader 0:  46%|████▌     | 32/70 [00:07<00:09,  4.00it/s]
+Validation DataLoader 0:  47%|████▋     | 33/70 [00:08<00:09,  4.00it/s]
+Validation DataLoader 0:  49%|████▊     | 34/70 [00:08<00:09,  3.99it/s]
+Validation DataLoader 0:  50%|█████     | 35/70 [00:08<00:08,  3.99it/s]
+Validation DataLoader 0:  51%|█████▏    | 36/70 [00:09<00:08,  3.99it/s]
+Validation DataLoader 0:  53%|█████▎    | 37/70 [00:09<00:08,  3.99it/s]
+Validation DataLoader 0:  54%|█████▍    | 38/70 [00:09<00:08,  3.98it/s]
+Validation DataLoader 0:  56%|█████▌    | 39/70 [00:09<00:07,  3.98it/s]
+Validation DataLoader 0:  57%|█████▋    | 40/70 [00:10<00:07,  3.98it/s]
+Validation DataLoader 0:  59%|█████▊    | 41/70 [00:10<00:07,  3.98it/s]
+Validation DataLoader 0:  60%|██████    | 42/70 [00:10<00:07,  3.97it/s]
+Validation DataLoader 0:  61%|██████▏   | 43/70 [00:10<00:06,  3.97it/s]
+Validation DataLoader 0:  63%|██████▎   | 44/70 [00:11<00:06,  3.97it/s]
+Validation DataLoader 0:  64%|██████▍   | 45/70 [00:11<00:06,  3.97it/s]
+Validation DataLoader 0:  66%|██████▌   | 46/70 [00:11<00:06,  3.97it/s]
+Validation DataLoader 0:  67%|██████▋   | 47/70 [00:11<00:05,  3.96it/s]
+Validation DataLoader 0:  69%|██████▊   | 48/70 [00:12<00:05,  3.96it/s]
+Validation DataLoader 0:  70%|███████   | 49/70 [00:12<00:05,  3.96it/s]
+Validation DataLoader 0:  71%|███████▏  | 50/70 [00:12<00:05,  3.96it/s]
+Validation DataLoader 0:  73%|███████▎  | 51/70 [00:12<00:04,  3.96it/s]
+Validation DataLoader 0:  74%|███████▍  | 52/70 [00:13<00:04,  3.96it/s]
+Validation DataLoader 0:  76%|███████▌  | 53/70 [00:13<00:04,  3.96it/s]
+Validation DataLoader 0:  77%|███████▋  | 54/70 [00:13<00:04,  3.95it/s]
+Validation DataLoader 0:  79%|███████▊  | 55/70 [00:13<00:03,  3.95it/s]
+Validation DataLoader 0:  80%|████████  | 56/70 [00:14<00:03,  3.95it/s]
+Validation DataLoader 0:  81%|████████▏ | 57/70 [00:14<00:03,  3.95it/s]
+Validation DataLoader 0:  83%|████████▎ | 58/70 [00:14<00:03,  3.95it/s]
+Validation DataLoader 0:  84%|████████▍ | 59/70 [00:14<00:02,  3.95it/s]
+Validation DataLoader 0:  86%|████████▌ | 60/70 [00:15<00:02,  3.95it/s]
+Validation DataLoader 0:  87%|████████▋ | 61/70 [00:15<00:02,  3.95it/s]
+Validation DataLoader 0:  89%|████████▊ | 62/70 [00:15<00:02,  3.95it/s]
+Validation DataLoader 0:  90%|█████████ | 63/70 [00:15<00:01,  3.94it/s]
+Validation DataLoader 0:  91%|█████████▏| 64/70 [00:16<00:01,  3.94it/s]
+Validation DataLoader 0:  93%|█████████▎| 65/70 [00:16<00:01,  3.94it/s]
+Validation DataLoader 0:  94%|█████████▍| 66/70 [00:16<00:01,  3.94it/s]
+Validation DataLoader 0:  96%|█████████▌| 67/70 [00:16<00:00,  3.94it/s]
+Validation DataLoader 0:  97%|█████████▋| 68/70 [00:17<00:00,  3.94it/s]
+Validation DataLoader 0:  99%|█████████▊| 69/70 [00:17<00:00,  3.94it/s]
+Epoch 2: 100%|██████████| 209/209 [03:13<00:00,  1.08it/s, v_num=0, acc=0.967, val_loss=0.297, val_acc=0.901]
+Epoch 2: 100%|██████████| 209/209 [03:13<00:00,  1.08it/s, v_num=0, acc=0.967, val_loss=0.297, val_acc=0.901]=========================================================================================================================================
+[03.20 20:49:29] [EXIT] chrialab.ratsnlp train(config=tests/1-doc_cls-train.json, prefix=, postfix=) ($=00:10:27.252)
+=========================================================================================================================================
+
+`Trainer.fit` stopped: `max_epochs=3` reached.
+Epoch 2: 100%|██████████| 209/209 [03:14<00:00,  1.07it/s, v_num=0, acc=0.967, val_loss=0.297, val_acc=0.901]
+=========================================================================================================================================
+[03.20 20:49:30] [EXIT] chrialab.ratsnlp train(config=tests/1-doc_cls-train.json, prefix=, postfix=) ($=00:11:15.220)
+=========================================================================================================================================
+
+
+Process finished with exit code 0
