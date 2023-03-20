@@ -1,29 +1,21 @@
-import os
-import sys
-from pathlib import Path
-
-from chrisbase.io import get_working_file
-from chrisbase.util import to_dataframe
-from chrisdict import AttrDict
-
-env = AttrDict()
-env["python_path"] = Path(sys.executable)
-env["project_path"] = [x for x in get_working_file().parents if x.name.startswith("DeepKorean")][0]
-env["current_path"] = get_working_file().relative_to(env.project_path)
-os.chdir(env.project_path)
-print(to_dataframe(env, columns=["key", "value"]))
-
-################################################################################
-# 코드3 인퍼런스 설정
-################################################################################
+from chrislab.ratsnlp import cli
+from chrislab.common.util import GpuProjectEnv
 from ratsnlp.nlpbook.classification import ClassificationDeployArguments
 
-args = ClassificationDeployArguments(
-    pretrained_model_name="pretrained/KcBERT-Base",
-    downstream_model_dir="checkpoints/nsmc",
-    max_seq_length=128,
-)
-print(f"args={args}")
+with GpuProjectEnv(project_name="DeepKorean", working_gpus="0") as env:
+    args = ClassificationDeployArguments(
+        working_config_file=env.running_file.with_suffix('.json').name,
+        pretrained_model_path="model/pretrained/KcBERT-Base",
+        downstream_model_path="model/finetuned/nsmc (dl012) [03.20 21:34:29]",
+        downstream_model_file=None,
+        max_seq_length=128,
+    )
+    config = args.save_working_config()
+    assert config.exists(), f"No config file: {config}"
+
+print(f"config={config}")
+print(f"env={env}")
+exit(1)
 
 ################################################################################
 # 코드4 토크나이저 로드
@@ -31,7 +23,7 @@ print(f"args={args}")
 from transformers import BertTokenizer
 
 tokenizer = BertTokenizer.from_pretrained(
-    args.pretrained_model_name,
+    args.pretrained_model_path,
     do_lower_case=False,
 )
 print(f"tokenizer={tokenizer}")
@@ -53,7 +45,7 @@ fine_tuned_model_ckpt = torch.load(
 from transformers import BertConfig
 
 pretrained_model_config = BertConfig.from_pretrained(
-    args.pretrained_model_name,
+    args.pretrained_model_path,
     num_labels=fine_tuned_model_ckpt['state_dict']['model.classifier.bias'].shape.numel(),
 )
 
