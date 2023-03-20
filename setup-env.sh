@@ -9,12 +9,17 @@ conda activate $PROJECT_NAME
 conda install cuda-nvcc=$CUDA_VER cudatoolkit=$CUDA_VER -c nvidia -y
 
 # 2. uneditable library
-pip install --upgrade torch --index-url https://download.pytorch.org/whl/cu117
-pip install --upgrade deepspeed  # Linux
-pip install --upgrade evaluate datasets tokenizers matplotlib
-pip install --upgrade notebook ipython ipynbname jupyterlab tornado==6.1
-pip list --format=freeze >requirements.txt
-pip install -r requirements.txt
+export INSTALL_UPDATED_LIBRARY=true
+if [ $INSTALL_UPDATED_LIBRARY = true ]
+then
+  pip install --upgrade torch --index-url https://download.pytorch.org/whl/cu117
+  pip install --upgrade deepspeed  # works in Linux
+  pip install --upgrade evaluate datasets tokenizers matplotlib
+  pip install --upgrade notebook ipython ipynbname jupyterlab tornado==6.1
+  pip list --format=freeze >requirements.txt
+else
+  pip install -r requirements.txt
+fi
 
 # 3. editable library
 rm -rf transformers lightning chrisdict chrisbase chrislab ratsnlp
@@ -32,12 +37,9 @@ pip install --editable chrislab
 pip install --editable ratsnlp
 
 # 4. pretrained model
-export IN_ETRI=true
-if [ $IN_ETRI = true ]
+export DOWNLOAD_ONLINE_MODEL=true
+if [ $DOWNLOAD_ONLINE_MODEL = true ]
 then
-  mkdir -p model
-  git clone guest@129.254.164.137:git/pretrained-com model/pretrained
-else
   mkdir -p model/pretrained
   sudo apt install git-lfs
   git lfs install
@@ -50,4 +52,7 @@ else
   git clone https://huggingface.co/klue/roberta-base                        model/pretrained/KLUE-RoBERTa-Base
   git clone https://huggingface.co/bert-base-multilingual-uncased           model/pretrained/Google-BERT-Base
   git clone https://huggingface.co/monologg/kobigbird-bert-base             model/pretrained/KoBigBird-Base
+else
+  mkdir -p model
+  git clone guest@129.254.164.137:git/pretrained-com model/pretrained
 fi
