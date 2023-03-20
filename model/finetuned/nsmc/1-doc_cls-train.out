@@ -1,0 +1,398 @@
+/data/dlt/mambaforge/envs/DeepKorean-23.03/bin/python /data/dlt/proj/DeepKorean-23.03/tests/1-doc_cls-train.py 
+|   # | GpuProjectEnv   | value                                                 |
+|----:|:----------------|:------------------------------------------------------|
+|   1 | hostname        | dl012                                                 |
+|   2 | hostaddr        | 129.254.182.78                                        |
+|   3 | python_path     | /data/dlt/mambaforge/envs/DeepKorean-23.03/bin/python |
+|   4 | project_name    | DeepKorean                                            |
+|   5 | project_path    | /data/dlt/proj/DeepKorean-23.03                       |
+|   6 | working_path    | /data/dlt/proj/DeepKorean-23.03                       |
+|   7 | running_file    | tests/1-doc_cls-train.py                              |
+|   8 | working_gpus    | 0,1,2,3                                               |
+|   9 | number_of_gpus  | 4                                                     |
+-----------------------------------------------------------------------------------------------------------------------------------------
+|   # | ClassificationTrainArguments   | value                                |
+|----:|:-------------------------------|:-------------------------------------|
+|   1 | pretrained_model_path          | model/pretrained/KcBERT-Base         |
+|   2 | downstream_model_path          | model/finetuned/nsmc                 |
+|   3 | downstream_model_file          | {epoch}-{val_loss:.3f}-{val_acc:.3f} |
+|   4 | downstream_conf_file           | 1-doc_cls-train.json                 |
+|   5 | downstream_data_home           | data                                 |
+|   6 | downstream_data_name           | nsmc                                 |
+|   7 | downstream_task_name           | document-classification              |
+|   8 | max_seq_length                 | 128                                  |
+|   9 | save_top_k                     | 3                                    |
+|  10 | monitor                        | max val_acc                          |
+|  11 | seed                           | 7                                    |
+|  12 | overwrite_cache                | False                                |
+|  13 | force_download                 | False                                |
+|  14 | test_mode                      | False                                |
+|  15 | learning_rate                  | 5e-05                                |
+|  16 | epochs                         | 3                                    |
+|  17 | batch_size                     | 360                                  |
+|  18 | cpu_workers                    | 24                                   |
+|  19 | fp16                           | False                                |
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+=========================================================================================================================================
+[03.20 21:34:29] [INIT] chrialab.ratsnlp train(config=model/finetuned/nsmc/1-doc_cls-train.json, prefix=, postfix=)
+=========================================================================================================================================
+set seed: 7
+-----------------------------------------------------------------------------------------------------------------------------------------
+[Korpora] Corpus `nsmc` is already installed at /data/dlt/proj/DeepKorean-23.03/data/nsmc/ratings_train.txt
+[Korpora] Corpus `nsmc` is already installed at /data/dlt/proj/DeepKorean-23.03/data/nsmc/ratings_test.txt
+-----------------------------------------------------------------------------------------------------------------------------------------
+tokenizer=BertTokenizer(name_or_path='model/pretrained/KcBERT-Base', vocab_size=30000, model_max_length=300, is_fast=False, padding_side='right', truncation_side='right', special_tokens={'unk_token': '[UNK]', 'sep_token': '[SEP]', 'pad_token': '[PAD]', 'cls_token': '[CLS]', 'mask_token': '[MASK]'})
+tokenized=['안녕', '##하세요', '.', '반', '##갑', '##습니다', '.']
+-----------------------------------------------------------------------------------------------------------------------------------------
+INFO:ratsnlp:Loading features from cached file data/nsmc/cached_train_BertTokenizer_128_nsmc_document-classification [took 20.592 s]
+-----------------------------------------------------------------------------------------------------------------------------------------
+INFO:ratsnlp:Loading features from cached file data/nsmc/cached_test_BertTokenizer_128_nsmc_document-classification [took 7.597 s]
+-----------------------------------------------------------------------------------------------------------------------------------------
+Some weights of the model checkpoint at model/pretrained/KcBERT-Base were not used when initializing BertForSequenceClassification: ['cls.predictions.transform.dense.weight', 'cls.predictions.decoder.weight', 'cls.predictions.decoder.bias', 'cls.predictions.bias', 'cls.predictions.transform.LayerNorm.bias', 'cls.predictions.transform.dense.bias', 'cls.seq_relationship.bias', 'cls.seq_relationship.weight', 'cls.predictions.transform.LayerNorm.weight']
+- This IS expected if you are initializing BertForSequenceClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertForSequenceClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of BertForSequenceClassification were not initialized from the model checkpoint at model/pretrained/KcBERT-Base and are newly initialized: ['classifier.weight', 'classifier.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+-----------------------------------------------------------------------------------------------------------------------------------------
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+Initializing distributed: GLOBAL_RANK: 0, MEMBER: 1/4
+|   # | GpuProjectEnv   | value                                                 |
+|----:|:----------------|:------------------------------------------------------|
+|   1 | hostname        | dl012                                                 |
+|   2 | hostaddr        | 129.254.182.78                                        |
+|   3 | python_path     | /data/dlt/mambaforge/envs/DeepKorean-23.03/bin/python |
+|   4 | project_name    | DeepKorean                                            |
+|   5 | project_path    | /data/dlt/proj/DeepKorean-23.03                       |
+|   6 | working_path    | /data/dlt/proj/DeepKorean-23.03                       |
+|   7 | running_file    | tests/1-doc_cls-train.py                              |
+|   8 | working_gpus    | 0,1,2,3                                               |
+|   9 | number_of_gpus  | 4                                                     |
+-----------------------------------------------------------------------------------------------------------------------------------------
+|   # | ClassificationTrainArguments   | value                                |
+|----:|:-------------------------------|:-------------------------------------|
+|   1 | pretrained_model_path          | model/pretrained/KcBERT-Base         |
+|   2 | downstream_model_path          | model/finetuned/nsmc                 |
+|   3 | downstream_model_file          | {epoch}-{val_loss:.3f}-{val_acc:.3f} |
+|   4 | downstream_conf_file           | 1-doc_cls-train.json                 |
+|   5 | downstream_data_home           | data                                 |
+|   6 | downstream_data_name           | nsmc                                 |
+|   7 | downstream_task_name           | document-classification              |
+|   8 | max_seq_length                 | 128                                  |
+|   9 | save_top_k                     | 3                                    |
+|  10 | monitor                        | max val_acc                          |
+|  11 | seed                           | 7                                    |
+|  12 | overwrite_cache                | False                                |
+|  13 | force_download                 | False                                |
+|  14 | test_mode                      | False                                |
+|  15 | learning_rate                  | 5e-05                                |
+|  16 | epochs                         | 3                                    |
+|  17 | batch_size                     | 360                                  |
+|  18 | cpu_workers                    | 24                                   |
+|  19 | fp16                           | False                                |
+-----------------------------------------------------------------------------------------------------------------------------------------
+|   # | GpuProjectEnv   | value                                                 |
+|----:|:----------------|:------------------------------------------------------|
+|   1 | hostname        | dl012                                                 |
+|   2 | hostaddr        | 129.254.182.78                                        |
+|   3 | python_path     | /data/dlt/mambaforge/envs/DeepKorean-23.03/bin/python |
+|   4 | project_name    | DeepKorean                                            |
+|   5 | project_path    | /data/dlt/proj/DeepKorean-23.03                       |
+|   6 | working_path    | /data/dlt/proj/DeepKorean-23.03                       |
+|   7 | running_file    | tests/1-doc_cls-train.py                              |
+|   8 | working_gpus    | 0,1,2,3                                               |
+|   9 | number_of_gpus  | 4                                                     |
+-----------------------------------------------------------------------------------------------------------------------------------------
+|   # | ClassificationTrainArguments   | value                                |
+|----:|:-------------------------------|:-------------------------------------|
+|   1 | pretrained_model_path          | model/pretrained/KcBERT-Base         |
+|   2 | downstream_model_path          | model/finetuned/nsmc                 |
+|   3 | downstream_model_file          | {epoch}-{val_loss:.3f}-{val_acc:.3f} |
+|   4 | downstream_conf_file           | 1-doc_cls-train.json                 |
+|   5 | downstream_data_home           | data                                 |
+|   6 | downstream_data_name           | nsmc                                 |
+|   7 | downstream_task_name           | document-classification              |
+|   8 | max_seq_length                 | 128                                  |
+|   9 | save_top_k                     | 3                                    |
+|  10 | monitor                        | max val_acc                          |
+|  11 | seed                           | 7                                    |
+|  12 | overwrite_cache                | False                                |
+|  13 | force_download                 | False                                |
+|  14 | test_mode                      | False                                |
+|  15 | learning_rate                  | 5e-05                                |
+|  16 | epochs                         | 3                                    |
+|  17 | batch_size                     | 360                                  |
+|  18 | cpu_workers                    | 24                                   |
+|  19 | fp16                           | False                                |
+-----------------------------------------------------------------------------------------------------------------------------------------
+|   # | GpuProjectEnv   | value                                                 |
+|----:|:----------------|:------------------------------------------------------|
+|   1 | hostname        | dl012                                                 |
+|   2 | hostaddr        | 129.254.182.78                                        |
+|   3 | python_path     | /data/dlt/mambaforge/envs/DeepKorean-23.03/bin/python |
+|   4 | project_name    | DeepKorean                                            |
+|   5 | project_path    | /data/dlt/proj/DeepKorean-23.03                       |
+|   6 | working_path    | /data/dlt/proj/DeepKorean-23.03                       |
+|   7 | running_file    | tests/1-doc_cls-train.py                              |
+|   8 | working_gpus    | 0,1,2,3                                               |
+|   9 | number_of_gpus  | 4                                                     |
+-----------------------------------------------------------------------------------------------------------------------------------------
+|   # | ClassificationTrainArguments   | value                                |
+|----:|:-------------------------------|:-------------------------------------|
+|   1 | pretrained_model_path          | model/pretrained/KcBERT-Base         |
+|   2 | downstream_model_path          | model/finetuned/nsmc                 |
+|   3 | downstream_model_file          | {epoch}-{val_loss:.3f}-{val_acc:.3f} |
+|   4 | downstream_conf_file           | 1-doc_cls-train.json                 |
+|   5 | downstream_data_home           | data                                 |
+|   6 | downstream_data_name           | nsmc                                 |
+|   7 | downstream_task_name           | document-classification              |
+|   8 | max_seq_length                 | 128                                  |
+|   9 | save_top_k                     | 3                                    |
+|  10 | monitor                        | max val_acc                          |
+|  11 | seed                           | 7                                    |
+|  12 | overwrite_cache                | False                                |
+|  13 | force_download                 | False                                |
+|  14 | test_mode                      | False                                |
+|  15 | learning_rate                  | 5e-05                                |
+|  16 | epochs                         | 3                                    |
+|  17 | batch_size                     | 360                                  |
+|  18 | cpu_workers                    | 24                                   |
+|  19 | fp16                           | False                                |
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+=========================================================================================================================================
+[03.20 21:35:03] [INIT] chrialab.ratsnlp train(config=model/finetuned/nsmc/1-doc_cls-train.json, prefix=, postfix=)
+=========================================================================================================================================
+
+=========================================================================================================================================
+[03.20 21:35:03] [INIT] chrialab.ratsnlp train(config=model/finetuned/nsmc/1-doc_cls-train.json, prefix=, postfix=)
+=========================================================================================================================================
+
+=========================================================================================================================================
+[03.20 21:35:03] [INIT] chrialab.ratsnlp train(config=model/finetuned/nsmc/1-doc_cls-train.json, prefix=, postfix=)
+=========================================================================================================================================
+set seed: 7
+-----------------------------------------------------------------------------------------------------------------------------------------
+[Korpora] Corpus `nsmc` is already installed at /data/dlt/proj/DeepKorean-23.03/data/nsmc/ratings_train.txt
+[Korpora] Corpus `nsmc` is already installed at /data/dlt/proj/DeepKorean-23.03/data/nsmc/ratings_test.txt
+-----------------------------------------------------------------------------------------------------------------------------------------
+tokenizer=BertTokenizer(name_or_path='model/pretrained/KcBERT-Base', vocab_size=30000, model_max_length=300, is_fast=False, padding_side='right', truncation_side='right', special_tokens={'unk_token': '[UNK]', 'sep_token': '[SEP]', 'pad_token': '[PAD]', 'cls_token': '[CLS]', 'mask_token': '[MASK]'})
+tokenized=['안녕', '##하세요', '.', '반', '##갑', '##습니다', '.']
+-----------------------------------------------------------------------------------------------------------------------------------------
+set seed: 7
+-----------------------------------------------------------------------------------------------------------------------------------------
+[Korpora] Corpus `nsmc` is already installed at /data/dlt/proj/DeepKorean-23.03/data/nsmc/ratings_train.txt
+[Korpora] Corpus `nsmc` is already installed at /data/dlt/proj/DeepKorean-23.03/data/nsmc/ratings_test.txt
+-----------------------------------------------------------------------------------------------------------------------------------------
+set seed: 7
+-----------------------------------------------------------------------------------------------------------------------------------------
+tokenizer=BertTokenizer(name_or_path='model/pretrained/KcBERT-Base', vocab_size=30000, model_max_length=300, is_fast=False, padding_side='right', truncation_side='right', special_tokens={'unk_token': '[UNK]', 'sep_token': '[SEP]', 'pad_token': '[PAD]', 'cls_token': '[CLS]', 'mask_token': '[MASK]'})
+tokenized=['안녕', '##하세요', '.', '반', '##갑', '##습니다', '.']
+-----------------------------------------------------------------------------------------------------------------------------------------
+[Korpora] Corpus `nsmc` is already installed at /data/dlt/proj/DeepKorean-23.03/data/nsmc/ratings_train.txt
+[Korpora] Corpus `nsmc` is already installed at /data/dlt/proj/DeepKorean-23.03/data/nsmc/ratings_test.txt
+-----------------------------------------------------------------------------------------------------------------------------------------
+tokenizer=BertTokenizer(name_or_path='model/pretrained/KcBERT-Base', vocab_size=30000, model_max_length=300, is_fast=False, padding_side='right', truncation_side='right', special_tokens={'unk_token': '[UNK]', 'sep_token': '[SEP]', 'pad_token': '[PAD]', 'cls_token': '[CLS]', 'mask_token': '[MASK]'})
+tokenized=['안녕', '##하세요', '.', '반', '##갑', '##습니다', '.']
+-----------------------------------------------------------------------------------------------------------------------------------------
+INFO:ratsnlp:Loading features from cached file data/nsmc/cached_train_BertTokenizer_128_nsmc_document-classification [took 21.577 s]
+-----------------------------------------------------------------------------------------------------------------------------------------
+INFO:ratsnlp:Loading features from cached file data/nsmc/cached_test_BertTokenizer_128_nsmc_document-classification [took 7.474 s]
+-----------------------------------------------------------------------------------------------------------------------------------------
+Some weights of the model checkpoint at model/pretrained/KcBERT-Base were not used when initializing BertForSequenceClassification: ['cls.seq_relationship.bias', 'cls.predictions.bias', 'cls.predictions.decoder.bias', 'cls.predictions.decoder.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.transform.LayerNorm.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.LayerNorm.weight', 'cls.seq_relationship.weight']
+- This IS expected if you are initializing BertForSequenceClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertForSequenceClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of BertForSequenceClassification were not initialized from the model checkpoint at model/pretrained/KcBERT-Base and are newly initialized: ['classifier.bias', 'classifier.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+-----------------------------------------------------------------------------------------------------------------------------------------
+Initializing distributed: GLOBAL_RANK: 2, MEMBER: 3/4
+INFO:ratsnlp:Loading features from cached file data/nsmc/cached_train_BertTokenizer_128_nsmc_document-classification [took 20.861 s]
+-----------------------------------------------------------------------------------------------------------------------------------------
+INFO:ratsnlp:Loading features from cached file data/nsmc/cached_test_BertTokenizer_128_nsmc_document-classification [took 7.171 s]
+-----------------------------------------------------------------------------------------------------------------------------------------
+Some weights of the model checkpoint at model/pretrained/KcBERT-Base were not used when initializing BertForSequenceClassification: ['cls.seq_relationship.bias', 'cls.predictions.decoder.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.seq_relationship.weight', 'cls.predictions.transform.dense.weight', 'cls.predictions.decoder.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.bias', 'cls.predictions.transform.LayerNorm.bias']
+- This IS expected if you are initializing BertForSequenceClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertForSequenceClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of BertForSequenceClassification were not initialized from the model checkpoint at model/pretrained/KcBERT-Base and are newly initialized: ['classifier.bias', 'classifier.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+-----------------------------------------------------------------------------------------------------------------------------------------
+Initializing distributed: GLOBAL_RANK: 3, MEMBER: 4/4
+INFO:ratsnlp:Loading features from cached file data/nsmc/cached_train_BertTokenizer_128_nsmc_document-classification [took 21.648 s]
+-----------------------------------------------------------------------------------------------------------------------------------------
+INFO:ratsnlp:Loading features from cached file data/nsmc/cached_test_BertTokenizer_128_nsmc_document-classification [took 7.386 s]
+-----------------------------------------------------------------------------------------------------------------------------------------
+Some weights of the model checkpoint at model/pretrained/KcBERT-Base were not used when initializing BertForSequenceClassification: ['cls.seq_relationship.weight', 'cls.predictions.transform.LayerNorm.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.decoder.bias', 'cls.predictions.bias', 'cls.seq_relationship.bias', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight', 'cls.predictions.transform.dense.weight']
+- This IS expected if you are initializing BertForSequenceClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertForSequenceClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of BertForSequenceClassification were not initialized from the model checkpoint at model/pretrained/KcBERT-Base and are newly initialized: ['classifier.weight', 'classifier.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+-----------------------------------------------------------------------------------------------------------------------------------------
+Initializing distributed: GLOBAL_RANK: 1, MEMBER: 2/4
+----------------------------------------------------------------------------------------------------
+distributed_backend=nccl
+All distributed processes registered. Starting with 4 processes
+----------------------------------------------------------------------------------------------------
+
+Missing logger folder: /data/dlt/proj/DeepKorean-23.03/model/finetuned/nsmc/lightning_logs
+Missing logger folder: /data/dlt/proj/DeepKorean-23.03/model/finetuned/nsmc/lightning_logs
+Missing logger folder: /data/dlt/proj/DeepKorean-23.03/model/finetuned/nsmc/lightning_logs
+Missing logger folder: /data/dlt/proj/DeepKorean-23.03/model/finetuned/nsmc/lightning_logs
+/data/dlt/proj/DeepKorean-23.03/lightning/src/lightning/pytorch/callbacks/model_checkpoint.py:612: UserWarning: Checkpoint directory /data/dlt/proj/DeepKorean-23.03/model/finetuned/nsmc exists and is not empty.
+  rank_zero_warn(f"Checkpoint directory {dirpath} exists and is not empty.")
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+LOCAL_RANK: 2 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+LOCAL_RANK: 1 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+LOCAL_RANK: 3 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+
+  | Name  | Type                          | Params
+--------------------------------------------------------
+0 | model | BertForSequenceClassification | 108 M 
+--------------------------------------------------------
+108 M     Trainable params
+0         Non-trainable params
+108 M     Total params
+435.680   Total estimated model params size (MB)
+Epoch 0: 100%|██████████| 105/105 [00:51<00:00,  2.04it/s, v_num=0, acc=0.933]
+Validation: 0it [00:00, ?it/s]
+Validation:   0%|          | 0/35 [00:00<?, ?it/s]
+Validation DataLoader 0:   0%|          | 0/35 [00:00<?, ?it/s]
+Validation DataLoader 0:   3%|▎         | 1/35 [00:00<00:00, 41.45it/s]
+Validation DataLoader 0:   6%|▌         | 2/35 [00:00<00:02, 12.42it/s]
+Validation DataLoader 0:   9%|▊         | 3/35 [00:00<00:03,  9.63it/s]
+Validation DataLoader 0:  11%|█▏        | 4/35 [00:00<00:03,  8.74it/s]
+Validation DataLoader 0:  14%|█▍        | 5/35 [00:00<00:03,  8.21it/s]
+Validation DataLoader 0:  17%|█▋        | 6/35 [00:00<00:03,  7.95it/s]
+Validation DataLoader 0:  20%|██        | 7/35 [00:00<00:03,  7.76it/s]
+Validation DataLoader 0:  23%|██▎       | 8/35 [00:01<00:03,  7.59it/s]
+Validation DataLoader 0:  26%|██▌       | 9/35 [00:01<00:03,  7.49it/s]
+Validation DataLoader 0:  29%|██▊       | 10/35 [00:01<00:03,  7.39it/s]
+Validation DataLoader 0:  31%|███▏      | 11/35 [00:01<00:03,  7.34it/s]
+Validation DataLoader 0:  34%|███▍      | 12/35 [00:01<00:03,  7.28it/s]
+Validation DataLoader 0:  37%|███▋      | 13/35 [00:01<00:03,  7.23it/s]
+Validation DataLoader 0:  40%|████      | 14/35 [00:01<00:02,  7.20it/s]
+Validation DataLoader 0:  43%|████▎     | 15/35 [00:02<00:02,  7.16it/s]
+Validation DataLoader 0:  46%|████▌     | 16/35 [00:02<00:02,  7.13it/s]
+Validation DataLoader 0:  49%|████▊     | 17/35 [00:02<00:02,  7.11it/s]
+Validation DataLoader 0:  51%|█████▏    | 18/35 [00:02<00:02,  7.09it/s]
+Validation DataLoader 0:  54%|█████▍    | 19/35 [00:02<00:02,  7.07it/s]
+Validation DataLoader 0:  57%|█████▋    | 20/35 [00:02<00:02,  7.04it/s]
+Validation DataLoader 0:  60%|██████    | 21/35 [00:02<00:01,  7.02it/s]
+Validation DataLoader 0:  63%|██████▎   | 22/35 [00:03<00:01,  7.01it/s]
+Validation DataLoader 0:  66%|██████▌   | 23/35 [00:03<00:01,  7.00it/s]
+Validation DataLoader 0:  69%|██████▊   | 24/35 [00:03<00:01,  6.99it/s]
+Validation DataLoader 0:  71%|███████▏  | 25/35 [00:03<00:01,  6.98it/s]
+Validation DataLoader 0:  74%|███████▍  | 26/35 [00:03<00:01,  6.97it/s]
+Validation DataLoader 0:  77%|███████▋  | 27/35 [00:03<00:01,  6.96it/s]
+Validation DataLoader 0:  80%|████████  | 28/35 [00:04<00:01,  6.95it/s]
+Validation DataLoader 0:  83%|████████▎ | 29/35 [00:04<00:00,  6.94it/s]
+Validation DataLoader 0:  86%|████████▌ | 30/35 [00:04<00:00,  6.93it/s]
+Validation DataLoader 0:  89%|████████▊ | 31/35 [00:04<00:00,  6.93it/s]
+Validation DataLoader 0:  91%|█████████▏| 32/35 [00:04<00:00,  6.92it/s]
+Validation DataLoader 0:  94%|█████████▍| 33/35 [00:04<00:00,  6.92it/s]
+Validation DataLoader 0:  97%|█████████▋| 34/35 [00:04<00:00,  6.91it/s]
+Validation DataLoader 0: 100%|██████████| 35/35 [00:05<00:00,  6.90it/s]/data/dlt/proj/DeepKorean-23.03/lightning/src/lightning/pytorch/trainer/connectors/logger_connector/result.py:432: PossibleUserWarning: It is recommended to use `self.log('val_loss', ..., sync_dist=True)` when logging on epoch level in distributed setting to accumulate the metric across devices.
+  warning_cache.warn(
+/data/dlt/proj/DeepKorean-23.03/lightning/src/lightning/pytorch/trainer/connectors/logger_connector/result.py:432: PossibleUserWarning: It is recommended to use `self.log('val_acc', ..., sync_dist=True)` when logging on epoch level in distributed setting to accumulate the metric across devices.
+  warning_cache.warn(
+Epoch 0: 100%|██████████| 105/105 [00:58<00:00,  1.80it/s, v_num=0, acc=0.933, val_loss=0.272, val_acc=0.886]
+Epoch 1: 100%|██████████| 105/105 [00:51<00:00,  2.06it/s, v_num=0, acc=0.900, val_loss=0.272, val_acc=0.886]
+Validation: 0it [00:00, ?it/s]
+Validation:   0%|          | 0/35 [00:00<?, ?it/s]
+Validation DataLoader 0:   0%|          | 0/35 [00:00<?, ?it/s]
+Validation DataLoader 0:   3%|▎         | 1/35 [00:00<00:00, 48.38it/s]
+Validation DataLoader 0:   6%|▌         | 2/35 [00:00<00:03,  9.55it/s]
+Validation DataLoader 0:   9%|▊         | 3/35 [00:00<00:03,  8.35it/s]
+Validation DataLoader 0:  11%|█▏        | 4/35 [00:00<00:03,  7.88it/s]
+Validation DataLoader 0:  14%|█▍        | 5/35 [00:00<00:03,  7.62it/s]
+Validation DataLoader 0:  17%|█▋        | 6/35 [00:00<00:03,  7.45it/s]
+Validation DataLoader 0:  20%|██        | 7/35 [00:00<00:03,  7.33it/s]
+Validation DataLoader 0:  23%|██▎       | 8/35 [00:01<00:03,  7.25it/s]
+Validation DataLoader 0:  26%|██▌       | 9/35 [00:01<00:03,  7.18it/s]
+Validation DataLoader 0:  29%|██▊       | 10/35 [00:01<00:03,  7.12it/s]
+Validation DataLoader 0:  31%|███▏      | 11/35 [00:01<00:03,  7.08it/s]
+Validation DataLoader 0:  34%|███▍      | 12/35 [00:01<00:03,  7.05it/s]
+Validation DataLoader 0:  37%|███▋      | 13/35 [00:01<00:03,  7.02it/s]
+Validation DataLoader 0:  40%|████      | 14/35 [00:02<00:03,  7.00it/s]
+Validation DataLoader 0:  43%|████▎     | 15/35 [00:02<00:02,  6.97it/s]
+Validation DataLoader 0:  46%|████▌     | 16/35 [00:02<00:02,  6.95it/s]
+Validation DataLoader 0:  49%|████▊     | 17/35 [00:02<00:02,  6.94it/s]
+Validation DataLoader 0:  51%|█████▏    | 18/35 [00:02<00:02,  6.93it/s]
+Validation DataLoader 0:  54%|█████▍    | 19/35 [00:02<00:02,  6.91it/s]
+Validation DataLoader 0:  57%|█████▋    | 20/35 [00:02<00:02,  6.90it/s]
+Validation DataLoader 0:  60%|██████    | 21/35 [00:03<00:02,  6.89it/s]
+Validation DataLoader 0:  63%|██████▎   | 22/35 [00:03<00:01,  6.88it/s]
+Validation DataLoader 0:  66%|██████▌   | 23/35 [00:03<00:01,  6.87it/s]
+Validation DataLoader 0:  69%|██████▊   | 24/35 [00:03<00:01,  6.86it/s]
+Validation DataLoader 0:  71%|███████▏  | 25/35 [00:03<00:01,  6.86it/s]
+Validation DataLoader 0:  74%|███████▍  | 26/35 [00:03<00:01,  6.85it/s]
+Validation DataLoader 0:  77%|███████▋  | 27/35 [00:03<00:01,  6.84it/s]
+Validation DataLoader 0:  80%|████████  | 28/35 [00:04<00:01,  6.84it/s]
+Validation DataLoader 0:  83%|████████▎ | 29/35 [00:04<00:00,  6.83it/s]
+Validation DataLoader 0:  86%|████████▌ | 30/35 [00:04<00:00,  6.83it/s]
+Validation DataLoader 0:  89%|████████▊ | 31/35 [00:04<00:00,  6.82it/s]
+Validation DataLoader 0:  91%|█████████▏| 32/35 [00:04<00:00,  6.82it/s]
+Validation DataLoader 0:  94%|█████████▍| 33/35 [00:04<00:00,  6.81it/s]
+Validation DataLoader 0:  97%|█████████▋| 34/35 [00:04<00:00,  6.81it/s]
+Epoch 1: 100%|██████████| 105/105 [00:58<00:00,  1.80it/s, v_num=0, acc=0.900, val_loss=0.259, val_acc=0.895]
+Epoch 2: 100%|██████████| 105/105 [00:51<00:00,  2.04it/s, v_num=0, acc=0.950, val_loss=0.259, val_acc=0.895]
+Validation: 0it [00:00, ?it/s]
+Validation:   0%|          | 0/35 [00:00<?, ?it/s]
+Validation DataLoader 0:   0%|          | 0/35 [00:00<?, ?it/s]
+Validation DataLoader 0:   3%|▎         | 1/35 [00:00<00:00, 46.48it/s]
+Validation DataLoader 0:   6%|▌         | 2/35 [00:00<00:03,  9.64it/s]
+Validation DataLoader 0:   9%|▊         | 3/35 [00:00<00:03,  8.46it/s]
+Validation DataLoader 0:  11%|█▏        | 4/35 [00:00<00:03,  7.95it/s]
+Validation DataLoader 0:  14%|█▍        | 5/35 [00:00<00:03,  7.66it/s]
+Validation DataLoader 0:  17%|█▋        | 6/35 [00:00<00:03,  7.51it/s]
+Validation DataLoader 0:  20%|██        | 7/35 [00:00<00:03,  7.38it/s]
+Validation DataLoader 0:  23%|██▎       | 8/35 [00:01<00:03,  7.30it/s]
+Validation DataLoader 0:  26%|██▌       | 9/35 [00:01<00:03,  7.21it/s]
+Validation DataLoader 0:  29%|██▊       | 10/35 [00:01<00:03,  7.16it/s]
+Validation DataLoader 0:  31%|███▏      | 11/35 [00:01<00:03,  7.11it/s]
+Validation DataLoader 0:  34%|███▍      | 12/35 [00:01<00:03,  7.08it/s]
+Validation DataLoader 0:  37%|███▋      | 13/35 [00:01<00:03,  7.05it/s]
+Validation DataLoader 0:  40%|████      | 14/35 [00:01<00:02,  7.02it/s]
+Validation DataLoader 0:  43%|████▎     | 15/35 [00:02<00:02,  7.00it/s]
+Validation DataLoader 0:  46%|████▌     | 16/35 [00:02<00:02,  6.98it/s]
+Validation DataLoader 0:  49%|████▊     | 17/35 [00:02<00:02,  6.96it/s]
+Validation DataLoader 0:  51%|█████▏    | 18/35 [00:02<00:02,  6.94it/s]
+Validation DataLoader 0:  54%|█████▍    | 19/35 [00:02<00:02,  6.93it/s]
+Validation DataLoader 0:  57%|█████▋    | 20/35 [00:02<00:02,  6.92it/s]
+Validation DataLoader 0:  60%|██████    | 21/35 [00:03<00:02,  6.91it/s]
+Validation DataLoader 0:  63%|██████▎   | 22/35 [00:03<00:01,  6.90it/s]
+Validation DataLoader 0:  66%|██████▌   | 23/35 [00:03<00:01,  6.89it/s]
+Validation DataLoader 0:  69%|██████▊   | 24/35 [00:03<00:01,  6.87it/s]
+Validation DataLoader 0:  71%|███████▏  | 25/35 [00:03<00:01,  6.87it/s]
+Validation DataLoader 0:  74%|███████▍  | 26/35 [00:03<00:01,  6.86it/s]
+Validation DataLoader 0:  77%|███████▋  | 27/35 [00:03<00:01,  6.85it/s]
+Validation DataLoader 0:  80%|████████  | 28/35 [00:04<00:01,  6.85it/s]
+Validation DataLoader 0:  83%|████████▎ | 29/35 [00:04<00:00,  6.84it/s]
+Validation DataLoader 0:  86%|████████▌ | 30/35 [00:04<00:00,  6.84it/s]
+Validation DataLoader 0:  89%|████████▊ | 31/35 [00:04<00:00,  6.83it/s]
+Validation DataLoader 0:  91%|█████████▏| 32/35 [00:04<00:00,  6.83it/s]
+Validation DataLoader 0:  94%|█████████▍| 33/35 [00:04<00:00,  6.83it/s]
+Validation DataLoader 0:  97%|█████████▋| 34/35 [00:04<00:00,  6.82it/s]
+Epoch 2: 100%|██████████| 105/105 [00:58<00:00,  1.79it/s, v_num=0, acc=0.950, val_loss=0.287, val_acc=0.897]
+Epoch 2: 100%|██████████| 105/105 [00:58<00:00,  1.79it/s, v_num=0, acc=0.950, val_loss=0.287, val_acc=0.897]=========================================================================================================================================
+[03.20 21:39:23] [EXIT] chrialab.ratsnlp train(config=model/finetuned/nsmc/1-doc_cls-train.json, prefix=, postfix=) ($=00:04:18.877)
+=========================================================================================================================================
+
+=========================================================================================================================================
+[03.20 21:39:24] [EXIT] chrialab.ratsnlp train(config=model/finetuned/nsmc/1-doc_cls-train.json, prefix=, postfix=) ($=00:04:19.143)
+=========================================================================================================================================
+
+Epoch 2: 100%|██████████| 105/105 [01:00<00:00,  1.74it/s, v_num=0, acc=0.950, val_loss=0.287, val_acc=0.897]
+`Trainer.fit` stopped: `max_epochs=3` reached.
+=========================================================================================================================================
+[03.20 21:39:24] [EXIT] chrialab.ratsnlp train(config=model/finetuned/nsmc/1-doc_cls-train.json, prefix=, postfix=) ($=00:04:19.033)
+=========================================================================================================================================
+
+=========================================================================================================================================
+[03.20 21:39:25] [EXIT] chrialab.ratsnlp train(config=model/finetuned/nsmc/1-doc_cls-train.json, prefix=, postfix=) ($=00:04:54.998)
+=========================================================================================================================================
+
+
+Process finished with exit code 0

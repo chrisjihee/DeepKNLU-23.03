@@ -2,11 +2,12 @@ from chrislab.common.util import GpuProjectEnv
 from chrislab.ratsnlp import cli
 from ratsnlp.nlpbook.classification import ClassificationTrainArguments
 
-with GpuProjectEnv(project_name="DeepKorean", working_gpus="0,1") as env:
+with GpuProjectEnv(project_name="DeepKorean", working_gpus="0,1,2,3") as env:
     args = ClassificationTrainArguments(
         pretrained_model_path="model/pretrained/KcBERT-Base",
         downstream_model_path="model/finetuned/nsmc",
         downstream_model_file="{epoch}-{val_loss:.3f}-{val_acc:.3f}",
+        downstream_conf_file=env.running_file.with_suffix('.json').name,
         downstream_data_home="data",
         downstream_data_name="nsmc",
         monitor="max val_acc",
@@ -18,6 +19,7 @@ with GpuProjectEnv(project_name="DeepKorean", working_gpus="0,1") as env:
         epochs=3,
         seed=7,
     )
-    env.config_file.write_text(args.to_json(ensure_ascii=False, indent=2, default=str))
+    config = args.save_config()
 
-cli.train(env.config_file)
+assert config.exists(), f"No config file: {config}"
+cli.train(config)
