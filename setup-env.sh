@@ -14,21 +14,19 @@ pip install --upgrade evaluate datasets tokenizers matplotlib
 pip install --upgrade notebook ipython ipynbname ipywidgets jupyterlab tornado==6.1
 
 # 2. editable library
-rm -rf transformers lightning chrisdict chrisbase chrislab ratsnlp flask-ngrokpy ngrok /tmp/ngrok
-git clone https://github.com/chrisjihee/flask-ngrokpy.git  # OR https://github.com/jakbin/flask-ngrokpy
-git clone https://github.com/chrisjihee/transformers.git   # OR https://github.com/huggingface/transformers
-git clone https://github.com/chrisjihee/lightning.git      # OR https://github.com/Lightning-AI/lightning
-git clone https://github.com/chrisjihee/chrisdict.git      # OR https://github.com/bcj/AttrDict (on Python <= 3.9)
+rm -rf transformers lightning chrisbase chrislab ratsnlp flask-ngrok ngrok /tmp/ngrok
+git clone https://github.com/chrisjihee/transformers.git   # OR https://github.com/huggingface/transformers.git
+git clone https://github.com/chrisjihee/lightning.git      # OR https://github.com/Lightning-AI/lightning.git
 git clone https://github.com/chrisjihee/chrisbase.git
 git clone https://github.com/chrisjihee/chrislab.git
 git clone https://github.com/chrisjihee/ratsnlp.git
-pip install --editable flask-ngrokpy
+git clone https://github.com/chrisjihee/flask-ngrok.git
 pip install --editable transformers
 pip install --editable lightning[extra]
-pip install --editable chrisdict
 pip install --editable chrisbase
 pip install --editable chrislab
 pip install --editable ratsnlp
+pip install --editable flask-ngrok
 
 # 3. pretrained model (optional)
 export DOWNLOAD_ONLINE_MODEL=true
