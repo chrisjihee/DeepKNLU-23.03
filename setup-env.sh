@@ -11,17 +11,9 @@ conda activate $PROJECT_NAME
 conda install cuda-nvcc=$CUDA_VER cudatoolkit=$CUDA_VER -c nvidia -y
 
 # 2. uneditable library
-export INSTALL_UPDATED_LIBRARY=true
-if [ $INSTALL_UPDATED_LIBRARY = true ]
-then
-  pip install --upgrade torch --index-url https://download.pytorch.org/whl/cu117
-  pip install --upgrade deepspeed  # works on Linux
-  pip install --upgrade evaluate datasets tokenizers matplotlib
-  pip install --upgrade notebook ipython ipynbname ipywidgets jupyterlab tornado==6.1
-  pip list --format=freeze >requirements.txt
-else
-  pip install -r requirements.txt
-fi
+pip install --upgrade torch --index-url https://download.pytorch.org/whl/cu117
+pip install --upgrade evaluate datasets tokenizers matplotlib
+pip install --upgrade notebook ipython ipynbname ipywidgets jupyterlab tornado==6.1
 
 # 3. editable library
 rm -rf transformers lightning chrisdict chrisbase chrislab ratsnlp flask-ngrok /tmp/ngrok
@@ -40,7 +32,7 @@ pip install --editable chrislab
 pip install --editable ratsnlp
 pip install --editable flask-ngrok
 
-# 4. pretrained model
+# 4. pretrained model (optional)
 export DOWNLOAD_ONLINE_MODEL=true
 if [ $DOWNLOAD_ONLINE_MODEL = true ]
 then
