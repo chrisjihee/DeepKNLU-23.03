@@ -14,7 +14,7 @@ pip install --upgrade evaluate datasets tokenizers matplotlib
 pip install --upgrade notebook ipython ipynbname ipywidgets jupyterlab tornado==6.1
 
 # 2. editable library
-rm -rf transformers lightning chrisdict chrisbase chrislab ratsnlp flask-ngrok /tmp/ngrok
+rm -rf transformers lightning chrisdict chrisbase chrislab ratsnlp flask-ngrok ngrok /tmp/ngrok
 git clone https://github.com/chrisjihee/transformers.git
 git clone https://github.com/chrisjihee/lightning.git
 git clone https://github.com/chrisjihee/chrisdict.git
