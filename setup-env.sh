@@ -1,7 +1,7 @@
 #!/bin/bash
 # Tested on Ubuntu 20.04
 
-# 1. reset
+# 1. uneditable library
 export PROJECT_NAME="DeepKorean-23.03"
 export PYTHON_VER="3.10"
 export CUDA_VER="11.7"
@@ -9,13 +9,11 @@ conda update -n base -c defaults conda -y
 conda create -n $PROJECT_NAME python=$PYTHON_VER -y
 conda activate $PROJECT_NAME
 conda install cuda-nvcc=$CUDA_VER cudatoolkit=$CUDA_VER -c nvidia -y
-
-# 2. uneditable library
 pip install --upgrade torch --index-url https://download.pytorch.org/whl/cu117
 pip install --upgrade evaluate datasets tokenizers matplotlib
 pip install --upgrade notebook ipython ipynbname ipywidgets jupyterlab tornado==6.1
 
-# 3. editable library
+# 2. editable library
 rm -rf transformers lightning chrisdict chrisbase chrislab ratsnlp flask-ngrok /tmp/ngrok
 git clone https://github.com/chrisjihee/transformers.git
 git clone https://github.com/chrisjihee/lightning.git
@@ -32,7 +30,7 @@ pip install --editable chrislab
 pip install --editable ratsnlp
 pip install --editable flask-ngrok
 
-# 4. pretrained model (optional)
+# 3. pretrained model (optional)
 export DOWNLOAD_ONLINE_MODEL=true
 if [ $DOWNLOAD_ONLINE_MODEL = true ]
 then
