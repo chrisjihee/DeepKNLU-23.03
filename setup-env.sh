@@ -15,10 +15,10 @@ pip install --upgrade notebook ipython ipynbname ipywidgets jupyterlab tornado==
 
 # 2. editable library
 rm -rf transformers lightning chrisdict chrisbase chrislab ratsnlp flask-ngrokpy ngrok /tmp/ngrok
-git clone https://github.com/chrisjihee/flask-ngrokpy.git
-git clone https://github.com/chrisjihee/transformers.git
-git clone https://github.com/chrisjihee/lightning.git
-git clone https://github.com/chrisjihee/chrisdict.git
+git clone https://github.com/chrisjihee/flask-ngrokpy.git  # OR https://github.com/jakbin/flask-ngrokpy
+git clone https://github.com/chrisjihee/transformers.git   # OR https://github.com/huggingface/transformers
+git clone https://github.com/chrisjihee/lightning.git      # OR https://github.com/Lightning-AI/lightning
+git clone https://github.com/chrisjihee/chrisdict.git      # OR https://github.com/bcj/AttrDict (on Python <= 3.9)
 git clone https://github.com/chrisjihee/chrisbase.git
 git clone https://github.com/chrisjihee/chrislab.git
 git clone https://github.com/chrisjihee/ratsnlp.git
