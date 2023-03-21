@@ -1,13 +1,14 @@
 # project
 setup-git.sh
 /data/korquad
+/flask-ngrokpy
+/flask-ngrok
 /transformers
 /lightning
 /chrisdict
 /chrisbase
 /chrislab
 /ratsnlp
-/flask-ngrok
 /ngrok
 /data/**/cached_*
 
