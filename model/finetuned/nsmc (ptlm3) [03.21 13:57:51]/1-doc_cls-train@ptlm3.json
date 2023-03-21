@@ -1,0 +1,21 @@
+{
+  "working_config_file": "1-doc_cls-train@ptlm3.json",
+  "pretrained_model_path": "model/pretrained/KcBERT-Base",
+  "downstream_model_path": "model/finetuned/nsmc",
+  "downstream_model_file": "{epoch}-{val_loss:.3f}-{val_acc:.3f}",
+  "downstream_data_home": "data",
+  "downstream_data_name": "nsmc",
+  "downstream_task_name": "document-classification",
+  "max_seq_length": 128,
+  "save_top_k": 3,
+  "monitor": "max val_acc",
+  "seed": 7,
+  "overwrite_cache": false,
+  "force_download": false,
+  "test_mode": false,
+  "learning_rate": 5e-05,
+  "epochs": 3,
+  "batch_size": 360,
+  "cpu_workers": 24,
+  "fp16": false
+}
