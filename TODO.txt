@@ -1,8 +1,8 @@
-# 4장 문서에 꼬리표 달기 (Document Classification)
+# 4장. 문서에 꼬리표 달기 (Document Classification)
  - [완료] ratsnlp 종속 라이브러리 버전 업그레이드
  - [완료] 문서 분류 모델 학습하기
    https://ratsgo.github.io/nlpbook/docs/doc_cls/train/
- - [실습] 학습 마친 모델을 실전 투입하기
+ - [완료] 학습 마친 모델을 실전 투입하기
    https://ratsgo.github.io/nlpbook/docs/doc_cls/inference/
  - [실습] 나만의 문서 분류 모델 만들기
    https://ratsgo.github.io/nlpbook/docs/doc_cls/detail/
@@ -11,7 +11,7 @@
  - [강의용 소스1] Step-by-Step Finetuning (single GPU)
  - [강의용 소스2] One-Shot Finetuning (multi GPU)
 
-# 5장 문장 쌍 분류하기 (Sentence Pair Classification)
+# 5장. 문장 쌍 분류하기 (Sentence Pair Classification)
  - [실습] 문장 쌍 분류 모델 학습하기
    https://ratsgo.github.io/nlpbook/docs/pair_cls/train/
  - [실습] 학습 마친 모델을 실전 투입하기
@@ -20,7 +20,7 @@
    https://ratsgo.github.io/nlpbook/docs/pair_cls/detail/
  - [적용] KLUE NLI, STS 태스크 적용하기
 
-# 6장 단어에 꼬리표 달기 (Word Sequence Classification)
+# 6장. 단어에 꼬리표 달기 (Word Sequence Classification)
  - [실습] 개체명 인식 모델 학습하기
    https://ratsgo.github.io/nlpbook/docs/ner/train/
  - [실습] 학습 마친 모델을 실전 투입하기
@@ -29,7 +29,7 @@
    https://ratsgo.github.io/nlpbook/docs/ner/detail/
  - [적용] KLUE NER 태스크 적용하기
 
-# 7장 질문에 답하기 (Question Answering)
+# 7장. 질문에 답하기 (Question Answering)
  - [실습] 질의 응답 모델 학습하기
    https://ratsgo.github.io/nlpbook/docs/qa/train/
  - [실습] 학습 마친 모델을 실전 투입하기
@@ -48,3 +48,5 @@
 
 # 추후
  - [구현] ET5, KE-T5, KE-ByT5 사용하여 4~7장 태스크 수행하기
+ - [구현] lightning.fabric.Fabric 사용하여 4~7장 태스크 수행하기
+   https://github.com/Lightning-AI/lightning/blob/master/examples/fabric/image_classifier/train_fabric.py
