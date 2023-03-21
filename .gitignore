@@ -9,8 +9,8 @@ setup-git.sh
 /chrisbase
 /chrislab
 /ratsnlp
-/ngrok
 /data/**/cached_*
+/ngrok
 
 # pytorch
 .idea/

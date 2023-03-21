@@ -1,7 +1,7 @@
-from chrisbase.io import BasicProjectEnv
+from chrisbase.io import BaseProjectEnv
 from chrisbase.util import to_dataframe
 
-env = BasicProjectEnv(project_name="DeepKorean")
+env = BaseProjectEnv(project_name="DeepKorean")
 print(to_dataframe(env))
 print("=" * 80)
 

@@ -14,7 +14,7 @@ pip install --upgrade evaluate datasets tokenizers matplotlib
 pip install --upgrade notebook ipython ipynbname ipywidgets jupyterlab tornado==6.1
 
 # 2. editable library
-rm -rf transformers lightning chrisbase chrislab ratsnlp flask-ngrok ngrok /tmp/ngrok
+rm -rf transformers lightning chrisbase chrislab ratsnlp flask-ngrok
 git clone https://github.com/chrisjihee/transformers.git   # OR https://github.com/huggingface/transformers.git
 git clone https://github.com/chrisjihee/lightning.git      # OR https://github.com/Lightning-AI/lightning.git
 git clone https://github.com/chrisjihee/chrisbase.git
@@ -48,3 +48,11 @@ else
   mkdir -p model
   git clone guest@129.254.164.137:git/pretrained-com model/pretrained
 fi
+
+# 4. ngrok (optional): https://dashboard.ngrok.com/get-started/setup
+mkdir -p ngrok
+cd ngrok
+wget https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz
+tar zxf ngrok-v3-stable-linux-amd64.tgz
+mv ngrok ngrok3
+cd ..
