@@ -29,7 +29,7 @@ pip install --editable chrisbase
 pip install --editable chrislab
 pip install --editable ratsnlp
 
-# 3. pretrained model (optional)
+# 3. pretrained model
 mkdir -p model/pretrained
 cd model/pretrained
 git lfs install
