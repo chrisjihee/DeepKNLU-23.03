@@ -1,9 +1,9 @@
-from chrislab.common.util import BaseProjectEnv
+from chrisbase.io import ProjectEnv
 from chrislab.ratsnlp import cli
 from ratsnlp.nlpbook.classification.arguments import ClassificationDeployArguments
 
 config = ClassificationDeployArguments(
-    env=BaseProjectEnv(project_name="DeepKorean"),
+    env=ProjectEnv(project="DeepKorean"),
     pretrained_model_path="model/pretrained/KcBERT-Base",
     downstream_model_home="model/finetuned/nsmc",
     downstream_model_file=None,
