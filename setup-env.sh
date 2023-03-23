@@ -15,18 +15,12 @@ pip install --upgrade notebook ipython ipynbname ipywidgets jupyterlab tornado==
 
 # 2. editable library
 rm -rf transformers lightning chrisbase chrislab ratsnlp flask-ngrok
-git clone https://github.com/chrisjihee/transformers.git   # OR https://github.com/huggingface/transformers.git
-git clone https://github.com/chrisjihee/lightning.git      # OR https://github.com/Lightning-AI/lightning.git
-git clone https://github.com/chrisjihee/chrisbase.git
-git clone https://github.com/chrisjihee/chrislab.git
-git clone https://github.com/chrisjihee/ratsnlp.git
-git clone https://github.com/chrisjihee/flask-ngrok.git
-#git clone git@github.com:chrisjihee/transformers.git   # OR https://github.com/huggingface/transformers.git
-#git clone git@github.com:chrisjihee/lightning.git      # OR https://github.com/Lightning-AI/lightning.git
-#git clone git@github.com:chrisjihee/chrisbase.git
-#git clone git@github.com:chrisjihee/chrislab.git
-#git clone git@github.com:chrisjihee/ratsnlp.git
-#git clone git@github.com:chrisjihee/flask-ngrok.git
+git clone git@github.com:chrisjihee/transformers.git
+git clone git@github.com:chrisjihee/lightning.git
+git clone git@github.com:chrisjihee/chrisbase.git
+git clone git@github.com:chrisjihee/chrislab.git
+git clone git@github.com:chrisjihee/ratsnlp.git
+git clone git@github.com:chrisjihee/flask-ngrok.git
 pip install --editable transformers
 pip install --editable lightning[extra]
 pip install --editable chrisbase
