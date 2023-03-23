@@ -18,8 +18,8 @@ pip install --upgrade notebook ipython ipynbname ipywidgets jupyterlab tornado==
 
 # 2. editable library
 rm -rf transformers lightning chrisbase chrislab
-git clone git@github.com:chrisjihee/transformers.git
-git clone git@github.com:chrisjihee/lightning.git
+git clone git@github.com:huggingface/transformers.git -b v4.27.2
+git clone git@github.com:Lightning-AI/lightning.git -b 2.0.0
 git clone git@github.com:chrisjihee/chrisbase.git
 git clone git@github.com:chrisjihee/chrislab.git
 pip install --editable transformers
