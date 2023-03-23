@@ -17,17 +17,15 @@ pip install --upgrade evaluate datasets tokenizers matplotlib
 pip install --upgrade notebook ipython ipynbname ipywidgets jupyterlab tornado==6.1
 
 # 2. editable library
-rm -rf transformers lightning chrisbase chrislab ratsnlp
+rm -rf transformers lightning chrisbase chrislab
 git clone git@github.com:chrisjihee/transformers.git
 git clone git@github.com:chrisjihee/lightning.git
 git clone git@github.com:chrisjihee/chrisbase.git
 git clone git@github.com:chrisjihee/chrislab.git
-git clone git@github.com:chrisjihee/ratsnlp.git
 pip install --editable transformers
 pip install --editable lightning
 pip install --editable chrisbase
 pip install --editable chrislab
-pip install --editable ratsnlp
 
 # 3. pretrained model
 mkdir -p model/pretrained
