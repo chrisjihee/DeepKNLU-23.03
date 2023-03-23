@@ -49,6 +49,7 @@ git clone https://huggingface.co/klue/bert-base KLUE-BERT-Base
 git clone https://huggingface.co/klue/roberta-base KLUE-RoBERTa-Base
 git clone https://huggingface.co/bert-base-multilingual-uncased Google-BERT-Base
 git clone https://huggingface.co/monologg/kobigbird-bert-base KoBigBird-Base
+git lfs uninstall
 cd ../..
 
 # 4. ngrok (optional): https://dashboard.ngrok.com/get-started/setup
