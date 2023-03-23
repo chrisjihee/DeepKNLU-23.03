@@ -32,10 +32,6 @@ pip install --editable ratsnlp
 # 3. pretrained model (optional)
 mkdir -p model/pretrained
 cd model/pretrained
-case $(uname -s) in
-Linux) sudo apt install git-lfs ;;
-Darwin) brew install git-lfs ;;
-esac
 git lfs install
 git clone https://huggingface.co/beomi/kcbert-base KcBERT-Base
 #git clone https://huggingface.co/beomi/KcELECTRA-base-v2022 KcELECTRA-Base
@@ -48,19 +44,3 @@ git clone https://huggingface.co/beomi/kcbert-base KcBERT-Base
 #git clone https://huggingface.co/monologg/kobigbird-bert-base KoBigBird-Base
 git lfs uninstall
 cd ../..
-
-# 4. ngrok (optional): https://dashboard.ngrok.com/get-started/setup
-mkdir -p ngrok
-cd ngrok
-case $(uname -s) in
-Linux)
-  wget https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz
-  tar zxf ngrok-v3-stable-linux-amd64.tgz
-  ;;
-Darwin)
-  wget https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-darwin-amd64.zip
-  unzip ngrok-v3-stable-darwin-amd64.zip
-  ;;
-esac
-mv ngrok ngrok3
-cd ..
