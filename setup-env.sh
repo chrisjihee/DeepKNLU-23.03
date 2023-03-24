@@ -14,7 +14,7 @@ else
   pip install --upgrade torch
 fi
 pip install --upgrade evaluate datasets tokenizers matplotlib
-pip install --upgrade notebook ipython ipynbname ipywidgets jupyterlab tornado==6.1
+pip install --upgrade notebook ipython ipynbname ipywidgets jupyterlab jupyter tornado==6.1
 
 # 2. editable library
 rm -rf transformers lightning chrisbase chrislab
