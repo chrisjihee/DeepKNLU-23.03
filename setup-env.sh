@@ -1,7 +1,7 @@
 #!/bin/bash
 # Tested on Ubuntu 20.04, Mac 13.2
 # 1. uneditable library
-export PROJECT_NAME="DeepKorean-23.03"
+export PROJECT_NAME="DeepKorNLU-23.03"
 export PYTHON_VER="3.10"
 conda update -n base -c defaults conda -y
 conda create -n $PROJECT_NAME python=$PYTHON_VER -y
