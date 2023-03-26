@@ -13,8 +13,6 @@ if [ $(uname -s) = "Linux" ]; then
 else
   pip install --upgrade torch
 fi
-pip install --upgrade evaluate datasets tokenizers
-pip install --upgrade notebook ipython ipynbname ipywidgets jupyterlab jupyter tornado==6.1
 
 # 2. editable library
 rm -rf transformers lightning chrisbase chrislab
