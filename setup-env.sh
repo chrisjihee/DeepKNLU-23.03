@@ -6,13 +6,13 @@ export PYTHON_VER="3.10"
 conda update -n base -c defaults conda -y
 conda create -n $PROJECT_NAME python=$PYTHON_VER -y
 conda activate $PROJECT_NAME
-if [ $(uname -s) = "Linux" ]; then
-  export CUDA_VER="11.7"
-  conda install cuda-nvcc=$CUDA_VER cudatoolkit=$CUDA_VER -c nvidia -y
-  pip install --upgrade torch --index-url https://download.pytorch.org/whl/cu117
-else
-  pip install --upgrade torch
-fi
+#if [ $(uname -s) = "Linux" ]; then
+#  export CUDA_VER="11.7"
+#  conda install cuda-nvcc=$CUDA_VER cudatoolkit=$CUDA_VER -c nvidia -y
+#  pip install --upgrade torch --index-url https://download.pytorch.org/whl/cu117
+#else
+#  pip install --upgrade torch
+#fi
 
 # 2. editable library
 rm -rf transformers lightning chrisbase chrislab
