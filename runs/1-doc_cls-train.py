@@ -11,10 +11,10 @@ config = ClassificationTrainArguments(
     downstream_data_home="data",
     downstream_data_name="nsmc",
     learning_rate=5e-5,
-    max_seq_length=128,
-    batch_size=360,
+    max_seq_length=32,
+    batch_size=500,
     epochs=1,
     seed=7,
 ).save_working_config()
 
-# cli.train(config)
+cli.train(config)
