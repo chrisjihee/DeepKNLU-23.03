@@ -10,8 +10,6 @@ conda activate $PROJECT_NAME
 #  export CUDA_VER="11.7"
 #  conda install cuda-nvcc=$CUDA_VER cudatoolkit=$CUDA_VER -c nvidia -y
 #  pip install --upgrade torch --index-url https://download.pytorch.org/whl/cu117
-#else
-#  pip install --upgrade torch
 #fi
 
 # 2. editable library
