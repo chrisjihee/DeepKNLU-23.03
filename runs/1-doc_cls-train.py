@@ -4,7 +4,7 @@ from chrislab.ratsnlp import cli
 from ratsnlp.nlpbook.classification.arguments import ClassificationTrainArguments
 
 config = ClassificationTrainArguments(
-    env=ProjectEnv(project="DeepKorNLU"),
+    env=ProjectEnv(project="DeepKorNLU", running_gpus="0"),
     pretrained_model_path="model/pretrained/KcBERT-Base",
     downstream_model_home=f"model/finetuned/nsmc-{now('%m%d')}",
     downstream_model_file="{epoch}-{val_loss:.3f}-{val_acc:.3f}",
@@ -12,7 +12,10 @@ config = ClassificationTrainArguments(
     downstream_data_name="nsmc",
     learning_rate=5e-5,
     max_seq_length=32,
-    batch_size=500,
+    batch_size=600,
+    accelerator="gpu",
+    precision="16-mixed",
+    devices="auto",
     epochs=1,
     seed=7,
 ).save_working_config()
