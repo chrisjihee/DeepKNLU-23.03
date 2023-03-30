@@ -13,9 +13,7 @@ config = ClassificationTrainArguments(
     learning_rate=5e-5,
     max_seq_length=32,
     batch_size=600,
-    accelerator="gpu",
     precision="16-mixed",
-    devices="auto",
     epochs=1,
     seed=7,
 ).save_working_config()
