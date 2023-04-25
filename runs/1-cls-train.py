@@ -18,4 +18,4 @@ config = ClassificationTrainArguments(
     seed=7,
 ).save_working_config()
 
-cli.train(config)
+cli.train_cls(config)

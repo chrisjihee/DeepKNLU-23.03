@@ -10,4 +10,4 @@ config = ClassificationDeployArguments(
     max_seq_length=128,
 ).save_working_config()
 
-cli.serve(config)
+cli.serve_cls(config)
