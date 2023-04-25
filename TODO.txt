@@ -21,7 +21,7 @@
  - [적용] KLUE NLI, STS 태스크 적용하기
 
 # 6장. 단어에 꼬리표 달기 (Word Sequence Classification)
- - [실습] 개체명 인식 모델 학습하기
+ - [완료] 개체명 인식 모델 학습하기
    https://ratsgo.github.io/nlpbook/docs/ner/train/
  - [실습] 학습 마친 모델을 실전 투입하기
    https://ratsgo.github.io/nlpbook/docs/ner/inference/
