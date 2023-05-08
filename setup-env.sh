@@ -38,3 +38,7 @@ git clone https://huggingface.co/beomi/kcbert-base KcBERT-Base
 #git clone https://huggingface.co/monologg/kobigbird-bert-base KoBigBird-Base
 git lfs uninstall
 cd ../..
+
+# 3. pretrained model (private)
+#ln -s /dat/proj/pretrained-com model
+#ln -s /dat/proj/pretrained-pro model
