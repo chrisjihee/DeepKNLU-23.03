@@ -1,9 +1,9 @@
 from chrisbase.io import ProjectEnv
 from chrisbase.time import now
 from chrislab.ratsnlp import cli
-from ratsnlp.nlpbook.classification.arguments import ClassificationTrainArguments
+from ratsnlp.nlpbook.arguments import NLUTrainArguments
 
-config = ClassificationTrainArguments(
+config = NLUTrainArguments(
     env=ProjectEnv(project="DeepKorNLU", running_gpus="0"),
     pretrained_model_path="model/pretrained/KcBERT-Base",
     downstream_model_home=f"model/finetuned/nsmc-{now('%m%d')}",
