@@ -1,8 +1,8 @@
 from chrisbase.io import ProjectEnv
 from chrislab.ratsnlp import cli
-from ratsnlp.nlpbook.arguments import NLUDeployArguments
+from ratsnlp.nlpbook.arguments import NLUServerArguments
 
-config = NLUDeployArguments(
+config = NLUServerArguments(
     env=ProjectEnv(project="DeepKorNLU"),
     pretrained_model_path="model/pretrained/KcBERT-Base",
     downstream_model_home="model/finetuned/nsmc-0509",
