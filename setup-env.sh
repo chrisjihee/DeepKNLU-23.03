@@ -3,14 +3,14 @@
 # 1. uneditable library
 export PROJECT_NAME="DeepKorNLU-23.03"
 export PYTHON_VER="3.10"
+export CUDA_VER="11.7"
 conda update -n base -c defaults conda -y
 conda create -n $PROJECT_NAME python=$PYTHON_VER -y
 conda activate $PROJECT_NAME
-#if [ $(uname -s) = "Linux" ]; then
-#  export CUDA_VER="11.7"
-#  conda install cuda-nvcc=$CUDA_VER cudatoolkit=$CUDA_VER -c nvidia -y
-#  pip install --upgrade torch --index-url https://download.pytorch.org/whl/cu117
-#fi
+if [ $(uname -s) = "Linux" ]; then
+  conda install cuda-nvcc=$CUDA_VER cudatoolkit=$CUDA_VER -c nvidia -y
+  pip install --upgrade torch --index-url https://download.pytorch.org/whl/cu117
+fi
 
 # 2. editable library
 rm -rf transformers lightning chrisbase chrislab
@@ -42,3 +42,10 @@ cd ../..
 # 3. pretrained model (private)
 #ln -s /dat/proj/pretrained-com model
 #ln -s /dat/proj/pretrained-pro model
+
+# 4. eval
+pip install importlib-metadata==4.13.0
+pip install overrides==3.1.0
+pip install pytorch-lightning==1.1.0
+pip instll scikit-learn
+pip install seqeval
