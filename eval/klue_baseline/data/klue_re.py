@@ -9,8 +9,8 @@ from overrides import overrides
 from torch.utils.data import TensorDataset
 from transformers import PreTrainedTokenizer
 
-from klue_baseline.data.base import DataProcessor, InputExample, InputFeatures, KlueDataModule
-from klue_baseline.data.utils import check_tokenizer_type
+from ..data.base import DataProcessor, InputExample, InputFeatures, KlueDataModule
+from ..data.utils import check_tokenizer_type
 
 logger = logging.getLogger(__name__)
 

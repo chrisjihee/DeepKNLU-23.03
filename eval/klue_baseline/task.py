@@ -5,9 +5,9 @@ import os
 
 from transformers import AutoTokenizer
 
-from klue_baseline.data import DataProcessor, KlueDataModule
-from klue_baseline.models import BaseTransformer, Mode
-from klue_baseline.utils import Command
+from .data import DataProcessor, KlueDataModule
+from .models import BaseTransformer, Mode
+from .utils import Command
 
 logger = logging.getLogger(__name__)
 

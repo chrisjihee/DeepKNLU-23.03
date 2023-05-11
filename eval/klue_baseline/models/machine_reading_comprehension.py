@@ -9,7 +9,7 @@ from transformers import AutoModelForQuestionAnswering
 from transformers.data.metrics.squad_metrics import compute_predictions_logits
 from transformers.data.processors.squad import SquadResult
 
-from klue_baseline.models import BaseTransformer, Mode
+from ..models import BaseTransformer, Mode
 
 logger = logging.getLogger(__name__)
 

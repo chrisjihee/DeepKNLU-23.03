@@ -9,7 +9,7 @@ from tqdm import tqdm
 from transformers import PreTrainedTokenizer
 from transformers.data.processors.squad import SquadExample, squad_convert_examples_to_features
 
-from klue_baseline.data.base import DataProcessor, KlueDataModule
+from ..data.base import DataProcessor, KlueDataModule
 
 logger = logging.getLogger(__name__)
 

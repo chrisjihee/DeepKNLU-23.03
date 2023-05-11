@@ -3,7 +3,7 @@ __version__ = "0.1.0"
 __author__ = "KLUE project contributors"
 
 
-from klue_baseline.data import (
+from .data import (
     KlueDPProcessor,
     KlueMRCProcessor,
     KlueNERProcessor,
@@ -13,7 +13,7 @@ from klue_baseline.data import (
     WoSProcessor,
     YNATProcessor,
 )
-from klue_baseline.metrics import (
+from .metrics import (
     KlueDP_LASMacroF1,
     KlueDP_LASMicroF1,
     KlueDP_UASMacroF1,
@@ -31,7 +31,7 @@ from klue_baseline.metrics import (
     WoS_SlotMicroF1,
     YNAT_MacroF1,
 )
-from klue_baseline.models import (
+from .models import (
     DPTransformer,
     DSTTransformer,
     MRCTransformer,
@@ -40,7 +40,7 @@ from klue_baseline.models import (
     SCTransformer,
     STSTransformer,
 )
-from klue_baseline.task import KlueTask
+from .task import KlueTask
 
 # Register Task - KlueTask(processor, model_type, metrics)
 KLUE_TASKS = {

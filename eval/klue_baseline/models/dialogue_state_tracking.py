@@ -12,7 +12,7 @@ import torch.nn.functional as F
 from overrides import overrides
 from transformers import AutoModel
 
-from klue_baseline.models import BaseTransformer, Mode
+from ..models import BaseTransformer, Mode
 
 logger = logging.getLogger(__name__)
 

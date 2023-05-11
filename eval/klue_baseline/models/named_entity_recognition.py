@@ -6,8 +6,8 @@ import torch
 from overrides import overrides
 from transformers import AutoModelForTokenClassification
 
-from klue_baseline.data import check_tokenizer_type
-from klue_baseline.models import BaseTransformer, Mode
+from ..data import check_tokenizer_type
+from ..models import BaseTransformer, Mode
 
 logger = logging.getLogger(__name__)
 

@@ -20,7 +20,7 @@ from typing import List, Optional, Union
 import transformers
 from transformers import PreTrainedTokenizer
 
-from klue_baseline.data.base import InputExample, InputFeatures
+from ..data.base import InputExample, InputFeatures
 
 logger = logging.getLogger(__name__)
 

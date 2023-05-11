@@ -11,8 +11,8 @@ from overrides import overrides
 from torch.utils.data import TensorDataset
 from transformers import PreTrainedTokenizer
 
-from klue_baseline.data.base import DataProcessor, InputFeatures, KlueDataModule
-from klue_baseline.data.utils import convert_examples_to_features
+from ..data.base import DataProcessor, InputFeatures, KlueDataModule
+from ..data.utils import convert_examples_to_features
 
 logger = logging.getLogger(__name__)
 

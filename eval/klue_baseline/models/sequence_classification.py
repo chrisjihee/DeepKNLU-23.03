@@ -6,7 +6,7 @@ import torch
 from overrides import overrides
 from transformers import AutoModelForSequenceClassification
 
-from klue_baseline.models import BaseTransformer, Mode
+from ..models import BaseTransformer, Mode
 
 logger = logging.getLogger(__name__)
 

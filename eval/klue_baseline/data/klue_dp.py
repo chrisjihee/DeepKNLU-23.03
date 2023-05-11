@@ -9,7 +9,7 @@ from overrides import overrides
 from torch.utils.data import DataLoader, TensorDataset
 from transformers import PreTrainedTokenizer
 
-from klue_baseline.data.base import DataProcessor, KlueDataModule
+from ..data.base import DataProcessor, KlueDataModule
 
 logger = logging.getLogger(__name__)
 

@@ -13,8 +13,8 @@ from torch.nn.parameter import Parameter
 from torch.nn.utils.rnn import pack_padded_sequence, pad_packed_sequence
 from transformers import AutoModel
 
-from klue_baseline.data.klue_dp import get_dep_labels, get_pos_labels
-from klue_baseline.models import BaseTransformer, Mode
+from ..data.klue_dp import get_dep_labels, get_pos_labels
+from ..models import BaseTransformer, Mode
 
 logger = logging.getLogger(__name__)
 

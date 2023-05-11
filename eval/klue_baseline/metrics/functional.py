@@ -7,8 +7,8 @@ from scipy.stats import pearsonr
 from seqeval.metrics import f1_score as ner_f1_score
 from seqeval.scheme import IOB2
 
-from klue_baseline.data.klue_mrc import KlueMRCExample
-from klue_baseline.models.dependency_parsing import DPResult
+from ..data.klue_mrc import KlueMRCExample
+from ..models.dependency_parsing import DPResult
 
 from .utils import (
     KLUE_MRC_NUM_QUESTION_TYPE,
