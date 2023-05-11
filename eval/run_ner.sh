@@ -10,3 +10,4 @@ VERSION="v1.1"
 task="klue-ner"
 for model_name in "klue/roberta-small" "klue/roberta-base"; do
     python run_klue.py train --task ${task} --output_dir ${OUTPUT_DIR} --data_dir ${DATA_DIR}/${task}-${VERSION} --model_name_or_path ${model_name} --num_train_epochs 3 --max_seq_length 510 --metric_key character_macro_f1 --gpus 4 --num_workers 4
+done
