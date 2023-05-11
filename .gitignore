@@ -1,16 +1,13 @@
 # project
 setup-git.sh
 /data/korquad
-/flask-ngrokpy
-/flask-ngrok
+/data/**/cached_*
 /transformers
 /lightning
-/chrisdict
 /chrisbase
 /chrislab
-/ratsnlp
-/data/**/cached_*
 /ngrok
+/KLUE-Baseline
 
 # pytorch
 .idea/
