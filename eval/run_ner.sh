@@ -1,13 +1,4 @@
 #!/bin/bash
 
-set +x
-
-OUTPUT_DIR="klue_output"
-DATA_DIR="data/klue_benchmark"  # default submodule for data from https://github.com/KLUE-benchmark/KLUE
-VERSION="v1.1"
-
-# KLUE-NER
-task="klue-ner"
-for model_name in "klue/roberta-small" "klue/roberta-base"; do
-    python run_klue.py train --task ${task} --output_dir ${OUTPUT_DIR} --data_dir ${DATA_DIR}/${task}-${VERSION} --model_name_or_path ${model_name} --num_train_epochs 3 --max_seq_length 510 --metric_key character_macro_f1 --gpus 0 --num_workers 4
-done
+#python run_klue.py train --task klue-ner --output_dir klue_output0 --data_dir data/klue_benchmark/klue-ner-mini --model_name_or_path klue/roberta-small --num_train_epochs 1 --max_seq_length 32 --metric_key character_macro_f1 --gpus 0 --num_workers 4
+python run_klue.py train --task klue-ner --output_dir klue_output1 --data_dir data/klue_benchmark/klue-ner-v1.1 --model_name_or_path klue/roberta-small --num_train_epochs 3 --max_seq_length 510 --metric_key character_macro_f1 --gpus 0 --num_workers 4

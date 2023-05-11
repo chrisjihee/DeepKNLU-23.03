@@ -123,3 +123,4 @@ dmypy.json
 
 # custom
 klue_output/
+klue_output*/
