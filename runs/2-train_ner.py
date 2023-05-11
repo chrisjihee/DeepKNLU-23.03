@@ -12,10 +12,10 @@ config = NLUTrainerArguments(
     downstream_data_home="data",
     downstream_data_name="ner",
     learning_rate=5e-5,
-    max_seq_length=64,
-    batch_size=640,
+    max_seq_length=50,
+    batch_size=100,
     precision="16-mixed",
-    epochs=3,
+    epochs=1,
     seed=7,
 ).save_working_config()
 
