@@ -66,7 +66,7 @@ class KlueTask:
 
             args.dataset_size = len(self.train_loader.dataset)  # total_steps
 
-        elif command == Command.Evaluate:
+        elif command == Command.Valid:
             self.val_loader = datamodule.val_dataloader()
         elif command == Command.Test:
             self.test_loader = datamodule.test_dataloader()

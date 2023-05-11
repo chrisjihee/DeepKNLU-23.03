@@ -190,7 +190,7 @@ def main() -> None:
                 print(f" - {k} : {v}")
         print("-" * 80)
 
-    elif command == Command.Evaluate:
+    elif command == Command.Valid:
         trainer.test(task.model, test_dataloaders=task.val_loader)
     elif command == Command.Test:
         trainer.test(task.model, test_dataloaders=task.test_loader)

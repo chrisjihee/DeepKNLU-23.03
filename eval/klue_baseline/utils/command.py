@@ -4,9 +4,9 @@ from typing import List
 class Command:
 
     Train = "train"
-    Evaluate = "evaluate"
+    Valid = "valid"
     Test = "test"
 
     @staticmethod
     def tolist() -> List[str]:
-        return [Command.Train, Command.Evaluate, Command.Test]
+        return [Command.Train, Command.Valid, Command.Test]
