@@ -5,5 +5,6 @@ export PYTHON_VER="3.7"
 conda update -n base -c defaults conda -y
 conda create -n $PROJECT_NAME python=$PYTHON_VER -y
 conda activate $PROJECT_NAME
+pip install --upgrade torch==1.7.0 --index-url https://download.pytorch.org/whl/cu110
 pip install -r requirements.txt
 
