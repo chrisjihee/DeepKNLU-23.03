@@ -2,7 +2,7 @@
 # Tested on Ubuntu 20.04
 # 1. uneditable library
 export PROJECT_NAME="DeepKorNLU-23.03"
-export PYTHON_VER="3.9"
+export PYTHON_VER="3.10"
 export CUDA_VER="11.7"
 conda update -n base -c defaults conda -y
 conda create -n $PROJECT_NAME python=$PYTHON_VER -y

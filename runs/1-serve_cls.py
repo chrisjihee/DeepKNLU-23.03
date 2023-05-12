@@ -4,10 +4,10 @@ from ratsnlp.nlpbook.arguments import NLUServerArguments
 
 config = NLUServerArguments(
     env=ProjectEnv(project="DeepKorNLU"),
-    pretrained_model_path="model/pretrained/KcBERT-Base",
-    downstream_model_home="model/finetuned/nsmc-0509",
+    pretrained_model_path="model/pretrained-com/KcBERT-Base",
+    downstream_model_home="model/finetuned/nsmc-0512",
     downstream_model_file=None,
-    max_seq_length=64,
+    max_seq_length=50,
 ).save_working_config()
 
 cli.serve_cls(config)
