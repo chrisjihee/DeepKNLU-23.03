@@ -47,6 +47,5 @@ cd ../..
 # 4. eval
 pip install importlib-metadata==4.13.0
 pip install overrides==3.1.0
-pip install pytorch-lightning==1.1.0
-pip instll scikit-learn
+pip install scikit-learn
 pip install seqeval
