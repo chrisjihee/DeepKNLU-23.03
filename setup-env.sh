@@ -1,25 +1,26 @@
 #!/bin/bash
-# Tested on Ubuntu 20.04, Mac 13.2
+# Tested on Ubuntu 20.04
 # 1. uneditable library
 export PROJECT_NAME="DeepKorNLU-23.03"
-export PYTHON_VER="3.10"
+export PYTHON_VER="3.8"
 export CUDA_VER="11.7"
 conda update -n base -c defaults conda -y
 conda create -n $PROJECT_NAME python=$PYTHON_VER -y
 conda activate $PROJECT_NAME
 if [ $(uname -s) = "Linux" ]; then
   conda install cuda-nvcc=$CUDA_VER cudatoolkit=$CUDA_VER -c nvidia -y
-  pip install --upgrade torch --index-url https://download.pytorch.org/whl/cu117
+  pip install torch==1.13.1 --index-url https://download.pytorch.org/whl/cu117
 fi
+pip install torch==1.13.1
+pip install pytorch-lightning==1.9.5
+pip install lightning==1.9.5
 
 # 2. editable library
-rm -rf transformers lightning chrisbase chrislab
-git clone git@github.com:huggingface/transformers.git -b v4.27.3
-git clone git@github.com:Lightning-AI/lightning.git -b 2.0.0
+rm -rf transformers chrisbase chrislab
+git clone git@github.com:huggingface/transformers.git -b v4.29.0
 git clone git@github.com:chrisjihee/chrisbase.git
 git clone git@github.com:chrisjihee/chrislab.git
 pip install --editable transformers
-pip install --editable lightning
 pip install --editable chrisbase
 pip install --editable chrislab
 

@@ -12,9 +12,9 @@ config = NLUTrainerArguments(
     downstream_data_home="data",
     downstream_data_name="nsmc",
     learning_rate=5e-5,
-    max_seq_length=64,
-    batch_size=640,
-    precision="16-mixed",
+    max_seq_length=50,
+    batch_size=500,
+    precision=16,
     epochs=1,
     seed=7,
 ).save_working_config()
