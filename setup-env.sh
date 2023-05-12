@@ -2,7 +2,7 @@
 # Tested on Ubuntu 20.04
 # 1. uneditable library
 export PROJECT_NAME="DeepKorNLU-23.03"
-export PYTHON_VER="3.8"
+export PYTHON_VER="3.9"
 export CUDA_VER="11.7"
 conda update -n base -c defaults conda -y
 conda create -n $PROJECT_NAME python=$PYTHON_VER -y
@@ -12,8 +12,6 @@ if [ $(uname -s) = "Linux" ]; then
   pip install torch==1.13.1 --index-url https://download.pytorch.org/whl/cu117
 fi
 pip install torch==1.13.1
-pip install pytorch-lightning==1.9.5
-pip install lightning==1.9.5
 
 # 2. editable library
 rm -rf transformers chrisbase chrislab
@@ -45,7 +43,5 @@ cd ../..
 #ln -s /dat/proj/pretrained-pro model
 
 # 4. eval
-pip install importlib-metadata==4.13.0
 pip install overrides==3.1.0
-pip install scikit-learn
-pip install seqeval
+pip install importlib-metadata==4.13.0
