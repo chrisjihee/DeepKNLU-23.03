@@ -125,3 +125,6 @@ dmypy.json
 klue_output*/
 klue_ner_*/
 pretrained*/
+pretrained-*/
+pretrained-com/
+pretrained-pro/
