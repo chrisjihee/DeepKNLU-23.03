@@ -1,7 +1,7 @@
 from chrisbase.io import ProjectEnv
 from chrisbase.time import now
-from chrislab.ratsnlp import cli
-from ratsnlp.nlpbook.arguments import NLUTrainerArguments
+from nlpbook.arguments import NLUTrainerArguments
+from nlpbook.cls import cli
 
 config = NLUTrainerArguments(
     env=ProjectEnv(project="DeepKorNLU", running_gpus="0"),

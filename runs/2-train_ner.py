@@ -1,7 +1,7 @@
 from chrisbase.io import ProjectEnv
 from chrisbase.time import now
-from chrislab.ratsnlp import cli
-from ratsnlp.nlpbook.arguments import NLUTrainerArguments
+from nlpbook.arguments import NLUTrainerArguments
+from nlpbook.ner import cli
 
 config = NLUTrainerArguments(
     env=ProjectEnv(project="DeepKorNLU", running_gpus="0"),
@@ -11,10 +11,14 @@ config = NLUTrainerArguments(
     downstream_task_name="ner",
     downstream_data_home="data",
     downstream_data_name="kmou-ner",
-    learning_rate=5e-5,
+    downstream_data_file="train.txt",
     max_seq_length=50,
     batch_size=100,
+    accelerator="gpu",
     precision=16,
+    strategy="single_device",
+    devices=1,
+    learning_rate=5e-5,
     epochs=1,
     seed=7,
 ).save_working_config()

@@ -1,6 +1,6 @@
 from chrisbase.io import ProjectEnv
-from chrislab.ratsnlp import cli
-from ratsnlp.nlpbook.arguments import NLUServerArguments
+from nlpbook.arguments import NLUServerArguments
+from nlpbook.cls import cli
 
 config = NLUServerArguments(
     env=ProjectEnv(project="DeepKorNLU"),
