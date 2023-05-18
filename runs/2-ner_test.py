@@ -3,21 +3,23 @@ from nlpbook.ner import cli
 
 args = TesterArguments(
     env=ProjectEnv(project="DeepKorNLU", running_gpus="0"),
-    model=ModelArgs(
-        data_file=DataFiles(test="valid.txt"),
-        data_name="kmou-ner",
-        data_home="data",
-        data_caching=False,
-        finetuned_name=None,
-        finetuned_home="model/finetuned",
-        pretrained_name="model/pretrained-com/KcBERT-Base",
+    data=DataOption(
+        home="data",
+        name="kmou-ner",
+        files=DataFiles(test="valid.txt"),
+        caching=False,
+    ),
+    model=ModelOption(
+        pretrained="model/pretrained-com/KcBERT-Base",
+        finetuning_home="model/finetuning",
+        finetuning_name=None,
         max_seq_length=50,
     ),
-    hardware=HardwareArgs(
-        batch_size=100,
+    hardware=HardwareOption(
         accelerator="gpu",
+        batch_size=100,
         precision=16,
     ),
 )
-with UsingArguments(args) as args_file:
+with ArgumentsUsing(args) as args_file:
     cli.test(args_file)
