@@ -1,21 +1,23 @@
-from chrisbase.io import ProjectEnv
-
-from nlpbook.arguments import NLUTesterArguments, DataFiles
+from nlpbook.arguments import *
 from nlpbook.ner import cli
 
-config = NLUTesterArguments(
+args = TesterArguments(
     env=ProjectEnv(project="DeepKorNLU", running_gpus="0"),
-    downstream_data_file=DataFiles(test="valid.txt"),
-    downstream_data_name="kmou-ner",
-    downstream_data_home="data",
-    downstream_data_caching=False,
-    downstream_model_file=None,
-    downstream_model_home="model/finetuned/kmou-ner-" + "0516",
-    pretrained_model_path="model/pretrained-com/KcBERT-Base",
-    max_seq_length=50,
-    batch_size=100,
-    accelerator="gpu",
-    precision=16,
-).save_working_config()
-
-cli.test(config)
+    model=ModelArgs(
+        data_file=DataFiles(test="valid.txt"),
+        data_name="kmou-ner",
+        data_home="data",
+        data_caching=False,
+        finetuned_name=None,
+        finetuned_home="model/finetuned",
+        pretrained_name="model/pretrained-com/KcBERT-Base",
+        max_seq_length=50,
+    ),
+    hardware=HardwareArgs(
+        batch_size=100,
+        accelerator="gpu",
+        precision=16,
+    ),
+)
+with UsingArguments(args) as args_file:
+    cli.test(args_file)

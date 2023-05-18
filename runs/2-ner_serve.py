@@ -1,14 +1,15 @@
-from chrisbase.io import ProjectEnv
-from nlpbook.arguments import NLUServerArguments
+from nlpbook.arguments import *
 from nlpbook.ner import cli
 
-config = NLUServerArguments(
+args = ServerArguments(
     env=ProjectEnv(project="DeepKorNLU"),
-    pretrained_model_path="model/pretrained-com/KcBERT-Base",
-    downstream_model_home="model/finetuned/kmou-ner-" + "0516",
-    downstream_model_file=None,
-    downstream_task_name="ner",
-    max_seq_length=50,
-).save_working_config()
-
-cli.serve(config)
+    model=ModelArgs(
+        data_name="kmou-ner",
+        finetuned_name=None,
+        finetuned_home="model/finetuned",
+        pretrained_name="model/pretrained-com/KcBERT-Base",
+        max_seq_length=50,
+    ),
+)
+with UsingArguments(args) as args_file:
+    cli.serve(args_file)
