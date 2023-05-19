@@ -5,7 +5,7 @@ args = TrainerArguments(
     env=ProjectEnv(project="DeepKorNLU", running_gpus="0"),
     data=DataOption(
         home="data",
-        name="klue-ner",
+        name="klue-ner-mini",
         files=DataFiles(
             train="klue-ner-v1.1_train.jsonl",
             valid="klue-ner-v1.1_dev.jsonl"
