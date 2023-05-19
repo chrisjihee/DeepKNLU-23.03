@@ -6,7 +6,7 @@ args = TesterArguments(
     data=DataOption(
         home="data",
         name="kmou-ner",
-        files=DataFiles(test="valid.txt"),
+        files=DataFiles(test="valid.jsonl"),
         caching=False,
     ),
     model=ModelOption(
