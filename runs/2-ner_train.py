@@ -22,9 +22,9 @@ args = TrainerArguments(
     ),
     learning=LearningOption(
         condition="min val_loss",
-        log_steps=10,
-        num_save=100,
-        epochs=1,
+        log_steps=20,
+        num_save=10,
+        epochs=3,
         speed=5e-5,
         seed=7,
     ),
