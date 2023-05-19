@@ -1,0 +1,55 @@
+{
+  "env": {
+    "project": "DeepKorNLU",
+    "hostname": "chris137",
+    "hostaddr": "129.254.164.137",
+    "python_path": "/home/chris/mambaforge/envs/DeepKorNLU-23.03/bin/python",
+    "working_path": "/dat/proj/DeepKorNLU-23.03",
+    "running_file": "runs/2-ner_train.py",
+    "running_gpus": "0",
+    "argument_file": "arguments-train.json"
+  },
+  "data": {
+    "name": "kmou-ner",
+    "home": "data",
+    "files": {
+      "train": "train.jsonl",
+      "valid": "valid.jsonl",
+      "test": null
+    },
+    "caching": false,
+    "redownload": false
+  },
+  "model": {
+    "pretrained": "model/pretrained-com/KcBERT-Base",
+    "finetuning_home": "model/finetuning",
+    "finetuning_name": "{epoch:02d}, {step:04d}, {train_loss:.4f}, {train_acc:.4f}, {val_loss:.4f}, {val_acc:.4f}",
+    "max_seq_length": 50
+  },
+  "timer": {
+    "started": "[05.19 23:26:32]",
+    "settled": "[05.19 23:43:07]",
+    "elapsed": "00:16:35.285"
+  },
+  "output": {
+    "dir_path": "model/finetuning/kmou-ner/train-0519.2326",
+    "csv_out": "<pytorch_lightning.loggers.csv_logs.CSVLogger object at 0x7fd14b325450>",
+    "result": {}
+  },
+  "hardware": {
+    "cpu_workers": 32,
+    "accelerator": "gpu",
+    "batch_size": 100,
+    "precision": 16,
+    "strategy": "single_device",
+    "devices": 1
+  },
+  "learning": {
+    "condition": "min val_loss",
+    "log_steps": 10,
+    "num_save": 100,
+    "epochs": 3,
+    "speed": 5e-05,
+    "seed": 7
+  }
+}
