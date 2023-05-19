@@ -5,9 +5,13 @@ args = TrainerArguments(
     env=ProjectEnv(project="DeepKorNLU", running_gpus="0"),
     data=DataOption(
         home="data",
-        name="kmou-ner",
-        files=DataFiles(train="train.jsonl", valid="valid.jsonl"),
+        name="klue-ner",
+        files=DataFiles(
+            train="klue-ner-v1.1_train.jsonl",
+            valid="klue-ner-v1.1_dev.jsonl"
+        ),
         caching=False,
+        redownload=False,
     ),
     model=ModelOption(
         pretrained="model/pretrained-com/KcBERT-Base",
