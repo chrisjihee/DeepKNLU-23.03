@@ -6,7 +6,7 @@ args = TrainerArguments(
     data=DataOption(
         home="data",
         name="kmou-ner",
-        files=DataFiles(train="train.txt", valid="valid.txt"),
+        files=DataFiles(train="train.jsonl", valid="valid.jsonl"),
         caching=False,
     ),
     model=ModelOption(
