@@ -5,7 +5,7 @@ args = TrainerArguments(
     env=ProjectEnv(project="DeepKorNLU", running_gpus="0"),
     data=DataOption(
         home="data",
-        name="klue-ner",
+        name="klue-ner-mini",
         files=DataFiles(
             train="klue-ner-v1.1_train.jsonl",
             valid="klue-ner-v1.1_dev.jsonl"
@@ -28,7 +28,7 @@ args = TrainerArguments(
         condition="max val_acc",
         log_steps=20,
         num_save=10,
-        epochs=3,
+        epochs=1,
         speed=5e-5,
         seed=7,
     ),
