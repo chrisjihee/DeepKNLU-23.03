@@ -10,7 +10,7 @@ args = TrainerArguments(
             train="klue-ner-v1.1_train.jsonl",
             valid="klue-ner-v1.1_dev.jsonl"
         ),
-        caching=False,
+        caching=True,
         redownload=False,
     ),
     model=ModelOption(
@@ -21,12 +21,12 @@ args = TrainerArguments(
     ),
     hardware=HardwareOption(
         accelerator="gpu",
-        batch_size=1,
+        batch_size=100,
         precision=16,
     ),
     learning=LearningOption(
         condition="max val_acc",
-        log_steps=5,
+        log_steps=10,
         num_save=10,
         epochs=1,
         speed=5e-5,
