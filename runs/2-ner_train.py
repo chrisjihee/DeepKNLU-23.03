@@ -5,7 +5,7 @@ args = TrainerArguments(
     env=ProjectEnv(
         project="DeepKorNLU",
         running_gpus="0",
-        on_debugging=True,
+        # on_debugging=True,
         # on_tracing=True,
     ),
     data=DataOption(
