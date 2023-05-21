@@ -13,7 +13,6 @@ args = TrainerArguments(
             train="klue-ner-v1.1_train.jsonl",
             valid="klue-ner-v1.1_dev.jsonl"
         ),
-        caching=False,
         redownload=False,
     ),
     model=ModelOption(
