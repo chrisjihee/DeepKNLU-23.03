@@ -25,13 +25,13 @@ args = TrainerArguments(
     hardware=HardwareOption(
         accelerator="gpu",
         batch_size=100,
-        precision=16,
+        precision=32,
     ),
     learning=LearningOption(
         condition="max val_chr_f1",
         log_steps=50,
         num_save=10,
-        epochs=3,
+        epochs=5,
         speed=5e-5,
         seed=7,
     ),

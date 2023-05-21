@@ -17,10 +17,10 @@ args = TrainerArguments(
         redownload=False,
     ),
     model=ModelOption(
-        pretrained="model/pretrained-com/KcBERT-Base",
+        pretrained="model/pretrained-com/KoELECTRA-Base",
         finetuning_home="model/finetuning",
         finetuning_name="{epoch:02d}, {step:04d}, {val_loss:.3f}, {val_acc:.3f}, {val_chr_f1:.3f}, {val_ent_f1:.3f}",
-        max_seq_length=64,
+        max_seq_length=128,
     ),
     hardware=HardwareOption(
         accelerator="gpu",
