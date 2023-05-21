@@ -2,7 +2,7 @@ from nlpbook.arguments import *
 from nlpbook.ner import cli
 
 args = TrainerArguments(
-    env=ProjectEnv(project="DeepKorNLU", running_gpus="0"),
+    env=ProjectEnv(project="DeepKorNLU", running_gpus="0", debugging=False, tracing=False),
     data=DataOption(
         home="data",
         name="klue-ner-mini",
@@ -10,7 +10,7 @@ args = TrainerArguments(
             train="klue-ner-v1.1_train.jsonl",
             valid="klue-ner-v1.1_dev.jsonl"
         ),
-        caching=True,
+        caching=False,
         redownload=False,
     ),
     model=ModelOption(
@@ -21,12 +21,12 @@ args = TrainerArguments(
     ),
     hardware=HardwareOption(
         accelerator="gpu",
-        batch_size=100,
+        batch_size=2,  # 100,
         precision=16,
     ),
     learning=LearningOption(
         condition="max val_acc",
-        log_steps=10,
+        log_steps=3,  # 10,
         num_save=10,
         epochs=1,
         speed=5e-5,
