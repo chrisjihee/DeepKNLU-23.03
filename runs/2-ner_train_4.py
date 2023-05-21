@@ -4,7 +4,7 @@ from nlpbook.ner import cli
 args = TrainerArguments(
     env=ProjectEnv(
         project="DeepKorNLU",
-        running_gpus="0",
+        running_gpus="3",
     ),
     data=DataOption(
         home="data",
@@ -17,8 +17,8 @@ args = TrainerArguments(
         redownload=False,
     ),
     model=ModelOption(
-        pretrained="model/pretrained-com/KcBERT-Base",
-        finetuning_home="model/finetuning",
+        pretrained="model/pretrained-pro/ETRI-RoBERTa-Base-bbpe23.03",
+        finetuning_home="model/finetuning_4",
         finetuning_name="{epoch:02d}, {step:04d}, {val_loss:.3f}, {val_acc:.3f}, {val_chr_f1:.3f}, {val_ent_f1:.3f}",
         max_seq_length=64,
     ),
