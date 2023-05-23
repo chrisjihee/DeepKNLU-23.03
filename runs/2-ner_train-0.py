@@ -2,10 +2,8 @@ from nlpbook.arguments import *
 from nlpbook.ner import cli
 
 args = TrainerArguments(
-    env=ProjectEnv(
-        project="DeepKorNLU",
-        running_gpus="0",
-    ),
+    job=JobTimer(name="from-KPF-BERT"),
+    env=ProjectEnv(project="DeepKorNLU", running_gpus="0"),
     data=DataOption(
         home="data",
         name="klue-ner-mini",
@@ -14,7 +12,7 @@ args = TrainerArguments(
             valid="klue-ner-v1.1_dev.jsonl"
         ),
         redownload=False,
-        show_examples=1,
+        show_examples=0,
     ),
     model=ModelOption(
         # pretrained="model/pretrained-pro/ETRI-RoBERTa-Base-bbpe23.03",
