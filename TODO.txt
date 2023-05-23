@@ -44,5 +44,7 @@
 
 # 추후
  - [구현] ET5, KE-T5, KE-ByT5 사용하여 4~7장 태스크 수행하기
- - [구현] lightning.fabric.Fabric 사용하여 4~7장 태스크 수행하기
-   https://github.com/Lightning-AI/lightning/blob/master/examples/fabric/image_classifier/train_fabric.py
+ - [구현] lightning examples
+   - https://github.com/Lightning-AI/lightning/blob/master/examples/fabric/image_classifier/train_fabric.py
+   - https://github.com/Lightning-AI/lightning/blob/master/examples/fabric/language_model/train.py
+   - https://github.com/Lightning-AI/lightning/blob/master/examples/pytorch/basics/transformer.py
