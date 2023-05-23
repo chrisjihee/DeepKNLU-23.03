@@ -9,16 +9,18 @@ conda create -n $PROJECT_NAME python=$PYTHON_VER -y
 conda activate $PROJECT_NAME
 if [ $(uname -s) = "Linux" ]; then
   conda install cuda-nvcc=$CUDA_VER cudatoolkit=$CUDA_VER -c nvidia -y
-  pip install torch==1.13.1 --index-url https://download.pytorch.org/whl/cu117
+  pip install torch --index-url https://download.pytorch.org/whl/cu117
 fi
-pip install torch==1.13.1
+pip install torch
 
 # 2. editable library
-rm -rf transformers chrisbase chrislab
-git clone git@github.com:huggingface/transformers.git -b v4.29.0
+rm -rf transformers lightning chrisbase chrislab
+git clone git@github.com:huggingface/transformers.git -b v4.29.2
+git clone git@github.com:Lightning-AI/lightning.git -b 2.0.2
 git clone git@github.com:chrisjihee/chrisbase.git
 git clone git@github.com:chrisjihee/chrislab.git
 pip install --editable transformers
+pip install --editable lightning
 pip install --editable chrisbase
 pip install --editable chrislab
 
