@@ -14,6 +14,7 @@ args = TrainerArguments(
             valid="klue-ner-v1.1_dev.jsonl"
         ),
         redownload=False,
+        show_examples=1,
     ),
     model=ModelOption(
         # pretrained="model/pretrained-pro/ETRI-RoBERTa-Base-bbpe23.03",
@@ -39,4 +40,4 @@ args = TrainerArguments(
     ),
 )
 with ArgumentsUsing(args) as args_file:
-    cli.train(args_file)
+    cli.new_train(args_file)
