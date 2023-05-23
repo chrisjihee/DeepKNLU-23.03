@@ -21,7 +21,7 @@ args = TrainerArguments(
         # pretrained="model/pretrained-com/KLUE-RoBERTa",
         pretrained="model/pretrained-com/KPF-BERT",
         finetuning_home="model/finetuning",
-        finetuning_name="{epoch:02d}, {step:04d}, {val_loss:.3f}, {val_acc:.3f}, {val_chr_f1:.3f}, {val_ent_f1:.3f}",
+        finetuning_name="{epoch:02d}, {step:04d}, {chr_f1:.4f}, {ent_f1:.4f}",
         max_seq_length=64,
     ),
     hardware=HardwareOption(
@@ -30,7 +30,7 @@ args = TrainerArguments(
         precision=16,
     ),
     learning=LearningOption(
-        condition="max val_chr_f1",
+        condition="max chr_f1",
         val_check=0.5,
         num_save=3,
         epochs=3,
