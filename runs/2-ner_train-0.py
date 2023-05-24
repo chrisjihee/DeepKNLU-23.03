@@ -30,8 +30,8 @@ args = TrainerArguments(
         precision=16,
     ),
     learning=LearningOption(
-        validating_on=0.5,
-        num_keeping=3,
+        validating_on=1 / 5,
+        num_keeping=5,
         keeping_by="max val_acc",
         epochs=3,
         speed=5e-5,
