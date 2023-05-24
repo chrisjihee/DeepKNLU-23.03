@@ -20,7 +20,8 @@ args = TrainerArguments(
         # pretrained="model/pretrained-com/KLUE-RoBERTa",
         pretrained="model/pretrained-com/KPF-BERT",
         finetuning_home="model/finetuning",
-        finetuning_name="{epoch:02d}, {step:04d}, {chr_f1:.4f}, {ent_f1:.4f}",
+        finetuning_name="epoch={epoch:.1f}, val_acc={val_acc:.4f}",
+        # finetuning_name="{epoch:02d}, {step:04d}, {chr_f1:.4f}, {ent_f1:.4f}",
         max_seq_length=64,
     ),
     hardware=HardwareOption(
