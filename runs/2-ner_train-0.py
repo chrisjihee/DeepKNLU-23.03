@@ -9,7 +9,7 @@ args = TrainerArguments(
         name="klue-ner-mini",
         files=DataFiles(
             train="klue-ner-v1.1_train.jsonl",
-            valid="klue-ner-v1.1_dev.jsonl"
+            valid="klue-ner-v1.1_dev.jsonl",
         ),
         redownload=False,
         show_examples=0,
@@ -30,9 +30,9 @@ args = TrainerArguments(
         precision=16,
     ),
     learning=LearningOption(
-        condition="max chr_f1",
-        val_check=0.5,
-        num_save=3,
+        validating_on=0.5,
+        num_keeping=3,
+        keeping_by="max val_acc",
         epochs=3,
         speed=5e-5,
         seed=7,
