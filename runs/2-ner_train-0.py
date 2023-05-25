@@ -1,9 +1,19 @@
 from nlpbook.arguments import *
 from nlpbook.ner import cli
 
+env = ProjectEnv(project="DeepKorNLU")
+opt = env.running_file.stem.rsplit("-")[-1]
+run_options = {
+    "0": "model/pretrained-pro/ETRI-RoBERTa-Base-bbpe23.03",
+    "1": "model/pretrained-pro/ETRI-RoBERTa-Base-bbpe22.07",
+    "2": "model/pretrained-com/KLUE-RoBERTa",
+    "3": "model/pretrained-com/KPF-BERT"
+}
+assert opt in run_options
+
 args = TrainerArguments(
-    # job=JobTimer(name="from-KPF-BERT"),
-    env=ProjectEnv(project="DeepKorNLU", running_gpus="0"),  # running_gpus by filename
+    job=JobTimer(name=f"from-{Path(run_options[opt]).stem}"),
+    env=ProjectEnv(project="DeepKorNLU", running_gpus=opt),
     data=DataOption(
         home="data",
         name="klue-ner-mini",
@@ -15,10 +25,7 @@ args = TrainerArguments(
         show_examples=0,
     ),
     model=ModelOption(
-        # pretrained="model/pretrained-pro/ETRI-RoBERTa-Base-bbpe23.03",
-        # pretrained="model/pretrained-pro/ETRI-RoBERTa-Base-bbpe22.07",
-        # pretrained="model/pretrained-com/KLUE-RoBERTa",
-        pretrained="model/pretrained-com/KPF-BERT",
+        pretrained=run_options[opt],
         finetuning_home="model/finetuning",
         finetuning_name="epoch={epoch:.1f}, f1c={val_f1c:05.2f}, f1e={val_f1e:05.2f}",
         max_seq_length=64,
@@ -37,7 +44,13 @@ args = TrainerArguments(
         speed=5e-5,
         seed=7,
     ),
-    job=JobTimer(name="fabric_train2"),
 )
+job_name = args.job.name
+
+args.job.name = job_name + "-using-fabric_train1"
+with ArgumentsUsing(args) as args_file:
+    cli.fabric_train1(args_file)
+
+args.job.name = job_name + "-using-fabric_train2"
 with ArgumentsUsing(args) as args_file:
     cli.fabric_train2(args_file)
