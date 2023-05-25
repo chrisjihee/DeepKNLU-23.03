@@ -11,50 +11,51 @@ run_options = {
 }
 assert opt in run_options
 
-args = TrainerArguments(
-    job=JobTimer(name=f"from-{Path(run_options[opt]).stem}"),
-    env=ProjectEnv(project="DeepKorNLU", running_gpus=opt),
-    data=DataOption(
-        home="data",
-        name="klue-ner-mini",
-        files=DataFiles(
-            train="klue-ner-v1.1_train.jsonl",
-            valid="klue-ner-v1.1_dev.jsonl",
+for learning_rate in [5e-5, 4e-5, 3e-5, 2e-5, 1e-5]:
+    args = TrainerArguments(
+        job=JobTimer(name=f"from-{Path(run_options[opt]).stem}"),
+        env=ProjectEnv(project="DeepKorNLU", running_gpus=opt),
+        data=DataOption(
+            home="data",
+            name="klue-ner-mini",
+            files=DataFiles(
+                train="klue-ner-v1.1_train.jsonl",
+                valid="klue-ner-v1.1_dev.jsonl",
+            ),
+            redownload=False,
+            show_examples=0,
         ),
-        redownload=False,
-        show_examples=0,
-    ),
-    model=ModelOption(
-        pretrained=run_options[opt],
-        finetuning_home="model/finetuning",
-        finetuning_name="epoch={epoch:.1f}, trained_rate={trained_rate:.2f}, f1c={val_f1c:05.2f}, f1e={val_f1e:05.2f}",
-        max_seq_length=64,
-    ),
-    hardware=HardwareOption(
-        accelerator="gpu",
-        batch_size=50,
-        precision="16-mixed",
-    ),
-    learning=LearningOption(
-        validating_fmt="loss={val_loss:06.4f}, f1c={val_f1c:05.2f}, f1e={val_f1e:05.2f}",
-        validating_on=1 / 10,
-        num_keeping=5,
-        keeping_by="max val_f1c",
-        epochs=3,
-        speed=5e-5,
-        seed=7,
-    ),
-)
-job_name = args.job.name
+        model=ModelOption(
+            pretrained=run_options[opt],
+            finetuning_home="model/finetuning",
+            finetuning_name="epoch={epoch:.1f}, trained_rate={trained_rate:.2f}, f1c={val_f1c:05.2f}, f1e={val_f1e:05.2f}",
+            max_seq_length=128,
+        ),
+        hardware=HardwareOption(
+            accelerator="gpu",
+            batch_size=100,
+            precision="16-mixed",
+        ),
+        learning=LearningOption(
+            validating_fmt="loss={val_loss:06.4f}, f1c={val_f1c:05.2f}, f1e={val_f1e:05.2f}",
+            validating_on=1 / 10,
+            num_keeping=5,
+            keeping_by="max val_f1c",
+            epochs=10,
+            speed=learning_rate,
+            seed=7,
+        ),
+    )
+    job_name = args.job.name
 
-args.job.name = job_name + "-using-pl"
-with ArgumentsUsing(args) as args_file:
-    cli.train(args_file)
+    args.job.name = job_name + f"-using-pl-lr={learning_rate}"
+    with ArgumentsUsing(args) as args_file:
+        cli.train(args_file)
 
-args.job.name = job_name + "-using-fabric1"
-with ArgumentsUsing(args) as args_file:
-    cli.fabric_train1(args_file)
+    args.job.name = job_name + f"-using-fabric1-lr={learning_rate}"
+    with ArgumentsUsing(args) as args_file:
+        cli.fabric_train1(args_file)
 
-args.job.name = job_name + "-using-fabric2"
-with ArgumentsUsing(args) as args_file:
-    cli.fabric_train2(args_file)
+    args.job.name = job_name + f"-using-fabric2-lr={learning_rate}"
+    with ArgumentsUsing(args) as args_file:
+        cli.fabric_train2(args_file)
