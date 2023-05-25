@@ -21,7 +21,7 @@ for learning_rate in [5e-5, 4e-5, 3e-5, 2e-5, 1e-5]:
         env=ProjectEnv(project="DeepKorNLU", running_gpus=opt),
         data=DataOption(
             home="data",
-            name="klue-ner-mini",
+            name="klue-ner",
             files=DataFiles(
                 train="klue-ner-v1.1_train.jsonl",
                 valid="klue-ner-v1.1_dev.jsonl",
