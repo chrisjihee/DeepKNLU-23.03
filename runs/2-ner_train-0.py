@@ -2,7 +2,7 @@ from nlpbook.arguments import *
 from nlpbook.ner import cli
 
 args = TrainerArguments(
-    job=JobTimer(name="from-KPF-BERT"),
+    # job=JobTimer(name="from-KPF-BERT"),
     env=ProjectEnv(project="DeepKorNLU", running_gpus="0"),  # running_gpus by filename
     data=DataOption(
         home="data",
@@ -26,7 +26,7 @@ args = TrainerArguments(
     hardware=HardwareOption(
         accelerator="gpu",
         batch_size=50,
-        precision=16,
+        precision="16-mixed",
     ),
     learning=LearningOption(
         validating_fmt="loss={val_loss:06.4f}, f1c={val_f1c:05.2f}, f1e={val_f1e:05.2f}",
@@ -37,6 +37,7 @@ args = TrainerArguments(
         speed=5e-5,
         seed=7,
     ),
+    job=JobTimer(name="fabric_train2"),
 )
 with ArgumentsUsing(args) as args_file:
-    cli.new_train(args_file)
+    cli.fabric_train2(args_file)
