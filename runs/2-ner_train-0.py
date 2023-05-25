@@ -27,7 +27,7 @@ args = TrainerArguments(
     model=ModelOption(
         pretrained=run_options[opt],
         finetuning_home="model/finetuning",
-        finetuning_name="epoch={epoch:.1f}, f1c={val_f1c:05.2f}, f1e={val_f1e:05.2f}",
+        finetuning_name="epoch={epoch:.1f}, trained_rate={trained_rate:.2f}, f1c={val_f1c:05.2f}, f1e={val_f1e:05.2f}",
         max_seq_length=64,
     ),
     hardware=HardwareOption(
@@ -47,10 +47,14 @@ args = TrainerArguments(
 )
 job_name = args.job.name
 
-args.job.name = job_name + "-using-fabric_train1"
+args.job.name = job_name + "-using-pl"
+with ArgumentsUsing(args) as args_file:
+    cli.train(args_file)
+
+args.job.name = job_name + "-using-fabric1"
 with ArgumentsUsing(args) as args_file:
     cli.fabric_train1(args_file)
 
-args.job.name = job_name + "-using-fabric_train2"
+args.job.name = job_name + "-using-fabric2"
 with ArgumentsUsing(args) as args_file:
     cli.fabric_train2(args_file)
