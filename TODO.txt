@@ -42,9 +42,9 @@
  - [적용] 여러 사전학습 모델 성능 비교하기
    : mBERT, KoBERT, KoELECTRA, KoBigBird, KcBERT, KcELECTRA, KLUE-BERT, KLUE-RoBERTa, KPF-BERT
 
+# 적용
+ - [완료] PyTorch Lighting -> Lightning Fabric: https://lightning.ai/docs/fabric/stable/
+   - https://github.com/Lightning-AI/lightning/blob/master/examples/fabric/language_model/train.py
+
 # 추후
  - [구현] ET5, KE-T5, KE-ByT5 사용하여 4~7장 태스크 수행하기
- - [구현] lightning examples
-   - https://github.com/Lightning-AI/lightning/blob/master/examples/fabric/image_classifier/train_fabric.py
-   - https://github.com/Lightning-AI/lightning/blob/master/examples/fabric/language_model/train.py
-   - https://github.com/Lightning-AI/lightning/blob/master/examples/pytorch/basics/transformer.py
