@@ -3,7 +3,7 @@ from nlpbook.ner import cli
 
 args = TrainerArguments(
     job=JobTimer(name="from-KPF-BERT"),
-    env=ProjectEnv(project="DeepKorNLU", running_gpus="0"),
+    env=ProjectEnv(project="DeepKorNLU", running_gpus="0"),  # running_gpus by filename
     data=DataOption(
         home="data",
         name="klue-ner-mini",
