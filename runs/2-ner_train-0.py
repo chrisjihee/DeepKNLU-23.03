@@ -4,10 +4,10 @@ from nlpbook.ner import cli
 env = ProjectEnv(project="DeepKorNLU")
 opt = env.running_file.stem.rsplit("-")[-1]
 run_options = {
-    "0": "model/pretrained-pro/ETRI-RoBERTa-Base-bbpe23.03",
-    "1": "model/pretrained-pro/ETRI-RoBERTa-Base-bbpe22.07",
-    "2": "model/pretrained-com/KLUE-RoBERTa",
-    "3": "model/pretrained-com/KPF-BERT"
+    "0": "model/pretrained-com/KLUE-BERT",
+    "1": "model/pretrained-com/KLUE-RoBERTa",
+    "2": "model/pretrained-pro/ETRI-RoBERTa-Base-bbpe23.03",
+    "3": "model/pretrained-pro/ETRI-RoBERTa-Base-bbpe22.07",
 }
 assert opt in run_options
 
