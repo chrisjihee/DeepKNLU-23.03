@@ -44,6 +44,7 @@ cd ../..
 #ln -s /dat/proj/pretrained-com model
 #ln -s /dat/proj/pretrained-pro model
 
-# 4. eval
+# 4. KLUE-baseline
+git clone git@github.com:chrisjihee/KLUE-baseline.git
 pip install overrides==3.1.0
 pip install importlib-metadata==4.13.0

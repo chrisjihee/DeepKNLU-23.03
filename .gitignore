@@ -7,6 +7,7 @@ setup-git.sh
 /chrisbase
 /chrislab
 /ngrok
+/KLUE-baseline
 
 # pytorch
 .idea/
