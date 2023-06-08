@@ -19,7 +19,9 @@ assert opt in run_options, f"opt(={opt}) is not in {list(run_options.keys())}"
 for learning_rate in [5e-5]:  # , 4e-5, 3e-5, 2e-5, 1e-5]:
     args = TrainerArguments(
         job=JobTimer(name=f"from-{Path(run_options[opt]).stem}"),
-        env=ProjectEnv(project="DeepKorNLU", running_gpus=opt),
+        env=ProjectEnv(project="DeepKorNLU", running_gpus=opt,
+                       # off_debugging=True,
+                       ),
         data=DataOption(
             home="data",
             name="klue-dp-mini",
