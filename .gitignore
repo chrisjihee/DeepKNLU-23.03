@@ -8,6 +8,16 @@ setup-git.sh
 /chrislab
 /ngrok
 /KLUE-baseline
+/runs/*-0.py
+/runs/*-1.py
+/runs/*-2.py
+/runs/*-3.py
+/runs/*-4.py
+/runs/*-5.py
+/runs/*-6.py
+/runs/*-7.py
+/runs/*-8.py
+/runs/*-9.py
 
 # pytorch
 .idea/
