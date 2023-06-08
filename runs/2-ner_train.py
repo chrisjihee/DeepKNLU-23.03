@@ -13,7 +13,7 @@ run_options = {
     "6": "model/pretrained-pro/ETRI-RoBERTa-Base-bbpe23.03",
     "7": "model/pretrained-pro/ETRI-RoBERTa-Base-bbpe22.07",
 }
-assert opt in run_options
+assert opt in run_options, f"opt(={opt}) is not in {list(run_options.keys())}"
 
 for learning_rate in [5e-5, 4e-5, 3e-5, 2e-5, 1e-5]:
     args = TrainerArguments(
