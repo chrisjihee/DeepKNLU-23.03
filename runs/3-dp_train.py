@@ -28,7 +28,7 @@ for learning_rate in [5e-5]:  # , 4e-5, 3e-5, 2e-5, 1e-5]:
                 valid="klue-dp-v1.1_dev.tsv",
             ),
             redownload=False,
-            show_examples=0,
+            show_examples=3,
         ),
         model=ModelOption(
             pretrained=run_options[opt],
