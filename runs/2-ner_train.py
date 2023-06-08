@@ -59,8 +59,4 @@ for learning_rate in [5e-5, 4e-5, 3e-5, 2e-5, 1e-5]:
 
     args.job.name = job_name + f"-using-fabric1-lr={learning_rate}"
     with ArgumentsUsing(args) as args_file:
-        cli.fabric_train1(args_file)
-
-    args.job.name = job_name + f"-using-fabric2-lr={learning_rate}"
-    with ArgumentsUsing(args) as args_file:
-        cli.fabric_train2(args_file)
+        cli.fabric_train(args_file)
