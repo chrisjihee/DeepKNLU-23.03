@@ -4,7 +4,8 @@ from nlpbook.dp import cli
 env = ProjectEnv(project="DeepKorNLU")
 opt = env.running_file.stem.rsplit("-")[-1]
 run_options = {
-    "0": "model/pretrained-com/KLUE-BERT",
+    "0": "model/pretrained-com/KLUE-RoBERTa",
+    # "0": "model/pretrained-com/KLUE-BERT",
     "1": "model/pretrained-com/KLUE-RoBERTa",
     "2": "model/pretrained-pro/ETRI-RoBERTa-Base-bbpe23.03",
     "3": "model/pretrained-pro/ETRI-RoBERTa-Base-bbpe22.07",
@@ -40,7 +41,7 @@ for learning_rate in [5e-5]:  # , 4e-5, 3e-5, 2e-5, 1e-5]:
         ),
         hardware=HardwareOption(
             accelerator="gpu",
-            batch_size=100,
+            batch_size=32,
             precision="16-mixed",
         ),
         learning=LearningOption(
@@ -50,7 +51,7 @@ for learning_rate in [5e-5]:  # , 4e-5, 3e-5, 2e-5, 1e-5]:
             keeping_by="max val_f1c",
             epochs=2,
             speed=learning_rate,
-            seed=7,
+            seed=42,
         ),
     )
     job_name = args.job.name
