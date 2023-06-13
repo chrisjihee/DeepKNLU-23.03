@@ -39,8 +39,12 @@ setup-git.sh
 /pretrained-*
 /finetuned
 /finetuned-*
+/finetuning
+/finetuning-*
 /predicted
 /predicted-*
+/predicting
+/predicting-*
 /note*/**/*.json
 /note*/**/*.out
 lightning_logs
