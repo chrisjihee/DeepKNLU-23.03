@@ -5,8 +5,8 @@ args = ServerArguments(
     env=ProjectEnv(project="DeepKorNLU"),
     data=DataOption(name="nsmc"),
     model=ModelOption(
-        pretrained="model/pretrained-com/KcBERT-Base",
-        finetuning_home="model/finetuning",
+        pretrained="pretrained-com/KcBERT-Base",
+        finetuning_home="finetuning",
         max_seq_length=50,
     ),
 )

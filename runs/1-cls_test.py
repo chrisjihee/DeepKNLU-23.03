@@ -10,8 +10,8 @@ args = TesterArguments(
         caching=False,
     ),
     model=ModelOption(
-        pretrained="model/pretrained-com/KcBERT-Base",
-        finetuning_home="model/finetuning",
+        pretrained="pretrained-com/KcBERT-Base",
+        finetuning_home="finetuning",
         finetuning_name=None,
         max_seq_length=50,
     ),
