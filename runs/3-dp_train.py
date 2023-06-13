@@ -45,7 +45,8 @@ for learning_rate in [5e-5]:  # , 4e-5, 3e-5, 2e-5, 1e-5]:
             precision="16-mixed",
         ),
         learning=LearningOption(
-            validating_fmt="loss={val_loss:06.4f}, f1c={val_f1c:05.2f}, f1e={val_f1e:05.2f}",
+            validating_fmt="loss={val_loss:06.4f}",
+            # validating_fmt="loss={val_loss:06.4f}, f1c={val_f1c:05.2f}, f1e={val_f1e:05.2f}",
             validating_on=1 / 10,
             num_keeping=2,
             keeping_by="max val_f1c",

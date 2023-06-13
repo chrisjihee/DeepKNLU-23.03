@@ -1,0 +1,157 @@
+/home/chris/mambaforge/envs/DeepKorNLU-23.03/bin/python /dat/proj/DeepKorNLU-23.03/runs/3-dp_train.py
+-----------------------------------------------------------------------------------------------------------------------------------------
+|   # | TrainerArguments        | value                                                                                        |
+|----:|:------------------------|:---------------------------------------------------------------------------------------------|
+|   1 | job.name                | from-KLUE-RoBERTa-using-fabric1-lr=5e-05                                                     |
+|   2 | job.started             |                                                                                              |
+|   3 | job.settled             |                                                                                              |
+|   4 | job.elapsed             |                                                                                              |
+|   5 | env.project             | DeepKorNLU                                                                                   |
+|   6 | env.hostname            | chris137                                                                                     |
+|   7 | env.hostaddr            | 129.254.164.137                                                                              |
+|   8 | env.python_path         | /home/chris/mambaforge/envs/DeepKorNLU-23.03/bin/python                                      |
+|   9 | env.working_path        | /dat/proj/DeepKorNLU-23.03                                                                   |
+|  10 | env.running_file        | runs/3-dp_train.py                                                                           |
+|  11 | env.running_gpus        | dp_train                                                                                     |
+|  12 | env.argument_file       | arguments-train.json                                                                         |
+|  13 | env.off_debugging       | False                                                                                        |
+|  14 | env.on_debugging        | False                                                                                        |
+|  15 | env.off_tracing         | False                                                                                        |
+|  16 | env.on_tracing          | False                                                                                        |
+|  17 | data.name               | klue-dp-mini                                                                                 |
+|  18 | data.home               | data                                                                                         |
+|  19 | data.files              | {'train': 'klue-dp-v1.1_train.tsv', 'valid': 'klue-dp-v1.1_dev.tsv', 'test': None}           |
+|  20 | data.caching            | False                                                                                        |
+|  21 | data.redownload         | False                                                                                        |
+|  22 | data.show_examples      | 3                                                                                            |
+|  23 | model.pretrained        | model/pretrained-com/KLUE-RoBERTa                                                            |
+|  24 | model.finetuning_home   | model/finetuning                                                                             |
+|  25 | model.finetuning_name   | epoch={epoch:.1f}, trained_rate={trained_rate:.2f}, f1c={val_f1c:05.2f}, f1e={val_f1e:05.2f} |
+|  26 | model.max_seq_length    | 128                                                                                          |
+|  27 | output.dir_path         | model/finetuning/klue-dp-mini                                                                |
+|  28 | output.csv_out          |                                                                                              |
+|  29 | output.result           | {}                                                                                           |
+|  30 | output.global_step      | 0                                                                                            |
+|  31 | output.global_epoch     | 0.0                                                                                          |
+|  32 | output.epoch_per_step   | 0.0                                                                                          |
+|  33 | hardware.cpu_workers    | 32                                                                                           |
+|  34 | hardware.accelerator    | gpu                                                                                          |
+|  35 | hardware.batch_size     | 32                                                                                           |
+|  36 | hardware.precision      | 16-mixed                                                                                     |
+|  37 | hardware.strategy       | auto                                                                                         |
+|  38 | hardware.devices        | auto                                                                                         |
+|  39 | training.validating_fmt | loss={val_loss:06.4f}                                                                        |
+|  40 | training.validating_on  | 0.1                                                                                          |
+|  41 | training.num_keeping    | 2                                                                                            |
+|  42 | training.keeping_by     | max val_f1c                                                                                  |
+|  43 | training.epochs         | 2                                                                                            |
+|  44 | training.speed          | 5e-05                                                                                        |
+|  45 | training.seed           | 42                                                                                           |
+-----------------------------------------------------------------------------------------------------------------------------------------
+Global seed set to 42
+
+=========================================================================================================================================
+[06.13 13:57:32] [INIT] chrialab.nlpbook.dp fabric_train model/finetuning/klue-dp-mini/arguments-train.json
+=========================================================================================================================================
+INFO	chrislab	Creating features from dataset file at data/klue-dp-mini/klue-dp-v1.1_train.tsv
+INFO	chrislab	Loaded 15502 examples from data/klue-dp-mini/klue-dp-v1.1_train.tsv
+INFO	chrislab	  === [Example 0] ===
+INFO	chrislab	  = sentence      : 해당 그림을 보면 디즈니 공주들이 브리트니 스피어스의 앨범이나 뮤직비디오, 화보 속 모습을 똑같이 재연했다.
+INFO	chrislab	  = tokens        : [CLS] 해당 그림 ##을 보 ##면 디즈니 공주 ##들이 브리 ##트니 스피 ##어스 ##의 앨범 ##이나 뮤직 ##비 ##디오 , 화보 속 모습 ##을 똑같이 재연 ##했 ##다 . [SEP] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD]
+INFO	chrislab	  = bpe_head_mask : 0 1 1 0 1 0 1 1 0 1 0 1 0 0 1 0 1 0 0 0 1 1 1 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+INFO	chrislab	  = bpe_tail_mask : 0 1 0 1 0 1 1 0 1 0 1 0 0 1 0 1 0 0 0 1 1 1 0 1 1 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+INFO	chrislab	  = head_ids      : -1 2 3 -1 14 -1 5 14 -1 7 -1 10 -1 -1 10 -1 10 -1 -1 -1 11 12 14 -1 14 0 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+INFO	chrislab	  = dep_labels    : -1 NP NP_OBJ -1 VP -1 NP NP_SBJ -1 NP -1 NP_MOD -1 -1 NP_CNJ -1 NP_CNJ -1 -1 -1 NP NP NP_OBJ -1 AP VP -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+INFO	chrislab	  = pos_labels    : -1 NNG JKO -1 EC -1 NNP JKS -1 NNP -1 JKG -1 -1 JC -1 SP -1 -1 -1 NNG NNG JKO -1 MAG SF -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+INFO	chrislab	  ===
+INFO	chrislab	  === [Example 1] ===
+INFO	chrislab	  = sentence      : 이날 경연에는 곽진언 씨, 김필 씨, 송유빈 군, 장우람 씨, 밴드 '버스터리드', 임도혁 씨가 출전했다.
+INFO	chrislab	  = tokens        : [CLS] 이날 경연 ##에 ##는 곽 ##진 ##언 씨 , 김 ##필 씨 , 송유 ##빈 군 , 장 ##우 ##람 씨 , 밴드 ' 버스터 ##리 ##드 ' , 임 ##도 ##혁 씨 ##가 출전 ##했 ##다 . [SEP] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD]
+INFO	chrislab	  = bpe_head_mask : 0 1 1 0 0 1 0 0 1 0 1 0 1 0 1 0 1 0 1 0 0 1 0 1 1 0 0 0 0 0 1 0 0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+INFO	chrislab	  = bpe_tail_mask : 0 1 0 0 1 0 0 1 0 1 0 1 0 1 0 1 0 1 0 0 1 0 1 1 0 0 0 0 0 1 0 0 1 0 1 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+INFO	chrislab	  = head_ids      : -1 2 15 -1 -1 4 -1 -1 14 -1 6 -1 14 -1 8 -1 14 -1 10 -1 -1 14 -1 12 14 -1 -1 -1 -1 -1 14 -1 -1 15 -1 0 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+INFO	chrislab	  = dep_labels    : -1 NP NP_AJT -1 -1 NP -1 -1 NP_CNJ -1 NP -1 NP_CNJ -1 NP -1 NP_CNJ -1 NP -1 -1 NP_CNJ -1 NP NP_CNJ -1 -1 -1 -1 -1 NP -1 -1 NP_SBJ -1 VP -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+INFO	chrislab	  = pos_labels    : -1 NNG JX -1 -1 NNP -1 -1 SP -1 NNP -1 SP -1 NNP -1 SP -1 NNP -1 -1 SP -1 NNG SP -1 -1 -1 -1 -1 NNP -1 -1 JKS -1 SF -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+INFO	chrislab	  ===
+INFO	chrislab	  === [Example 2] ===
+INFO	chrislab	  = sentence      : 최근 우리는 과거로부터 이어져온 각종 적폐의 흔적들이 세월이 흘러도 후손들에게 상처로 남는다는 교훈을 얻었습니다.
+INFO	chrislab	  = tokens        : [CLS] 최근 우리 ##는 과거 ##로 ##부터 이어져 ##온 각종 적폐 ##의 흔적 ##들이 세월 ##이 흘러 ##도 후손 ##들 ##에 ##게 상처 ##로 남 ##는 ##다는 교훈 ##을 얻 ##었 ##습 ##니다 . [SEP] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD]
+INFO	chrislab	  = bpe_head_mask : 0 1 1 0 1 0 0 1 0 1 1 0 1 0 1 0 1 0 1 0 0 0 1 0 1 0 0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+INFO	chrislab	  = bpe_tail_mask : 0 1 0 1 0 0 1 0 1 1 0 1 0 1 0 1 0 1 0 0 0 1 0 1 0 0 1 0 1 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+INFO	chrislab	  = head_ids      : -1 14 14 -1 4 -1 -1 6 -1 6 7 -1 12 -1 9 -1 12 -1 12 -1 -1 -1 12 -1 13 -1 -1 14 -1 0 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+INFO	chrislab	  = dep_labels    : -1 NP_AJT NP_SBJ -1 NP_AJT -1 -1 VP_MOD -1 NP NP_MOD -1 NP_SBJ -1 NP_SBJ -1 VP -1 NP_AJT -1 -1 -1 NP_AJT -1 VP_MOD -1 -1 NP_OBJ -1 VP -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+INFO	chrislab	  = pos_labels    : -1 NNG JX -1 JKB -1 -1 ETM -1 NNG JKG -1 JKS -1 JKS -1 EC -1 JKB -1 -1 -1 JKB -1 ETM -1 -1 JKO -1 SF -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+INFO	chrislab	  ===
+INFO	chrislab	Converted 15502 raw examples to 1000 encoded examples
+INFO	chrislab	Created train_dataset providing 1000 examples
+INFO	chrislab	Created train_dataloader loading 31 batches
+-----------------------------------------------------------------------------------------------------------------------------------------
+INFO	chrislab	Creating features from dataset file at data/klue-dp-mini/klue-dp-v1.1_dev.tsv
+INFO	chrislab	Loaded 1448 examples from data/klue-dp-mini/klue-dp-v1.1_dev.tsv
+INFO	chrislab	  === [Example 0] ===
+INFO	chrislab	  = sentence      : 'K팝스타3’ 유희열이 홍정희의 탈락에 눈물을 흘렸다.
+INFO	chrislab	  = tokens        : [CLS] ' K ##팝 ##스타 ##3 ’ 유희 ##열 ##이 홍정 ##희 ##의 탈락 ##에 눈물 ##을 흘렸 ##다 . [SEP] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD]
+INFO	chrislab	  = bpe_head_mask : 0 1 0 0 0 0 0 1 0 0 1 0 0 1 0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+INFO	chrislab	  = bpe_tail_mask : 0 0 0 0 0 0 1 0 0 1 0 0 1 0 1 0 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+INFO	chrislab	  = head_ids      : -1 2 -1 -1 -1 -1 -1 6 -1 -1 4 -1 -1 6 -1 6 -1 0 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+INFO	chrislab	  = dep_labels    : -1 NP -1 -1 -1 -1 -1 NP_SBJ -1 -1 NP_MOD -1 -1 NP_AJT -1 NP_OBJ -1 VP -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+INFO	chrislab	  = pos_labels    : -1 SS -1 -1 -1 -1 -1 JKS -1 -1 JKG -1 -1 JKB -1 JKO -1 SF -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+INFO	chrislab	  ===
+INFO	chrislab	  === [Example 1] ===
+INFO	chrislab	  = sentence      : 재판부는 검찰의 공정한 수사에 대한 신뢰가 깨져 버려 최씨와 김씨가 정신적 피해를 봤다는 점을 인정했다.
+INFO	chrislab	  = tokens        : [CLS] 재판부 ##는 검찰 ##의 공정 ##한 수사 ##에 대한 신뢰 ##가 깨져 버려 최 ##씨 ##와 김 ##씨 ##가 정신 ##적 피해 ##를 봤 ##다는 점 ##을 인정 ##했 ##다 . [SEP] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD]
+INFO	chrislab	  = bpe_head_mask : 0 1 0 1 0 1 0 1 0 1 1 0 1 1 1 0 0 1 0 0 1 0 1 0 1 0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+INFO	chrislab	  = bpe_tail_mask : 0 0 1 0 1 0 1 0 1 1 0 1 1 1 0 0 1 0 0 1 0 1 0 1 0 1 0 1 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+INFO	chrislab	  = head_ids      : -1 15 -1 4 -1 4 -1 5 -1 6 7 -1 8 13 10 -1 -1 13 -1 -1 12 -1 13 -1 14 -1 15 -1 0 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+INFO	chrislab	  = dep_labels    : -1 NP_SBJ -1 NP_MOD -1 VP_MOD -1 NP_AJT -1 VP_MOD NP_SBJ -1 VP VP NP_CNJ -1 -1 NP_SBJ -1 -1 DP -1 NP_OBJ -1 VP_MOD -1 NP_OBJ -1 VP -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+INFO	chrislab	  = pos_labels    : -1 JX -1 JKG -1 ETM -1 JKB -1 ETM JKS -1 EC EC JC -1 -1 JKS -1 -1 XSN -1 JKO -1 ETM -1 JKO -1 SF -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+INFO	chrislab	  ===
+INFO	chrislab	  === [Example 2] ===
+INFO	chrislab	  = sentence      : 아이는 예정보다 일찍 태어나 병원에서 치료를 받던 상황이었다.
+INFO	chrislab	  = tokens        : [CLS] 아이 ##는 예정 ##보 ##다 일찍 태어나 병원 ##에서 치료 ##를 받 ##던 상황 ##이 ##었 ##다 . [SEP] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD]
+INFO	chrislab	  = bpe_head_mask : 0 1 0 1 0 0 1 1 1 0 1 0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+INFO	chrislab	  = bpe_tail_mask : 0 0 1 0 0 1 1 1 0 1 0 1 0 1 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+INFO	chrislab	  = head_ids      : -1 4 -1 4 -1 -1 4 7 7 -1 7 -1 8 -1 0 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+INFO	chrislab	  = dep_labels    : -1 NP_SBJ -1 NP_AJT -1 -1 AP VP NP_AJT -1 NP_OBJ -1 VP_MOD -1 VNP -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+INFO	chrislab	  = pos_labels    : -1 JX -1 JKB -1 -1 MAG EC JKB -1 JKO -1 ETM -1 SF -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+INFO	chrislab	  ===
+INFO	chrislab	Converted 1448 raw examples to 100 encoded examples
+INFO	chrislab	Created valid_dataset providing 100 examples
+INFO	chrislab	Created valid_dataloader loading 3 batches
+-----------------------------------------------------------------------------------------------------------------------------------------
+Some weights of the model checkpoint at model/pretrained-com/KLUE-RoBERTa were not used when initializing RobertaModel: ['lm_head.decoder.weight', 'lm_head.layer_norm.weight', 'lm_head.bias', 'lm_head.decoder.bias', 'lm_head.dense.bias', 'lm_head.dense.weight', 'lm_head.layer_norm.bias']
+- This IS expected if you are initializing RobertaModel from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing RobertaModel from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of RobertaModel were not initialized from the model checkpoint at model/pretrained-com/KLUE-RoBERTa and are newly initialized: ['roberta.pooler.dense.bias', 'roberta.pooler.dense.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+/home/chris/mambaforge/envs/DeepKorNLU-23.03/lib/python3.10/site-packages/torch/nn/modules/rnn.py:71: UserWarning: dropout option adds dropout after all but last recurrent layer, so non-zero dropout expects num_layers greater than 1, but got dropout=0.33 and num_layers=1
+  warnings.warn("dropout option adds dropout after all but last "
+-----------------------------------------------------------------------------------------------------------------------------------------
+- [06.13 13:57:35] (Epoch 01) training:  10%|█▉                  | 3/31 [00:21<03:06,  6.65s/x32] | loss=5.3751
+- [06.13 13:57:35] (Epoch 01) training:  19%|███▊                | 6/31 [00:44<02:48,  6.73s/x32] | loss=4.9094
+- [06.13 13:57:35] (Epoch 01) training:  29%|█████▊              | 9/31 [01:09<02:35,  7.08s/x32] | loss=4.5574
+- [06.13 13:57:35] (Epoch 01) training:  39%|███████▋            | 12/31 [01:34<02:19,  7.35s/x32] | loss=4.2991
+- [06.13 13:57:35] (Epoch 01) training:  48%|█████████▋          | 15/31 [01:58<01:53,  7.12s/x32] | loss=4.0611
+- [06.13 13:57:35] (Epoch 01) training:  58%|███████████▌        | 18/31 [02:22<01:32,  7.14s/x32] | loss=3.8843
+- [06.13 13:57:35] (Epoch 01) training:  68%|█████████████▌      | 21/31 [02:47<01:12,  7.22s/x32] | loss=3.7098
+- [06.13 13:57:35] (Epoch 01) training:  77%|███████████████▍    | 24/31 [03:11<00:49,  7.04s/x32] | loss=3.5513
+- [06.13 13:57:35] (Epoch 01) training:  87%|█████████████████▍  | 27/31 [03:35<00:28,  7.17s/x32] | loss=3.3844
+- [06.13 13:57:35] (Epoch 01) training:  97%|███████████████████▎| 30/31 [04:00<00:07,  7.30s/x32] | loss=3.2251
+- [06.13 13:57:35] (Epoch 01) training: 100%|████████████████████| 31/31 [04:15<00:00,  8.23s/x32]
+- [06.13 14:01:50] (Epoch 02) training:  10%|█▉                  | 3/31 [00:20<02:49,  6.06s/x32] | loss=2.9971
+- [06.13 14:01:50] (Epoch 02) training:  19%|███▊                | 6/31 [00:45<02:56,  7.07s/x32] | loss=2.8083
+- [06.13 14:01:50] (Epoch 02) training:  29%|█████▊              | 9/31 [01:08<02:30,  6.85s/x32] | loss=2.6411
+- [06.13 14:01:50] (Epoch 02) training:  39%|███████▋            | 12/31 [01:33<02:18,  7.26s/x32] | loss=2.4342
+- [06.13 14:01:50] (Epoch 02) training:  48%|█████████▋          | 15/31 [01:57<01:53,  7.07s/x32] | loss=2.2612
+- [06.13 14:01:50] (Epoch 02) training:  58%|███████████▌        | 18/31 [02:21<01:31,  7.04s/x32] | loss=2.1202
+- [06.13 14:01:50] (Epoch 02) training:  68%|█████████████▌      | 21/31 [02:46<01:11,  7.11s/x32] | loss=1.9469
+- [06.13 14:01:50] (Epoch 02) training:  77%|███████████████▍    | 24/31 [03:10<00:49,  7.04s/x32] | loss=1.8136
+- [06.13 14:01:50] (Epoch 02) training:  87%|█████████████████▍  | 27/31 [03:36<00:30,  7.62s/x32] | loss=1.7450
+- [06.13 14:01:50] (Epoch 02) training:  97%|███████████████████▎| 30/31 [04:02<00:07,  7.79s/x32] | loss=1.6042
+- [06.13 14:01:50] (Epoch 02) training: 100%|████████████████████| 31/31 [04:17<00:00,  8.31s/x32]
+=========================================================================================================================================
+[06.13 14:06:09] [EXIT] chrialab.nlpbook.dp fabric_train model/finetuning/klue-dp-mini/arguments-train.json ($=00:08:35.268)
+=========================================================================================================================================
+
+
+Process finished with exit code 0
