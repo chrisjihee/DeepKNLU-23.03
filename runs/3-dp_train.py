@@ -1,6 +1,8 @@
 # Please, unset LD_LIBRARY_PATH before run this script
 from multiprocessing import freeze_support
 
+import torch.cuda
+
 from nlpbook.arguments import *
 from nlpbook.dp import cli
 
@@ -26,7 +28,7 @@ if __name__ == '__main__':
         args = TrainerArguments(
             job=JobTimer(name=f"from-{Path(run_options[opt]).stem}"),
             env=ProjectEnv(project="DeepKNLU",
-                           running_gpus=opt,
+                           running_gpus=opt if torch.cuda.is_available() else None,
                            # off_debugging=True,
                            ),
             data=DataOption(
