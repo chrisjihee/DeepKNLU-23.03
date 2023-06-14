@@ -50,7 +50,7 @@ if __name__ == '__main__':
             hardware=HardwareOption(
                 accelerator="gpu" if torch.cuda.is_available() else "cpu",
                 batch_size=32,
-                precision="16-mixed",
+                precision="16-mixed" if torch.cuda.is_available() else "bf16-mixed",
             ),
             learning=LearningOption(
                 validating_fmt="loss={val_loss:06.4f}",
