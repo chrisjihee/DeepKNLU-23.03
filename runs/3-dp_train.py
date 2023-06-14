@@ -8,6 +8,7 @@ from nlpbook.dp import cli
 
 env = ProjectEnv(project="DeepKNLU")
 opt = env.running_file.stem.rsplit("-")[-1]
+use_gpu = torch.cuda.is_available()
 run_options = {
     "0": "pretrained-com/KLUE-RoBERTa",
     "1": "pretrained-com/KLUE-BERT",
@@ -28,7 +29,7 @@ if __name__ == '__main__':
         args = TrainerArguments(
             job=JobTimer(name=f"from-{Path(run_options[opt]).stem}"),
             env=ProjectEnv(project="DeepKNLU",
-                           running_gpus=opt if torch.cuda.is_available() else None,
+                           running_gpus=opt if use_gpu else None,
                            # off_debugging=True,
                            ),
             data=DataOption(
@@ -48,9 +49,9 @@ if __name__ == '__main__':
                 max_seq_length=128,
             ),
             hardware=HardwareOption(
-                accelerator="gpu" if torch.cuda.is_available() else "cpu",
+                accelerator="gpu" if use_gpu else "cpu",
                 batch_size=32,
-                precision="16-mixed" if torch.cuda.is_available() else "bf16-mixed",
+                precision="16-mixed" if use_gpu else "bf16-mixed",
             ),
             learning=LearningOption(
                 validating_fmt="loss={val_loss:06.4f}",
