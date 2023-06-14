@@ -2,20 +2,23 @@
 # WARNING: should unset LD_LIBRARY_PATH before run python script
 
 # 1. uneditable library
-export PROJECT_NAME="DeepKorNLU-23.03"
+export PROJECT_NAME="DeepKNLU-23.03"
 export PYTHON_VER="3.10"
 export CUDA_NVCC_VER="11.8"
 export TORCH_URL="https://download.pytorch.org/whl/cu118"
-conda update -y -n base -c defaults conda
-conda create -y -n $PROJECT_NAME python=$PYTHON_VER
+conda update -n base -c conda-forge conda -y
+conda create -n $PROJECT_NAME python=$PYTHON_VER -y
 conda activate $PROJECT_NAME
-if command -v nvidia-smi; then
+if [ "$(uname)" == "Darwin" ]; then
+  conda install pytorch::pytorch -c pytorch
+elif command -v nvidia-smi; then
   conda install -y -c nvidia cuda-nvcc=$CUDA_NVCC_VER
   conda install -y -c nvidia cudatoolkit=$CUDA_NVCC_VER
   conda install -y -c nvidia cudnn
   pip install torch --index-url $TORCH_URL
+else
+  pip install torch
 fi
-pip install torch
 conda list
 
 # 2. editable library
