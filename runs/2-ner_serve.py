@@ -2,7 +2,7 @@ from nlpbook.arguments import *
 from nlpbook.ner import cli
 
 args = ServerArguments(
-    env=ProjectEnv(project="DeepKorNLU"),
+    env=ProjectEnv(project="DeepKNLU"),
     data=DataOption(name="kmou-ner"),
     model=ModelOption(
         pretrained="pretrained-com/KcBERT-Base",

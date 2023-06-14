@@ -3,7 +3,7 @@ from nlpbook.cls import cli
 
 args = TrainerArguments(
     job=JobTimer(name="from-KPF-BERT"),
-    env=ProjectEnv(project="DeepKorNLU", running_gpus="0"),
+    env=ProjectEnv(project="DeepKNLU", running_gpus="0"),
     data=DataOption(
         home="data",
         name="nsmc",

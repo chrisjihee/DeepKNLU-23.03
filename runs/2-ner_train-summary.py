@@ -4,7 +4,7 @@ import pandas as pd
 from chrisbase.util import to_dataframe
 from nlpbook import TrainerArguments
 
-ProjectEnv(project="DeepKorNLU")
+ProjectEnv(project="DeepKNLU")
 
 records = []
 for indir in dirs("model/finetuning/klue-ner/train-from-*"):

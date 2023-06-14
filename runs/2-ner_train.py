@@ -1,7 +1,7 @@
 from nlpbook.arguments import *
 from nlpbook.ner import cli
 
-env = ProjectEnv(project="DeepKorNLU")
+env = ProjectEnv(project="DeepKNLU")
 opt = env.running_file.stem.rsplit("-")[-1]
 run_options = {
     "0": "pretrained-com/KLUE-RoBERTa",
@@ -20,7 +20,7 @@ assert opt in run_options, f"opt(={opt}) is not in {list(run_options.keys())}"
 for learning_rate in [5e-5, 4e-5, 3e-5, 2e-5, 1e-5]:
     args = TrainerArguments(
         job=JobTimer(name=f"from-{Path(run_options[opt]).stem}"),
-        env=ProjectEnv(project="DeepKorNLU", running_gpus=opt),
+        env=ProjectEnv(project="DeepKNLU", running_gpus=opt),
         data=DataOption(
             home="data",
             name="klue-ner",
