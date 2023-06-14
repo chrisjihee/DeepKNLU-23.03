@@ -1,22 +1,27 @@
 #!/bin/bash
-# Tested on Ubuntu 20.04
+# WARNING: should unset LD_LIBRARY_PATH before run python script
+
 # 1. uneditable library
 export PROJECT_NAME="DeepKorNLU-23.03"
 export PYTHON_VER="3.10"
-export CUDA_VER="11.7"
-conda update -n base -c defaults conda -y
-conda create -n $PROJECT_NAME python=$PYTHON_VER -y
+export CUDA_NVCC_VER="11.8"
+export TORCH_URL="https://download.pytorch.org/whl/cu118"
+conda update -y -n base -c defaults conda
+conda create -y -n $PROJECT_NAME python=$PYTHON_VER
 conda activate $PROJECT_NAME
-if [ $(uname -s) = "Linux" ]; then
-  conda install cuda-nvcc=$CUDA_VER cudatoolkit=$CUDA_VER -c nvidia -y
-  pip install torch --index-url https://download.pytorch.org/whl/cu117
+if command -v nvidia-smi; then
+  conda install -y -c nvidia cuda-nvcc=$CUDA_NVCC_VER
+  conda install -y -c nvidia cudatoolkit=$CUDA_NVCC_VER
+  conda install -y -c nvidia cudnn
+  pip install torch --index-url $TORCH_URL
 fi
 pip install torch
+conda list
 
 # 2. editable library
 rm -rf transformers lightning chrisbase chrislab
-git clone git@github.com:huggingface/transformers.git -b v4.29.2
-git clone git@github.com:Lightning-AI/lightning.git -b 2.0.2
+git clone git@github.com:huggingface/transformers.git -b v4.30.2
+git clone git@github.com:Lightning-AI/lightning.git -b 2.0.3
 git clone git@github.com:chrisjihee/chrisbase.git
 git clone git@github.com:chrisjihee/chrislab.git
 pip install --editable transformers
@@ -24,9 +29,9 @@ pip install --editable lightning
 pip install --editable chrisbase
 pip install --editable chrislab
 
-# 3. pretrained model
-mkdir -p model/pretrained
-cd model/pretrained
+# 3. pretrained model (optional)
+mkdir -p pretrained
+cd pretrained
 git lfs install
 git clone https://huggingface.co/beomi/kcbert-base KcBERT-Base
 #git clone https://huggingface.co/beomi/KcELECTRA-base-v2022 KcELECTRA-Base
@@ -40,11 +45,11 @@ git clone https://huggingface.co/beomi/kcbert-base KcBERT-Base
 git lfs uninstall
 cd ../..
 
-# 3. pretrained model (private)
-#ln -s /dat/proj/pretrained-com model
-#ln -s /dat/proj/pretrained-pro model
+# 3. pretrained model (optional)
+#ln -s ../pretrained-com
+#ln -s ../pretrained-pro
 
-# 4. KLUE-baseline
+# 4. KLUE-baseline (optional)
 git clone git@github.com:chrisjihee/KLUE-baseline.git
-pip install overrides==3.1.0
-pip install importlib-metadata==4.13.0
+cd KLUE-baseline
+pip install -r requirements.txt

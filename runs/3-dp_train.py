@@ -1,3 +1,4 @@
+# Please, unset LD_LIBRARY_PATH before run this script
 from nlpbook.arguments import *
 from nlpbook.dp import cli
 
