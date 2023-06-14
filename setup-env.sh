@@ -34,7 +34,7 @@ pip install --editable chrislab
 
 # 3. pretrained model (optional)
 mkdir -p pretrained
-cd pretrained
+cd pretrained || return
 git lfs install
 git clone https://huggingface.co/beomi/kcbert-base KcBERT-Base
 #git clone https://huggingface.co/beomi/KcELECTRA-base-v2022 KcELECTRA-Base
@@ -49,10 +49,12 @@ git lfs uninstall
 cd ../..
 
 # 3. pretrained model (optional)
+#git clone guest@129.254.164.137:git/pretrained-com
+#git clone chris@129.254.164.137:git/pretrained-pro
 #ln -s ../pretrained-com
 #ln -s ../pretrained-pro
 
 # 4. KLUE-baseline (optional)
 git clone git@github.com:chrisjihee/KLUE-baseline.git
-cd KLUE-baseline
+cd KLUE-baseline || return
 pip install -r requirements.txt
