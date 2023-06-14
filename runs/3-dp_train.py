@@ -48,7 +48,7 @@ if __name__ == '__main__':
                 max_seq_length=128,
             ),
             hardware=HardwareOption(
-                accelerator="gpu",
+                accelerator="gpu" if torch.cuda.is_available() else "cpu",
                 batch_size=32,
                 precision="16-mixed",
             ),
