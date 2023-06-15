@@ -7,7 +7,7 @@ from nlpbook import TrainerArguments
 ProjectEnv(project="DeepKNLU")
 
 records = []
-for indir in dirs("model/finetuning/klue-ner/train-from-*"):
+for indir in dirs("finetuning/klue-ner/train-from-*"):
     if (indir / "arguments-train.json").exists() and (indir / "metrics.csv").exists():
         args: TrainerArguments = TrainerArguments.from_json((indir / "arguments-train.json").read_text())
         data = pd.read_csv(indir / "metrics.csv")

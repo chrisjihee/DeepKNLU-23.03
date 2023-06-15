@@ -1,71 +1,66 @@
 # Please, unset LD_LIBRARY_PATH before run this script
-from multiprocessing import freeze_support
+# from multiprocessing import freeze_support
 
 import torch.cuda
 
 from nlpbook.arguments import *
 from nlpbook.dp import cli
 
-env = ProjectEnv(project="DeepKNLU")
-opt = env.running_file.stem.rsplit("-")[-1]
-use_gpu = torch.cuda.is_available()
-run_options = {
-    "0": "pretrained-com/KLUE-RoBERTa",
-    "1": "pretrained-com/KLUE-BERT",
-    "2": "pretrained-pro/ETRI-RoBERTa-Base-bbpe23.03",
-    "3": "pretrained-pro/ETRI-RoBERTa-Base-bbpe22.07",
-    "4": "pretrained-com/KLUE-RoBERTa",
-    "5": "pretrained-com/KLUE-BERT",
-    "6": "pretrained-pro/ETRI-RoBERTa-Base-bbpe23.03",
-    "7": "pretrained-pro/ETRI-RoBERTa-Base-bbpe22.07",
-}
-if opt not in run_options:
-    opt = list(run_options.keys())[0]
-assert opt in run_options, f"opt(={opt}) is not in {list(run_options.keys())}"
-
 if __name__ == '__main__':
-    freeze_support()
+    env = ProjectEnv(project="DeepKNLU")
+    opt = env.running_file.stem.rsplit("-")[-1]
+    use_gpu = torch.cuda.is_available()
+    run_options = {
+        "0": "pretrained-com/KLUE-RoBERTa",
+        "1": "pretrained-com/KLUE-BERT",
+        "2": "pretrained-pro/ETRI-RoBERTa-Base-bbpe23.03",
+        "3": "pretrained-pro/ETRI-RoBERTa-Base-bbpe22.07",
+        "4": "pretrained-com/KLUE-RoBERTa",
+        "5": "pretrained-com/KLUE-BERT",
+        "6": "pretrained-pro/ETRI-RoBERTa-Base-bbpe23.03",
+        "7": "pretrained-pro/ETRI-RoBERTa-Base-bbpe22.07",
+    }
+    if opt not in run_options:
+        opt = list(run_options.keys())[0]
+
+    # freeze_support()
     for learning_rate in [5e-5]:  # , 4e-5, 3e-5, 2e-5, 1e-5]:
         args = TrainerArguments(
             job=JobTimer(name=f"from-{Path(run_options[opt]).stem}"),
-            env=ProjectEnv(project="DeepKNLU",
-                           running_gpus=opt if use_gpu else None,
-                           # off_debugging=True,
-                           ),
+            env=ProjectEnv(project="DeepKNLU", running_gpus=opt if use_gpu else None),
             data=DataOption(
                 home="data",
-                name="klue-dp-mini",
+                name="klue-dp",
                 files=DataFiles(
                     train="klue-dp-v1.1_train.tsv",
                     valid="klue-dp-v1.1_dev.tsv",
                 ),
                 redownload=False,
-                show_examples=3,
+                show_examples=1,
             ),
             model=ModelOption(
                 pretrained=run_options[opt],
                 finetuning_home="finetuning",
-                finetuning_name="epoch={epoch:.1f}, trained_rate={trained_rate:.2f}, UAS={val_UASa:05.2f}, LAS={val_LASa:05.2f}",
-                max_seq_length=128,
+                finetuning_name="epoch={epoch:.1f}, tr={trained_rate:.2f}, UAS={val_UASa:05.2f}, LAS={val_LASa:05.2f}",
+                max_seq_length=256,
             ),
             hardware=HardwareOption(
                 accelerator="gpu" if use_gpu else "cpu",
-                batch_size=32,
                 precision="16-mixed" if use_gpu else "bf16-mixed",
+                batch_size=100,
             ),
             learning=LearningOption(
                 validating_fmt="loss={val_loss:06.4f}, UAS={val_UASa:05.2f}, LAS={val_LASa:05.2f}",
-                validating_on=0.01,
-                # validating_on=1 / 10,
+                validating_on=0.1,
                 num_keeping=2,
                 keeping_by="max val_UASa",
-                epochs=2,
+                epochs=5,
                 speed=learning_rate,
-                seed=42,
+                seed=7,
             ),
         )
         job_name = args.job.name
 
-        args.job.name = job_name + f"-using-fabric1-lr={learning_rate}"
+        args.job.name = job_name + f"-using-fabric-lr={learning_rate}"
         with ArgumentsUsing(args) as args_file:
             cli.fabric_train(args_file)
