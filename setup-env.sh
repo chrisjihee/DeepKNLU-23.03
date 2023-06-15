@@ -4,19 +4,19 @@
 # 1. uneditable library
 export PROJECT_NAME="DeepKNLU-23.03"
 export PYTHON_VER="3.10"
-export CUDA_NVCC_VER="11.8"
-export TORCH_URL="https://download.pytorch.org/whl/cu118"
 conda update -n base -c conda-forge conda -y
 conda create -n $PROJECT_NAME python=$PYTHON_VER -y
 conda activate $PROJECT_NAME
-if [ "$(uname)" == "Darwin" ]; then
-  conda install pytorch::pytorch -c pytorch
-elif command -v nvidia-smi; then
+if command -v nvidia-smi; then
+  export CUDA_NVCC_VER="11.8"
+  export TORCH_URL="https://download.pytorch.org/whl/cu118"
+  echo ">> Now, Installing PyTorch with CUDA support..."
   conda install -y -c nvidia cuda-nvcc=$CUDA_NVCC_VER
   conda install -y -c nvidia cudatoolkit=$CUDA_NVCC_VER
   conda install -y -c nvidia cudnn
   pip install torch --index-url $TORCH_URL
 else
+  echo ">> Now, Installing PyTorch without CUDA support..."
   pip install torch
 fi
 conda list
@@ -35,8 +35,8 @@ pip install --editable chrislab
 # 3. pretrained model (option 1)
 #git clone guest@129.254.164.137:git/pretrained-com
 #git clone chris@129.254.164.137:git/pretrained-pro
-ln -s ../pretrained-com
-ln -s ../pretrained-pro
+ln -s ../pretrained-com .
+ln -s ../pretrained-pro .
 
 # 3. pretrained model (option 2)
 mkdir -p pretrained
