@@ -45,7 +45,7 @@ if __name__ == '__main__':
             model=ModelOption(
                 pretrained=run_options[opt],
                 finetuning_home="finetuning",
-                finetuning_name="epoch={epoch:.1f}, trained_rate={trained_rate:.2f}, f1c={val_f1c:05.2f}, f1e={val_f1e:05.2f}",
+                finetuning_name="epoch={epoch:.1f}, trained_rate={trained_rate:.2f}, UAS={val_UASa:05.2f}, LAS={val_LASa:05.2f}",
                 max_seq_length=128,
             ),
             hardware=HardwareOption(
@@ -54,11 +54,11 @@ if __name__ == '__main__':
                 precision="16-mixed" if use_gpu else "bf16-mixed",
             ),
             learning=LearningOption(
-                validating_fmt="loss={val_loss:06.4f}",
-                # validating_fmt="loss={val_loss:06.4f}, f1c={val_f1c:05.2f}, f1e={val_f1e:05.2f}",
-                validating_on=1 / 10,
+                validating_fmt="loss={val_loss:06.4f}, UAS={val_UASa:05.2f}, LAS={val_LASa:05.2f}",
+                validating_on=0.01,
+                # validating_on=1 / 10,
                 num_keeping=2,
-                keeping_by="max val_f1c",
+                keeping_by="max val_UASa",
                 epochs=2,
                 speed=learning_rate,
                 seed=42,
