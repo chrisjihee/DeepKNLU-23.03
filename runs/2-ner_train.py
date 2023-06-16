@@ -1,12 +1,11 @@
 # Please, unset LD_LIBRARY_PATH before run this script
+# Please, set CUDA_VISIBLE_DEVICES appropriately
 # from multiprocessing import freeze_support
-
-import torch.cuda
-
-from nlpbook.arguments import *
-from nlpbook.ner import cli
-
 if __name__ == '__main__':
+    from nlpbook.arguments import *
+    from nlpbook.ner import cli
+    import torch.cuda
+
     env = ProjectEnv(project="DeepKNLU")
     opt = env.running_file.stem.rsplit("-")[-1]
     use_gpu = torch.cuda.is_available()
@@ -24,13 +23,13 @@ if __name__ == '__main__':
         opt = list(run_options.keys())[0]
 
     # freeze_support()
-    for learning_rate in [5e-5, 4e-5, 3e-5, 2e-5, 1e-5]:
+    for learning_rate in [5e-5]:  # , 4e-5, 3e-5, 2e-5, 1e-5]:
         args = TrainerArguments(
             job=JobTimer(name=f"from-{Path(run_options[opt]).stem}"),
             env=ProjectEnv(project="DeepKNLU", running_gpus=opt if use_gpu else None),
             data=DataOption(
                 home="data",
-                name="klue-ner",
+                name="klue-ner-mini",
                 files=DataFiles(
                     train="klue-ner-v1.1_train.jsonl",
                     valid="klue-ner-v1.1_dev.jsonl",
@@ -42,11 +41,13 @@ if __name__ == '__main__':
                 pretrained=run_options[opt],
                 finetuning_home="finetuning",
                 finetuning_name="epoch={epoch:.1f}, tr={trained_rate:.2f}, F1c={val_F1c:05.2f}, F1e={val_F1e:05.2f}",
-                max_seq_length=256,
+                max_seq_length=64,
             ),
             hardware=HardwareOption(
                 accelerator="gpu" if use_gpu else "cpu",
-                precision="16-mixed" if use_gpu else "bf16-mixed",
+                precision="32-true",  # if use_gpu else "bf16-mixed",
+                strategy="auto",
+                devices=1 if use_gpu else "auto",
                 batch_size=100,
             ),
             learning=LearningOption(
@@ -54,13 +55,17 @@ if __name__ == '__main__':
                 validating_on=0.1,
                 num_keeping=2,
                 keeping_by="max val_F1c",
-                epochs=10,
+                epochs=1,
                 speed=learning_rate,
                 seed=7,
             ),
         )
         job_name = args.job.name
 
-        args.job.name = job_name + f"-using-fabric-lr={learning_rate}"
+        args.job.name = job_name + f"-using-FR-lr={learning_rate}"
         with ArgumentsUsing(args) as args_file:
             cli.fabric_train(args_file)
+
+        args.job.name = job_name + f"-using-PL-lr={learning_rate}"
+        with ArgumentsUsing(args) as args_file:
+            cli.train(args_file)
