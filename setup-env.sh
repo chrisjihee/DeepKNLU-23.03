@@ -8,8 +8,8 @@ conda update -n base -c conda-forge conda -y
 conda create -n $PROJECT_NAME python=$PYTHON_VER -y
 conda activate $PROJECT_NAME
 if command -v nvidia-smi; then
-  export CUDA_NVCC_VER="11.8"
-  export TORCH_URL="https://download.pytorch.org/whl/cu118"
+  export CUDA_NVCC_VER="11.7"
+  export TORCH_URL="https://download.pytorch.org/whl/cu117"
   echo ">> Now, Installing PyTorch with CUDA support..."
   conda install -y -c nvidia cuda-nvcc=$CUDA_NVCC_VER
   conda install -y -c nvidia cudatoolkit=$CUDA_NVCC_VER
